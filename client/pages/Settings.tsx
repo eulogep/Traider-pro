@@ -1,11 +1,23 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
@@ -41,7 +53,9 @@ import {
 export default function Settings() {
   const [showApiKey, setShowApiKey] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
-  const [connectionStatus, setConnectionStatus] = useState<"connected" | "disconnected" | "testing">("connected");
+  const [connectionStatus, setConnectionStatus] = useState<
+    "connected" | "disconnected" | "testing"
+  >("connected");
 
   const testConnection = () => {
     setConnectionStatus("testing");
@@ -60,7 +74,9 @@ export default function Settings() {
               <SettingsIcon className="w-8 h-8 mr-3 text-primary" />
               System Settings
             </h1>
-            <p className="text-muted-foreground">Configure your AI Trader Optimizer preferences</p>
+            <p className="text-muted-foreground">
+              Configure your AI Trader Optimizer preferences
+            </p>
           </div>
           <Button className="bg-primary hover:bg-primary/90">
             <Save className="w-4 h-4 mr-2" />
@@ -87,13 +103,17 @@ export default function Settings() {
                     <Palette className="w-5 h-5 mr-2" />
                     Appearance
                   </CardTitle>
-                  <CardDescription>Customize the interface appearance</CardDescription>
+                  <CardDescription>
+                    Customize the interface appearance
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Dark Mode</Label>
-                      <p className="text-sm text-muted-foreground">Use dark theme for better trading visibility</p>
+                      <p className="text-sm text-muted-foreground">
+                        Use dark theme for better trading visibility
+                      </p>
                     </div>
                     <Switch checked={darkMode} onCheckedChange={setDarkMode} />
                   </div>
@@ -105,9 +125,15 @@ export default function Settings() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="professional">Professional (Default)</SelectItem>
-                        <SelectItem value="high-contrast">High Contrast</SelectItem>
-                        <SelectItem value="colorblind">Colorblind Friendly</SelectItem>
+                        <SelectItem value="professional">
+                          Professional (Default)
+                        </SelectItem>
+                        <SelectItem value="high-contrast">
+                          High Contrast
+                        </SelectItem>
+                        <SelectItem value="colorblind">
+                          Colorblind Friendly
+                        </SelectItem>
                         <SelectItem value="minimal">Minimal</SelectItem>
                       </SelectContent>
                     </Select>
@@ -151,7 +177,9 @@ export default function Settings() {
                     <Globe className="w-5 h-5 mr-2" />
                     Regional Settings
                   </CardTitle>
-                  <CardDescription>Configure regional preferences</CardDescription>
+                  <CardDescription>
+                    Configure regional preferences
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
@@ -181,7 +209,9 @@ export default function Settings() {
                         <SelectItem value="et">Eastern Time</SelectItem>
                         <SelectItem value="pt">Pacific Time</SelectItem>
                         <SelectItem value="gmt">GMT</SelectItem>
-                        <SelectItem value="cet">Central European Time</SelectItem>
+                        <SelectItem value="cet">
+                          Central European Time
+                        </SelectItem>
                         <SelectItem value="jst">Japan Standard Time</SelectItem>
                       </SelectContent>
                     </Select>
@@ -230,12 +260,20 @@ export default function Settings() {
                     <Target className="w-5 h-5 mr-2" />
                     Default Trading Parameters
                   </CardTitle>
-                  <CardDescription>Set default values for new trades</CardDescription>
+                  <CardDescription>
+                    Set default values for new trades
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
                     <Label>Default Risk per Trade (%)</Label>
-                    <Input type="number" defaultValue="2" min="0.1" max="10" step="0.1" />
+                    <Input
+                      type="number"
+                      defaultValue="2"
+                      min="0.1"
+                      max="10"
+                      step="0.1"
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -257,7 +295,9 @@ export default function Settings() {
                       <SelectContent>
                         <SelectItem value="auto">Auto Calculate</SelectItem>
                         <SelectItem value="fixed">Fixed Lots</SelectItem>
-                        <SelectItem value="percent">Percentage of Balance</SelectItem>
+                        <SelectItem value="percent">
+                          Percentage of Balance
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -270,7 +310,9 @@ export default function Settings() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>One-Click Trading</Label>
-                      <p className="text-sm text-muted-foreground">Enable quick trade execution</p>
+                      <p className="text-sm text-muted-foreground">
+                        Enable quick trade execution
+                      </p>
                     </div>
                     <Switch defaultChecked />
                   </div>
@@ -283,13 +325,17 @@ export default function Settings() {
                     <Brain className="w-5 h-5 mr-2" />
                     AI Enhancement Settings
                   </CardTitle>
-                  <CardDescription>Configure AI optimization preferences</CardDescription>
+                  <CardDescription>
+                    Configure AI optimization preferences
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>AI Signal Validation</Label>
-                      <p className="text-sm text-muted-foreground">Require AI confirmation for trades</p>
+                      <p className="text-sm text-muted-foreground">
+                        Require AI confirmation for trades
+                      </p>
                     </div>
                     <Switch defaultChecked />
                   </div>
@@ -324,8 +370,12 @@ export default function Settings() {
                       <SelectContent>
                         <SelectItem value="auto">Auto Select Best</SelectItem>
                         <SelectItem value="xgboost">XGBoost</SelectItem>
-                        <SelectItem value="lstm">LSTM Neural Network</SelectItem>
-                        <SelectItem value="ensemble">Ensemble Methods</SelectItem>
+                        <SelectItem value="lstm">
+                          LSTM Neural Network
+                        </SelectItem>
+                        <SelectItem value="ensemble">
+                          Ensemble Methods
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -333,7 +383,9 @@ export default function Settings() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Learning Mode</Label>
-                      <p className="text-sm text-muted-foreground">Allow AI to learn from your trades</p>
+                      <p className="text-sm text-muted-foreground">
+                        Allow AI to learn from your trades
+                      </p>
                     </div>
                     <Switch defaultChecked />
                   </div>
@@ -350,22 +402,36 @@ export default function Settings() {
                   <Database className="w-5 h-5 mr-2" />
                   Trading Platform Connections
                 </CardTitle>
-                <CardDescription>Manage broker and platform integrations</CardDescription>
+                <CardDescription>
+                  Manage broker and platform integrations
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-4 rounded-lg border border-border/30">
                     <div className="flex items-center space-x-3">
-                      <div className={`w-3 h-3 rounded-full ${
-                        connectionStatus === 'connected' ? 'bg-trading-green-500' :
-                        connectionStatus === 'testing' ? 'bg-accent animate-pulse' :
-                        'bg-trading-red-500'
-                      }`} />
+                      <div
+                        className={`w-3 h-3 rounded-full ${
+                          connectionStatus === "connected"
+                            ? "bg-trading-green-500"
+                            : connectionStatus === "testing"
+                              ? "bg-accent animate-pulse"
+                              : "bg-trading-red-500"
+                        }`}
+                      />
                       <div>
                         <h4 className="font-medium">MetaTrader 5</h4>
-                        <p className="text-sm text-muted-foreground">Primary trading platform</p>
+                        <p className="text-sm text-muted-foreground">
+                          Primary trading platform
+                        </p>
                       </div>
-                      <Badge variant={connectionStatus === 'connected' ? 'default' : 'secondary'}>
+                      <Badge
+                        variant={
+                          connectionStatus === "connected"
+                            ? "default"
+                            : "secondary"
+                        }
+                      >
                         {connectionStatus}
                       </Badge>
                     </div>
@@ -374,9 +440,11 @@ export default function Settings() {
                         variant="outline"
                         size="sm"
                         onClick={testConnection}
-                        disabled={connectionStatus === 'testing'}
+                        disabled={connectionStatus === "testing"}
                       >
-                        {connectionStatus === 'testing' ? 'Testing...' : 'Test Connection'}
+                        {connectionStatus === "testing"
+                          ? "Testing..."
+                          : "Test Connection"}
                       </Button>
                       <Button variant="outline" size="sm">
                         Configure
@@ -402,8 +470,8 @@ export default function Settings() {
                       <div className="space-y-2">
                         <Label>Password</Label>
                         <div className="relative">
-                          <Input 
-                            type={showApiKey ? "text" : "password"} 
+                          <Input
+                            type={showApiKey ? "text" : "password"}
                             defaultValue="password123"
                           />
                           <Button
@@ -413,7 +481,11 @@ export default function Settings() {
                             className="absolute right-0 top-0 h-full px-3"
                             onClick={() => setShowApiKey(!showApiKey)}
                           >
-                            {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showApiKey ? (
+                              <EyeOff className="w-4 h-4" />
+                            ) : (
+                              <Eye className="w-4 h-4" />
+                            )}
                           </Button>
                         </div>
                       </div>
@@ -453,18 +525,41 @@ export default function Settings() {
               <CardContent>
                 <div className="grid lg:grid-cols-3 gap-4">
                   {[
-                    { name: "Alpha Vantage", status: "connected", type: "Primary" },
-                    { name: "Yahoo Finance", status: "connected", type: "Backup" },
-                    { name: "Economic Calendar", status: "disconnected", type: "News" },
+                    {
+                      name: "Alpha Vantage",
+                      status: "connected",
+                      type: "Primary",
+                    },
+                    {
+                      name: "Yahoo Finance",
+                      status: "connected",
+                      type: "Backup",
+                    },
+                    {
+                      name: "Economic Calendar",
+                      status: "disconnected",
+                      type: "News",
+                    },
                   ].map((provider, index) => (
-                    <div key={index} className="p-3 rounded-lg border border-border/30">
+                    <div
+                      key={index}
+                      className="p-3 rounded-lg border border-border/30"
+                    >
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-medium">{provider.name}</h4>
-                        <Badge variant={provider.status === 'connected' ? 'default' : 'secondary'}>
+                        <Badge
+                          variant={
+                            provider.status === "connected"
+                              ? "default"
+                              : "secondary"
+                          }
+                        >
                           {provider.status}
                         </Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">{provider.type}</p>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        {provider.type}
+                      </p>
                       <Button variant="outline" size="sm" className="w-full">
                         Configure
                       </Button>
@@ -484,14 +579,18 @@ export default function Settings() {
                     <Bell className="w-5 h-5 mr-2" />
                     Alert Preferences
                   </CardTitle>
-                  <CardDescription>Choose when and how to receive notifications</CardDescription>
+                  <CardDescription>
+                    Choose when and how to receive notifications
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Trade Execution</Label>
-                        <p className="text-sm text-muted-foreground">Notify when trades are executed</p>
+                        <p className="text-sm text-muted-foreground">
+                          Notify when trades are executed
+                        </p>
                       </div>
                       <Switch defaultChecked />
                     </div>
@@ -499,7 +598,9 @@ export default function Settings() {
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Profit/Loss Targets</Label>
-                        <p className="text-sm text-muted-foreground">Alert when TP/SL is hit</p>
+                        <p className="text-sm text-muted-foreground">
+                          Alert when TP/SL is hit
+                        </p>
                       </div>
                       <Switch defaultChecked />
                     </div>
@@ -507,7 +608,9 @@ export default function Settings() {
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>AI Signals</Label>
-                        <p className="text-sm text-muted-foreground">Notify on AI trade recommendations</p>
+                        <p className="text-sm text-muted-foreground">
+                          Notify on AI trade recommendations
+                        </p>
                       </div>
                       <Switch defaultChecked />
                     </div>
@@ -515,7 +618,9 @@ export default function Settings() {
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>System Errors</Label>
-                        <p className="text-sm text-muted-foreground">Alert on system issues</p>
+                        <p className="text-sm text-muted-foreground">
+                          Alert on system issues
+                        </p>
                       </div>
                       <Switch defaultChecked />
                     </div>
@@ -523,7 +628,9 @@ export default function Settings() {
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Market News</Label>
-                        <p className="text-sm text-muted-foreground">Economic events and news</p>
+                        <p className="text-sm text-muted-foreground">
+                          Economic events and news
+                        </p>
                       </div>
                       <Switch />
                     </div>
@@ -537,7 +644,9 @@ export default function Settings() {
                     <Smartphone className="w-5 h-5 mr-2" />
                     Delivery Methods
                   </CardTitle>
-                  <CardDescription>Configure notification channels</CardDescription>
+                  <CardDescription>
+                    Configure notification channels
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
@@ -598,13 +707,17 @@ export default function Settings() {
                     <Shield className="w-5 h-5 mr-2" />
                     Account Security
                   </CardTitle>
-                  <CardDescription>Protect your trading account</CardDescription>
+                  <CardDescription>
+                    Protect your trading account
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Two-Factor Authentication</Label>
-                      <p className="text-sm text-muted-foreground">Add extra security to your account</p>
+                      <p className="text-sm text-muted-foreground">
+                        Add extra security to your account
+                      </p>
                     </div>
                     <Switch defaultChecked />
                   </div>
@@ -628,14 +741,16 @@ export default function Settings() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>IP Whitelist</Label>
-                      <p className="text-sm text-muted-foreground">Restrict access to specific IP addresses</p>
+                      <p className="text-sm text-muted-foreground">
+                        Restrict access to specific IP addresses
+                      </p>
                     </div>
                     <Switch />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Allowed IP Addresses</Label>
-                    <Textarea 
+                    <Textarea
                       placeholder="192.168.1.1&#10;203.0.113.1&#10;198.51.100.1"
                       rows={3}
                     />
@@ -649,7 +764,9 @@ export default function Settings() {
                     <Key className="w-5 h-5 mr-2" />
                     API Keys & Tokens
                   </CardTitle>
-                  <CardDescription>Manage API access credentials</CardDescription>
+                  <CardDescription>
+                    Manage API access credentials
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
@@ -658,10 +775,16 @@ export default function Settings() {
                         <h4 className="font-medium">Trading API Key</h4>
                         <Badge variant="default">Active</Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">sk-trading-xxxxxxxxxxxxxxxx</p>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        sk-trading-xxxxxxxxxxxxxxxx
+                      </p>
                       <div className="flex space-x-2">
-                        <Button variant="outline" size="sm">Regenerate</Button>
-                        <Button variant="outline" size="sm">Revoke</Button>
+                        <Button variant="outline" size="sm">
+                          Regenerate
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          Revoke
+                        </Button>
                       </div>
                     </div>
 
@@ -670,10 +793,16 @@ export default function Settings() {
                         <h4 className="font-medium">Data Feed API Key</h4>
                         <Badge variant="default">Active</Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">pk-data-xxxxxxxxxxxxxxxx</p>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        pk-data-xxxxxxxxxxxxxxxx
+                      </p>
                       <div className="flex space-x-2">
-                        <Button variant="outline" size="sm">Regenerate</Button>
-                        <Button variant="outline" size="sm">Revoke</Button>
+                        <Button variant="outline" size="sm">
+                          Regenerate
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          Revoke
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -696,13 +825,17 @@ export default function Settings() {
                     <Download className="w-5 h-5 mr-2" />
                     Data Backup
                   </CardTitle>
-                  <CardDescription>Backup your trading data and settings</CardDescription>
+                  <CardDescription>
+                    Backup your trading data and settings
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Automatic Backups</Label>
-                      <p className="text-sm text-muted-foreground">Regular automated backups</p>
+                      <p className="text-sm text-muted-foreground">
+                        Regular automated backups
+                      </p>
                     </div>
                     <Switch defaultChecked />
                   </div>
@@ -755,32 +888,46 @@ export default function Settings() {
                     <RefreshCw className="w-5 h-5 mr-2" />
                     System Maintenance
                   </CardTitle>
-                  <CardDescription>System cleanup and optimization</CardDescription>
+                  <CardDescription>
+                    System cleanup and optimization
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Clear Cache</h4>
-                        <p className="text-sm text-muted-foreground">Remove temporary files</p>
+                        <p className="text-sm text-muted-foreground">
+                          Remove temporary files
+                        </p>
                       </div>
-                      <Button variant="outline" size="sm">Clear</Button>
+                      <Button variant="outline" size="sm">
+                        Clear
+                      </Button>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Optimize Database</h4>
-                        <p className="text-sm text-muted-foreground">Improve performance</p>
+                        <p className="text-sm text-muted-foreground">
+                          Improve performance
+                        </p>
                       </div>
-                      <Button variant="outline" size="sm">Optimize</Button>
+                      <Button variant="outline" size="sm">
+                        Optimize
+                      </Button>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Reset Settings</h4>
-                        <p className="text-sm text-muted-foreground">Restore default configuration</p>
+                        <p className="text-sm text-muted-foreground">
+                          Restore default configuration
+                        </p>
                       </div>
-                      <Button variant="destructive" size="sm">Reset</Button>
+                      <Button variant="destructive" size="sm">
+                        Reset
+                      </Button>
                     </div>
                   </div>
 
@@ -788,7 +935,9 @@ export default function Settings() {
 
                   <div className="space-y-2">
                     <h4 className="font-medium">Export Settings</h4>
-                    <p className="text-sm text-muted-foreground">Download your configuration</p>
+                    <p className="text-sm text-muted-foreground">
+                      Download your configuration
+                    </p>
                     <Button variant="outline" className="w-full">
                       <Download className="w-4 h-4 mr-2" />
                       Export Configuration

@@ -1,8 +1,20 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   LineChart,
   Line,
@@ -80,7 +92,11 @@ const hourlyPnL = [
   { hour: "11", pnl: 67 },
 ];
 
-export function TradingChart({ title = "Trading Performance", type = "line", timeframe = "6M" }: TradingChartProps) {
+export function TradingChart({
+  title = "Trading Performance",
+  type = "line",
+  timeframe = "6M",
+}: TradingChartProps) {
   const [chartType, setChartType] = useState(type);
   const [selectedTimeframe, setSelectedTimeframe] = useState(timeframe);
 
@@ -91,7 +107,7 @@ export function TradingChart({ title = "Trading Performance", type = "line", tim
           <p className="font-medium">{label}</p>
           {payload.map((entry: any, index: number) => (
             <p key={index} style={{ color: entry.color }}>
-              {`${entry.dataKey}: ${entry.value}${entry.dataKey === 'profit' ? '$' : entry.dataKey === 'winRate' ? '%' : ''}`}
+              {`${entry.dataKey}: ${entry.value}${entry.dataKey === "profit" ? "$" : entry.dataKey === "winRate" ? "%" : ""}`}
             </p>
           ))}
         </div>
@@ -108,41 +124,57 @@ export function TradingChart({ title = "Trading Performance", type = "line", tim
             <AreaChart data={performanceData}>
               <defs>
                 <linearGradient id="profitGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0}/>
+                  <stop
+                    offset="5%"
+                    stopColor="hsl(142, 76%, 36%)"
+                    stopOpacity={0.3}
+                  />
+                  <stop
+                    offset="95%"
+                    stopColor="hsl(142, 76%, 36%)"
+                    stopOpacity={0}
+                  />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(210, 20%, 15%)" />
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="hsl(210, 20%, 15%)"
+              />
               <XAxis dataKey="date" stroke="hsl(215, 20%, 65%)" />
               <YAxis stroke="hsl(215, 20%, 65%)" />
               <Tooltip content={<CustomTooltip />} />
-              <Area 
-                type="monotone" 
-                dataKey="profit" 
-                stroke="hsl(142, 76%, 36%)" 
+              <Area
+                type="monotone"
+                dataKey="profit"
+                stroke="hsl(142, 76%, 36%)"
                 fill="url(#profitGradient)"
                 strokeWidth={2}
               />
             </AreaChart>
           </ResponsiveContainer>
         );
-      
+
       case "bar":
         return (
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={hourlyPnL}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(210, 20%, 15%)" />
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="hsl(210, 20%, 15%)"
+              />
               <XAxis dataKey="hour" stroke="hsl(215, 20%, 65%)" />
               <YAxis stroke="hsl(215, 20%, 65%)" />
               <Tooltip content={<CustomTooltip />} />
-              <Bar 
-                dataKey="pnl" 
-                fill={(entry: any) => entry.pnl >= 0 ? "hsl(142, 76%, 36%)" : "hsl(0, 84%, 60%)"}
+              <Bar
+                dataKey="pnl"
+                fill={(entry: any) =>
+                  entry.pnl >= 0 ? "hsl(142, 76%, 36%)" : "hsl(0, 84%, 60%)"
+                }
               />
             </BarChart>
           </ResponsiveContainer>
         );
-      
+
       case "pie":
         return (
           <ResponsiveContainer width="100%" height={300}>
@@ -165,27 +197,30 @@ export function TradingChart({ title = "Trading Performance", type = "line", tim
             </PieChart>
           </ResponsiveContainer>
         );
-      
+
       default: // line
         return (
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={equityCurveData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(210, 20%, 15%)" />
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="hsl(210, 20%, 15%)"
+              />
               <XAxis dataKey="time" stroke="hsl(215, 20%, 65%)" />
               <YAxis stroke="hsl(215, 20%, 65%)" />
               <Tooltip content={<CustomTooltip />} />
               <Legend />
-              <Line 
-                type="monotone" 
-                dataKey="equity" 
-                stroke="hsl(142, 76%, 36%)" 
+              <Line
+                type="monotone"
+                dataKey="equity"
+                stroke="hsl(142, 76%, 36%)"
                 strokeWidth={2}
                 dot={{ fill: "hsl(142, 76%, 36%)", r: 4 }}
               />
-              <Line 
-                type="monotone" 
-                dataKey="drawdown" 
-                stroke="hsl(0, 84%, 60%)" 
+              <Line
+                type="monotone"
+                dataKey="drawdown"
+                stroke="hsl(0, 84%, 60%)"
                 strokeWidth={2}
                 strokeDasharray="5 5"
                 dot={{ fill: "hsl(0, 84%, 60%)", r: 4 }}
@@ -206,7 +241,9 @@ export function TradingChart({ title = "Trading Performance", type = "line", tim
               {title}
             </CardTitle>
             <CardDescription>
-              {chartType === 'pie' ? 'Asset allocation breakdown' : `Performance over ${selectedTimeframe}`}
+              {chartType === "pie"
+                ? "Asset allocation breakdown"
+                : `Performance over ${selectedTimeframe}`}
             </CardDescription>
           </div>
           <div className="flex items-center space-x-2">
@@ -221,7 +258,10 @@ export function TradingChart({ title = "Trading Performance", type = "line", tim
                 <SelectItem value="pie">Pie</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={selectedTimeframe} onValueChange={setSelectedTimeframe}>
+            <Select
+              value={selectedTimeframe}
+              onValueChange={setSelectedTimeframe}
+            >
               <SelectTrigger className="w-20">
                 <SelectValue />
               </SelectTrigger>
@@ -242,7 +282,7 @@ export function TradingChart({ title = "Trading Performance", type = "line", tim
       </CardHeader>
       <CardContent>
         {renderChart()}
-        
+
         {/* Chart Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-4 border-t border-border">
           <div className="text-center">
@@ -276,7 +316,7 @@ export function PerformanceMetrics() {
       change: "+18.4%",
       trend: "up",
       icon: DollarSign,
-      color: "text-trading-green-500"
+      color: "text-trading-green-500",
     },
     {
       label: "Win Rate",
@@ -284,7 +324,7 @@ export function PerformanceMetrics() {
       change: "+2.1%",
       trend: "up",
       icon: Target,
-      color: "text-primary"
+      color: "text-primary",
     },
     {
       label: "Active Trades",
@@ -292,7 +332,7 @@ export function PerformanceMetrics() {
       change: "+3",
       trend: "up",
       icon: Activity,
-      color: "text-accent"
+      color: "text-accent",
     },
     {
       label: "Total Profit",
@@ -300,8 +340,8 @@ export function PerformanceMetrics() {
       change: "+12.8%",
       trend: "up",
       icon: TrendingUp,
-      color: "text-trading-green-500"
-    }
+      color: "text-trading-green-500",
+    },
   ];
 
   return (
@@ -313,15 +353,22 @@ export function PerformanceMetrics() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">{metric.label}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {metric.label}
+                  </p>
                   <p className="text-xl font-bold">{metric.value}</p>
-                  <p className={`text-sm flex items-center ${
-                    metric.trend === 'up' ? 'text-trading-green-500' : 'text-trading-red-500'
-                  }`}>
-                    {metric.trend === 'up' ? 
-                      <TrendingUp className="w-3 h-3 mr-1" /> : 
+                  <p
+                    className={`text-sm flex items-center ${
+                      metric.trend === "up"
+                        ? "text-trading-green-500"
+                        : "text-trading-red-500"
+                    }`}
+                  >
+                    {metric.trend === "up" ? (
+                      <TrendingUp className="w-3 h-3 mr-1" />
+                    ) : (
                       <TrendingDown className="w-3 h-3 mr-1" />
-                    }
+                    )}
                     {metric.change}
                   </p>
                 </div>
@@ -338,11 +385,41 @@ export function PerformanceMetrics() {
 // Real-time market data component
 export function MarketOverview() {
   const marketData = [
-    { symbol: "XAU/USD", price: "1,985.45", change: "+12.80", changePercent: "+0.65%", trend: "up" },
-    { symbol: "EUR/USD", price: "1.0875", change: "-0.0023", changePercent: "-0.21%", trend: "down" },
-    { symbol: "GBP/USD", price: "1.2634", change: "+0.0045", changePercent: "+0.36%", trend: "up" },
-    { symbol: "USD/JPY", price: "149.82", change: "-0.34", changePercent: "-0.23%", trend: "down" },
-    { symbol: "BTC/USD", price: "42,567", change: "+1,234", changePercent: "+2.98%", trend: "up" },
+    {
+      symbol: "XAU/USD",
+      price: "1,985.45",
+      change: "+12.80",
+      changePercent: "+0.65%",
+      trend: "up",
+    },
+    {
+      symbol: "EUR/USD",
+      price: "1.0875",
+      change: "-0.0023",
+      changePercent: "-0.21%",
+      trend: "down",
+    },
+    {
+      symbol: "GBP/USD",
+      price: "1.2634",
+      change: "+0.0045",
+      changePercent: "+0.36%",
+      trend: "up",
+    },
+    {
+      symbol: "USD/JPY",
+      price: "149.82",
+      change: "-0.34",
+      changePercent: "-0.23%",
+      trend: "down",
+    },
+    {
+      symbol: "BTC/USD",
+      price: "42,567",
+      change: "+1,234",
+      changePercent: "+2.98%",
+      trend: "up",
+    },
   ];
 
   return (
@@ -357,18 +434,29 @@ export function MarketOverview() {
       <CardContent>
         <div className="space-y-3">
           {marketData.map((item, index) => (
-            <div key={index} className="flex items-center justify-between p-3 rounded-lg border border-border/30">
+            <div
+              key={index}
+              className="flex items-center justify-between p-3 rounded-lg border border-border/30"
+            >
               <div className="flex items-center space-x-3">
-                <div className={`w-2 h-2 rounded-full ${
-                  item.trend === 'up' ? 'bg-trading-green-500' : 'bg-trading-red-500'
-                } animate-pulse`} />
+                <div
+                  className={`w-2 h-2 rounded-full ${
+                    item.trend === "up"
+                      ? "bg-trading-green-500"
+                      : "bg-trading-red-500"
+                  } animate-pulse`}
+                />
                 <span className="font-medium">{item.symbol}</span>
               </div>
               <div className="text-right">
                 <p className="font-medium">{item.price}</p>
-                <p className={`text-sm ${
-                  item.trend === 'up' ? 'text-trading-green-500' : 'text-trading-red-500'
-                }`}>
+                <p
+                  className={`text-sm ${
+                    item.trend === "up"
+                      ? "text-trading-green-500"
+                      : "text-trading-red-500"
+                  }`}
+                >
                   {item.change} ({item.changePercent})
                 </p>
               </div>

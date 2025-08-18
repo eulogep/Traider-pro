@@ -1,11 +1,23 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
@@ -38,7 +50,9 @@ import {
 } from "lucide-react";
 
 export default function Automation() {
-  const [botStatus, setBotStatus] = useState<"running" | "paused" | "stopped">("stopped");
+  const [botStatus, setBotStatus] = useState<"running" | "paused" | "stopped">(
+    "stopped",
+  );
   const [autoTradeEnabled, setAutoTradeEnabled] = useState(false);
   const [maxRisk, setMaxRisk] = useState([2]);
   const [emergencyStop, setEmergencyStop] = useState(false);
@@ -52,7 +66,7 @@ export default function Automation() {
       profit: "+$1,247.80",
       trades: 23,
       uptime: "2h 34m",
-      risk: "Low"
+      risk: "Low",
     },
     {
       id: 2,
@@ -62,7 +76,7 @@ export default function Automation() {
       profit: "+$892.40",
       trades: 15,
       uptime: "5h 12m",
-      risk: "Medium"
+      risk: "Medium",
     },
     {
       id: 3,
@@ -72,16 +86,46 @@ export default function Automation() {
       profit: "+$2,156.30",
       trades: 41,
       uptime: "8h 45m",
-      risk: "Medium"
-    }
+      risk: "Medium",
+    },
   ];
 
   const recentActions = [
-    { time: "14:23", action: "BUY XAU/USD", amount: "0.1", profit: "+$45.20", status: "closed" },
-    { time: "14:15", action: "SELL EUR/USD", amount: "0.5", profit: "+$23.80", status: "closed" },
-    { time: "14:08", action: "BUY GBP/USD", amount: "0.3", profit: "Running", status: "open" },
-    { time: "13:55", action: "SELL XAU/USD", amount: "0.2", profit: "-$12.40", status: "closed" },
-    { time: "13:42", action: "BUY USD/JPY", amount: "1.0", profit: "+$67.90", status: "closed" },
+    {
+      time: "14:23",
+      action: "BUY XAU/USD",
+      amount: "0.1",
+      profit: "+$45.20",
+      status: "closed",
+    },
+    {
+      time: "14:15",
+      action: "SELL EUR/USD",
+      amount: "0.5",
+      profit: "+$23.80",
+      status: "closed",
+    },
+    {
+      time: "14:08",
+      action: "BUY GBP/USD",
+      amount: "0.3",
+      profit: "Running",
+      status: "open",
+    },
+    {
+      time: "13:55",
+      action: "SELL XAU/USD",
+      amount: "0.2",
+      profit: "-$12.40",
+      status: "closed",
+    },
+    {
+      time: "13:42",
+      action: "BUY USD/JPY",
+      amount: "1.0",
+      profit: "+$67.90",
+      status: "closed",
+    },
   ];
 
   const safetyRules = [
@@ -117,29 +161,44 @@ export default function Automation() {
               <Zap className="w-8 h-8 mr-3 text-accent" />
               Trading Automation
             </h1>
-            <p className="text-muted-foreground">Semi-automated trading with manual validation</p>
+            <p className="text-muted-foreground">
+              Semi-automated trading with manual validation
+            </p>
           </div>
           <div className="flex items-center gap-3">
-            <Badge variant={
-              botStatus === "running" ? "default" :
-              botStatus === "paused" ? "secondary" :
-              "outline"
-            } className={
-              botStatus === "running" ? "text-trading-green-500 border-trading-green-500" :
-              botStatus === "paused" ? "text-accent border-accent" :
-              ""
-            }>
-              <div className={`w-2 h-2 rounded-full mr-2 ${
-                botStatus === "running" ? "bg-trading-green-500 animate-pulse" :
-                botStatus === "paused" ? "bg-accent" :
-                "bg-muted-foreground"
-              }`} />
+            <Badge
+              variant={
+                botStatus === "running"
+                  ? "default"
+                  : botStatus === "paused"
+                    ? "secondary"
+                    : "outline"
+              }
+              className={
+                botStatus === "running"
+                  ? "text-trading-green-500 border-trading-green-500"
+                  : botStatus === "paused"
+                    ? "text-accent border-accent"
+                    : ""
+              }
+            >
+              <div
+                className={`w-2 h-2 rounded-full mr-2 ${
+                  botStatus === "running"
+                    ? "bg-trading-green-500 animate-pulse"
+                    : botStatus === "paused"
+                      ? "bg-accent"
+                      : "bg-muted-foreground"
+                }`}
+              />
               {botStatus.charAt(0).toUpperCase() + botStatus.slice(1)}
             </Badge>
             <Button
               onClick={toggleBotStatus}
               variant={botStatus === "running" ? "secondary" : "default"}
-              className={botStatus === "running" ? "" : "bg-primary hover:bg-primary/90"}
+              className={
+                botStatus === "running" ? "" : "bg-primary hover:bg-primary/90"
+              }
             >
               {botStatus === "running" ? (
                 <>
@@ -173,8 +232,12 @@ export default function Automation() {
                 <div className="flex items-center space-x-3">
                   <AlertTriangle className="w-6 h-6 text-destructive" />
                   <div>
-                    <h3 className="font-semibold text-destructive">Emergency Stop Activated</h3>
-                    <p className="text-sm text-muted-foreground">All automated trading has been halted</p>
+                    <h3 className="font-semibold text-destructive">
+                      Emergency Stop Activated
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      All automated trading has been halted
+                    </p>
                   </div>
                 </div>
                 <Button
@@ -213,9 +276,14 @@ export default function Automation() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Auto Trading</Label>
-                      <p className="text-sm text-muted-foreground">Enable fully automated trading</p>
+                      <p className="text-sm text-muted-foreground">
+                        Enable fully automated trading
+                      </p>
                     </div>
-                    <Switch checked={autoTradeEnabled} onCheckedChange={setAutoTradeEnabled} />
+                    <Switch
+                      checked={autoTradeEnabled}
+                      onCheckedChange={setAutoTradeEnabled}
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -226,9 +294,15 @@ export default function Automation() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="manual">Manual Only</SelectItem>
-                        <SelectItem value="semi-auto">Semi-Automated</SelectItem>
-                        <SelectItem value="full-auto">Fully Automated</SelectItem>
-                        <SelectItem value="signal-only">Signals Only</SelectItem>
+                        <SelectItem value="semi-auto">
+                          Semi-Automated
+                        </SelectItem>
+                        <SelectItem value="full-auto">
+                          Fully Automated
+                        </SelectItem>
+                        <SelectItem value="signal-only">
+                          Signals Only
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -254,9 +328,13 @@ export default function Automation() {
                       <SelectContent>
                         <SelectItem value="ai-enhanced">AI Enhanced</SelectItem>
                         <SelectItem value="rsi-macd">RSI + MACD</SelectItem>
-                        <SelectItem value="breakout">Breakout Strategy</SelectItem>
+                        <SelectItem value="breakout">
+                          Breakout Strategy
+                        </SelectItem>
                         <SelectItem value="scalping">Scalping</SelectItem>
-                        <SelectItem value="trend-following">Trend Following</SelectItem>
+                        <SelectItem value="trend-following">
+                          Trend Following
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -278,16 +356,24 @@ export default function Automation() {
                     <BarChart3 className="w-5 h-5 mr-2" />
                     Performance Today
                   </CardTitle>
-                  <CardDescription>Real-time automation metrics</CardDescription>
+                  <CardDescription>
+                    Real-time automation metrics
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <p className="text-sm text-muted-foreground">Total Profit</p>
-                      <p className="text-lg font-bold text-trading-green-500">+$2,347.80</p>
+                      <p className="text-sm text-muted-foreground">
+                        Total Profit
+                      </p>
+                      <p className="text-lg font-bold text-trading-green-500">
+                        +$2,347.80
+                      </p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm text-muted-foreground">Total Trades</p>
+                      <p className="text-sm text-muted-foreground">
+                        Total Trades
+                      </p>
                       <p className="text-lg font-bold">47</p>
                     </div>
                     <div className="space-y-1">
@@ -295,19 +381,26 @@ export default function Automation() {
                       <p className="text-lg font-bold text-primary">82.3%</p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm text-muted-foreground">Active Bots</p>
+                      <p className="text-sm text-muted-foreground">
+                        Active Bots
+                      </p>
                       <p className="text-lg font-bold">3</p>
                     </div>
                   </div>
-                  
+
                   <div className="pt-4 border-t border-border">
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">System Load</span>
+                        <span className="text-muted-foreground">
+                          System Load
+                        </span>
                         <span>67%</span>
                       </div>
                       <div className="w-full bg-secondary rounded-full h-2">
-                        <div className="bg-primary h-2 rounded-full" style={{ width: "67%" }}></div>
+                        <div
+                          className="bg-primary h-2 rounded-full"
+                          style={{ width: "67%" }}
+                        ></div>
                       </div>
                     </div>
                   </div>
@@ -325,21 +418,37 @@ export default function Automation() {
                 <CardContent>
                   <div className="space-y-3">
                     {recentActions.slice(0, 5).map((action, index) => (
-                      <div key={index} className="flex items-center justify-between text-sm">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between text-sm"
+                      >
                         <div className="flex items-center space-x-2">
-                          <span className="text-muted-foreground">{action.time}</span>
+                          <span className="text-muted-foreground">
+                            {action.time}
+                          </span>
                           <span className="font-medium">{action.action}</span>
-                          <Badge variant="outline" className="text-xs">{action.amount}</Badge>
+                          <Badge variant="outline" className="text-xs">
+                            {action.amount}
+                          </Badge>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Badge variant={action.status === "open" ? "secondary" : "outline"} className="text-xs">
+                          <Badge
+                            variant={
+                              action.status === "open" ? "secondary" : "outline"
+                            }
+                            className="text-xs"
+                          >
                             {action.status}
                           </Badge>
-                          <span className={`font-medium ${
-                            action.profit.includes('+') ? 'text-trading-green-500' :
-                            action.profit.includes('-') ? 'text-trading-red-500' :
-                            'text-muted-foreground'
-                          }`}>
+                          <span
+                            className={`font-medium ${
+                              action.profit.includes("+")
+                                ? "text-trading-green-500"
+                                : action.profit.includes("-")
+                                  ? "text-trading-red-500"
+                                  : "text-muted-foreground"
+                            }`}
+                          >
                             {action.profit}
                           </span>
                         </div>
@@ -367,42 +476,65 @@ export default function Automation() {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
-                        <div className={`w-3 h-3 rounded-full ${
-                          bot.status === 'running' ? 'bg-trading-green-500 animate-pulse' :
-                          bot.status === 'paused' ? 'bg-accent' :
-                          'bg-muted-foreground'
-                        }`} />
+                        <div
+                          className={`w-3 h-3 rounded-full ${
+                            bot.status === "running"
+                              ? "bg-trading-green-500 animate-pulse"
+                              : bot.status === "paused"
+                                ? "bg-accent"
+                                : "bg-muted-foreground"
+                          }`}
+                        />
                         <div>
                           <h3 className="font-semibold">{bot.name}</h3>
-                          <p className="text-sm text-muted-foreground">{bot.strategy}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {bot.strategy}
+                          </p>
                         </div>
-                        <Badge variant={
-                          bot.status === 'running' ? 'default' :
-                          bot.status === 'paused' ? 'secondary' :
-                          'outline'
-                        }>
+                        <Badge
+                          variant={
+                            bot.status === "running"
+                              ? "default"
+                              : bot.status === "paused"
+                                ? "secondary"
+                                : "outline"
+                          }
+                        >
                           {bot.status}
                         </Badge>
-                        <Badge variant="outline" className={
-                          bot.risk === 'Low' ? 'border-trading-green-500 text-trading-green-500' :
-                          bot.risk === 'Medium' ? 'border-accent text-accent' :
-                          'border-trading-red-500 text-trading-red-500'
-                        }>
+                        <Badge
+                          variant="outline"
+                          className={
+                            bot.risk === "Low"
+                              ? "border-trading-green-500 text-trading-green-500"
+                              : bot.risk === "Medium"
+                                ? "border-accent text-accent"
+                                : "border-trading-red-500 text-trading-red-500"
+                          }
+                        >
                           {bot.risk} Risk
                         </Badge>
                       </div>
-                      
+
                       <div className="flex items-center space-x-6">
                         <div className="text-right">
-                          <p className="text-sm text-muted-foreground">Profit</p>
-                          <p className="font-semibold text-trading-green-500">{bot.profit}</p>
+                          <p className="text-sm text-muted-foreground">
+                            Profit
+                          </p>
+                          <p className="font-semibold text-trading-green-500">
+                            {bot.profit}
+                          </p>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm text-muted-foreground">Trades</p>
+                          <p className="text-sm text-muted-foreground">
+                            Trades
+                          </p>
                           <p className="font-semibold">{bot.trades}</p>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm text-muted-foreground">Uptime</p>
+                          <p className="text-sm text-muted-foreground">
+                            Uptime
+                          </p>
                           <p className="font-semibold">{bot.uptime}</p>
                         </div>
                         <div className="flex items-center space-x-2">
@@ -432,17 +564,24 @@ export default function Automation() {
                   <Shield className="w-5 h-5 mr-2" />
                   Safety Rules & Risk Management
                 </CardTitle>
-                <CardDescription>Configure automated safety mechanisms</CardDescription>
+                <CardDescription>
+                  Configure automated safety mechanisms
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {safetyRules.map((rule, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 rounded-lg border border-border/30">
+                    <div
+                      key={index}
+                      className="flex items-center justify-between p-3 rounded-lg border border-border/30"
+                    >
                       <div className="flex items-center space-x-3">
                         <Switch checked={rule.enabled} />
                         <div>
                           <h4 className="font-medium">{rule.name}</h4>
-                          <p className="text-sm text-muted-foreground">{rule.value}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {rule.value}
+                          </p>
                         </div>
                       </div>
                       <Button variant="outline" size="sm">
@@ -458,7 +597,9 @@ export default function Automation() {
               <Card className="border-border/50">
                 <CardHeader>
                   <CardTitle>Emergency Procedures</CardTitle>
-                  <CardDescription>Automated responses to critical situations</CardDescription>
+                  <CardDescription>
+                    Automated responses to critical situations
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
@@ -468,9 +609,15 @@ export default function Automation() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="close-all">Close All Positions</SelectItem>
-                        <SelectItem value="reduce-risk">Reduce Risk Level</SelectItem>
-                        <SelectItem value="pause-trading">Pause Trading</SelectItem>
+                        <SelectItem value="close-all">
+                          Close All Positions
+                        </SelectItem>
+                        <SelectItem value="reduce-risk">
+                          Reduce Risk Level
+                        </SelectItem>
+                        <SelectItem value="pause-trading">
+                          Pause Trading
+                        </SelectItem>
                         <SelectItem value="notify-only">Notify Only</SelectItem>
                       </SelectContent>
                     </Select>
@@ -483,9 +630,15 @@ export default function Automation() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="safe-mode">Enter Safe Mode</SelectItem>
-                        <SelectItem value="continue">Continue Trading</SelectItem>
-                        <SelectItem value="stop-all">Stop All Trading</SelectItem>
+                        <SelectItem value="safe-mode">
+                          Enter Safe Mode
+                        </SelectItem>
+                        <SelectItem value="continue">
+                          Continue Trading
+                        </SelectItem>
+                        <SelectItem value="stop-all">
+                          Stop All Trading
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -500,7 +653,9 @@ export default function Automation() {
               <Card className="border-border/50">
                 <CardHeader>
                   <CardTitle>Monitoring Settings</CardTitle>
-                  <CardDescription>System health and performance monitoring</CardDescription>
+                  <CardDescription>
+                    System health and performance monitoring
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -546,14 +701,18 @@ export default function Automation() {
                     <Bell className="w-5 h-5 mr-2" />
                     Alert Settings
                   </CardTitle>
-                  <CardDescription>Configure notification preferences</CardDescription>
+                  <CardDescription>
+                    Configure notification preferences
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Trade Confirmations</Label>
-                        <p className="text-sm text-muted-foreground">Notify on each trade execution</p>
+                        <p className="text-sm text-muted-foreground">
+                          Notify on each trade execution
+                        </p>
                       </div>
                       <Switch defaultChecked />
                     </div>
@@ -561,7 +720,9 @@ export default function Automation() {
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Profit/Loss Alerts</Label>
-                        <p className="text-sm text-muted-foreground">Alert on significant P&L changes</p>
+                        <p className="text-sm text-muted-foreground">
+                          Alert on significant P&L changes
+                        </p>
                       </div>
                       <Switch defaultChecked />
                     </div>
@@ -569,7 +730,9 @@ export default function Automation() {
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>System Errors</Label>
-                        <p className="text-sm text-muted-foreground">Immediate error notifications</p>
+                        <p className="text-sm text-muted-foreground">
+                          Immediate error notifications
+                        </p>
                       </div>
                       <Switch defaultChecked />
                     </div>
@@ -577,7 +740,9 @@ export default function Automation() {
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Market Events</Label>
-                        <p className="text-sm text-muted-foreground">Economic news and events</p>
+                        <p className="text-sm text-muted-foreground">
+                          Economic news and events
+                        </p>
                       </div>
                       <Switch />
                     </div>
@@ -591,7 +756,9 @@ export default function Automation() {
                     <Smartphone className="w-5 h-5 mr-2" />
                     Delivery Methods
                   </CardTitle>
-                  <CardDescription>How you want to receive alerts</CardDescription>
+                  <CardDescription>
+                    How you want to receive alerts
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
@@ -650,29 +817,82 @@ export default function Automation() {
                   <Database className="w-5 h-5 mr-2" />
                   System Logs
                 </CardTitle>
-                <CardDescription>Detailed automation activity logs</CardDescription>
+                <CardDescription>
+                  Detailed automation activity logs
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {[
-                    { time: "14:23:45", level: "INFO", message: "Trade executed: BUY XAU/USD 0.1 lots at 1985.50" },
-                    { time: "14:23:12", level: "INFO", message: "Signal generated: RSI oversold on XAU/USD" },
-                    { time: "14:22:55", level: "WARNING", message: "High volatility detected on EUR/USD" },
-                    { time: "14:22:30", level: "INFO", message: "Position closed: SELL EUR/USD +$23.80 profit" },
-                    { time: "14:21:45", level: "INFO", message: "Risk check passed for new trade" },
-                    { time: "14:21:12", level: "ERROR", message: "Connection timeout to MT5 server" },
-                    { time: "14:20:55", level: "INFO", message: "Connection restored to MT5 server" },
-                    { time: "14:20:30", level: "INFO", message: "AI model prediction: 87% confidence BUY signal" },
-                    { time: "14:19:45", level: "INFO", message: "Safety check: Daily risk limit at 45%" },
-                    { time: "14:19:12", level: "INFO", message: "Market analysis completed" },
+                    {
+                      time: "14:23:45",
+                      level: "INFO",
+                      message:
+                        "Trade executed: BUY XAU/USD 0.1 lots at 1985.50",
+                    },
+                    {
+                      time: "14:23:12",
+                      level: "INFO",
+                      message: "Signal generated: RSI oversold on XAU/USD",
+                    },
+                    {
+                      time: "14:22:55",
+                      level: "WARNING",
+                      message: "High volatility detected on EUR/USD",
+                    },
+                    {
+                      time: "14:22:30",
+                      level: "INFO",
+                      message: "Position closed: SELL EUR/USD +$23.80 profit",
+                    },
+                    {
+                      time: "14:21:45",
+                      level: "INFO",
+                      message: "Risk check passed for new trade",
+                    },
+                    {
+                      time: "14:21:12",
+                      level: "ERROR",
+                      message: "Connection timeout to MT5 server",
+                    },
+                    {
+                      time: "14:20:55",
+                      level: "INFO",
+                      message: "Connection restored to MT5 server",
+                    },
+                    {
+                      time: "14:20:30",
+                      level: "INFO",
+                      message: "AI model prediction: 87% confidence BUY signal",
+                    },
+                    {
+                      time: "14:19:45",
+                      level: "INFO",
+                      message: "Safety check: Daily risk limit at 45%",
+                    },
+                    {
+                      time: "14:19:12",
+                      level: "INFO",
+                      message: "Market analysis completed",
+                    },
                   ].map((log, index) => (
-                    <div key={index} className="flex items-start space-x-3 text-sm p-2 rounded">
-                      <span className="text-muted-foreground font-mono">{log.time}</span>
-                      <Badge variant={
-                        log.level === 'ERROR' ? 'destructive' :
-                        log.level === 'WARNING' ? 'secondary' :
-                        'outline'
-                      } className="text-xs">
+                    <div
+                      key={index}
+                      className="flex items-start space-x-3 text-sm p-2 rounded"
+                    >
+                      <span className="text-muted-foreground font-mono">
+                        {log.time}
+                      </span>
+                      <Badge
+                        variant={
+                          log.level === "ERROR"
+                            ? "destructive"
+                            : log.level === "WARNING"
+                              ? "secondary"
+                              : "outline"
+                        }
+                        className="text-xs"
+                      >
                         {log.level}
                       </Badge>
                       <span className="flex-1">{log.message}</span>
