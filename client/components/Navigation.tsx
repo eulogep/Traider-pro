@@ -11,6 +11,7 @@ import {
   Zap,
   Menu,
   X,
+  Activity,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { href: "/", label: "Overview", icon: TrendingUp },
   { href: "/dashboard", label: "Dashboard", icon: BarChart3 },
+  { href: "/trading", label: "Trading", icon: Activity },
   { href: "/optimizer", label: "AI Optimizer", icon: Brain },
   { href: "/backtest", label: "Backtest", icon: Target },
   { href: "/automation", label: "Automation", icon: Zap },
