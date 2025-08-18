@@ -1,11 +1,23 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
@@ -47,50 +59,65 @@ export default function Settings() {
   const [saving, setSaving] = useState(false);
 
   // Settings hooks
-  const [darkMode, setDarkMode] = useSetting('darkMode');
-  const [colorTheme, setColorTheme] = useSetting('colorTheme');
-  const [chartStyle, setChartStyle] = useSetting('chartStyle');
-  const [dashboardLayout, setDashboardLayout] = useSetting('dashboardLayout');
-  const [language, setLanguage] = useSetting('language');
-  const [timezone, setTimezone] = useSetting('timezone');
-  const [currency, setCurrency] = useSetting('currency');
-  const [numberFormat, setNumberFormat] = useSetting('numberFormat');
-  const [defaultRisk, setDefaultRisk] = useSetting('defaultRisk');
-  const [defaultStopLoss, setDefaultStopLoss] = useSetting('defaultStopLoss');
-  const [defaultTakeProfit, setDefaultTakeProfit] = useSetting('defaultTakeProfit');
-  const [defaultPositionSize, setDefaultPositionSize] = useSetting('defaultPositionSize');
-  const [slippageTolerance, setSlippageTolerance] = useSetting('slippageTolerance');
-  const [oneClickTrading, setOneClickTrading] = useSetting('oneClickTrading');
-  const [aiSignalValidation, setAiSignalValidation] = useSetting('aiSignalValidation');
-  const [aiConfidenceThreshold, setAiConfidenceThreshold] = useSetting('aiConfidenceThreshold');
-  const [optimizationFrequency, setOptimizationFrequency] = useSetting('optimizationFrequency');
-  const [modelSelection, setModelSelection] = useSetting('modelSelection');
-  const [learningMode, setLearningMode] = useSetting('learningMode');
-  const [mt5Server, setMt5Server] = useSetting('mt5Server');
-  const [mt5Login, setMt5Login] = useSetting('mt5Login');
-  const [mt5Password, setMt5Password] = useSetting('mt5Password');
-  const [enableEA, setEnableEA] = useSetting('enableEA');
-  const [allowAutoTrading, setAllowAutoTrading] = useSetting('allowAutoTrading');
-  const [realtimeDataFeed, setRealtimeDataFeed] = useSetting('realtimeDataFeed');
-  const [updateFrequency, setUpdateFrequency] = useSetting('updateFrequency');
-  const [tradeExecution, setTradeExecution] = useSetting('tradeExecution');
-  const [profitLossTargets, setProfitLossTargets] = useSetting('profitLossTargets');
-  const [aiSignals, setAiSignals] = useSetting('aiSignals');
-  const [systemErrors, setSystemErrors] = useSetting('systemErrors');
-  const [marketNews, setMarketNews] = useSetting('marketNews');
-  const [inAppNotifications, setInAppNotifications] = useSetting('inAppNotifications');
-  const [emailAlerts, setEmailAlerts] = useSetting('emailAlerts');
-  const [pushNotifications, setPushNotifications] = useSetting('pushNotifications');
-  const [emailAddress, setEmailAddress] = useSetting('emailAddress');
-  const [phoneNumber, setPhoneNumber] = useSetting('phoneNumber');
-  const [telegramToken, setTelegramToken] = useSetting('telegramToken');
-  const [twoFactorAuth, setTwoFactorAuth] = useSetting('twoFactorAuth');
-  const [sessionTimeout, setSessionTimeout] = useSetting('sessionTimeout');
-  const [ipWhitelist, setIpWhitelist] = useSetting('ipWhitelist');
-  const [allowedIPs, setAllowedIPs] = useSetting('allowedIPs');
-  const [automaticBackups, setAutomaticBackups] = useSetting('automaticBackups');
-  const [backupFrequency, setBackupFrequency] = useSetting('backupFrequency');
-  const [backupLocation, setBackupLocation] = useSetting('backupLocation');
+  const [darkMode, setDarkMode] = useSetting("darkMode");
+  const [colorTheme, setColorTheme] = useSetting("colorTheme");
+  const [chartStyle, setChartStyle] = useSetting("chartStyle");
+  const [dashboardLayout, setDashboardLayout] = useSetting("dashboardLayout");
+  const [language, setLanguage] = useSetting("language");
+  const [timezone, setTimezone] = useSetting("timezone");
+  const [currency, setCurrency] = useSetting("currency");
+  const [numberFormat, setNumberFormat] = useSetting("numberFormat");
+  const [defaultRisk, setDefaultRisk] = useSetting("defaultRisk");
+  const [defaultStopLoss, setDefaultStopLoss] = useSetting("defaultStopLoss");
+  const [defaultTakeProfit, setDefaultTakeProfit] =
+    useSetting("defaultTakeProfit");
+  const [defaultPositionSize, setDefaultPositionSize] = useSetting(
+    "defaultPositionSize",
+  );
+  const [slippageTolerance, setSlippageTolerance] =
+    useSetting("slippageTolerance");
+  const [oneClickTrading, setOneClickTrading] = useSetting("oneClickTrading");
+  const [aiSignalValidation, setAiSignalValidation] =
+    useSetting("aiSignalValidation");
+  const [aiConfidenceThreshold, setAiConfidenceThreshold] = useSetting(
+    "aiConfidenceThreshold",
+  );
+  const [optimizationFrequency, setOptimizationFrequency] = useSetting(
+    "optimizationFrequency",
+  );
+  const [modelSelection, setModelSelection] = useSetting("modelSelection");
+  const [learningMode, setLearningMode] = useSetting("learningMode");
+  const [mt5Server, setMt5Server] = useSetting("mt5Server");
+  const [mt5Login, setMt5Login] = useSetting("mt5Login");
+  const [mt5Password, setMt5Password] = useSetting("mt5Password");
+  const [enableEA, setEnableEA] = useSetting("enableEA");
+  const [allowAutoTrading, setAllowAutoTrading] =
+    useSetting("allowAutoTrading");
+  const [realtimeDataFeed, setRealtimeDataFeed] =
+    useSetting("realtimeDataFeed");
+  const [updateFrequency, setUpdateFrequency] = useSetting("updateFrequency");
+  const [tradeExecution, setTradeExecution] = useSetting("tradeExecution");
+  const [profitLossTargets, setProfitLossTargets] =
+    useSetting("profitLossTargets");
+  const [aiSignals, setAiSignals] = useSetting("aiSignals");
+  const [systemErrors, setSystemErrors] = useSetting("systemErrors");
+  const [marketNews, setMarketNews] = useSetting("marketNews");
+  const [inAppNotifications, setInAppNotifications] =
+    useSetting("inAppNotifications");
+  const [emailAlerts, setEmailAlerts] = useSetting("emailAlerts");
+  const [pushNotifications, setPushNotifications] =
+    useSetting("pushNotifications");
+  const [emailAddress, setEmailAddress] = useSetting("emailAddress");
+  const [phoneNumber, setPhoneNumber] = useSetting("phoneNumber");
+  const [telegramToken, setTelegramToken] = useSetting("telegramToken");
+  const [twoFactorAuth, setTwoFactorAuth] = useSetting("twoFactorAuth");
+  const [sessionTimeout, setSessionTimeout] = useSetting("sessionTimeout");
+  const [ipWhitelist, setIpWhitelist] = useSetting("ipWhitelist");
+  const [allowedIPs, setAllowedIPs] = useSetting("allowedIPs");
+  const [automaticBackups, setAutomaticBackups] =
+    useSetting("automaticBackups");
+  const [backupFrequency, setBackupFrequency] = useSetting("backupFrequency");
+  const [backupLocation, setBackupLocation] = useSetting("backupLocation");
 
   const handleSave = async () => {
     setSaving(true);
@@ -161,7 +188,9 @@ export default function Settings() {
               <SettingsIcon className="w-8 h-8 mr-3 text-primary" />
               System Settings
             </h1>
-            <p className="text-muted-foreground">Configure your AI Trader Optimizer preferences</p>
+            <p className="text-muted-foreground">
+              Configure your AI Trader Optimizer preferences
+            </p>
             {state.lastSaved && (
               <p className="text-sm text-muted-foreground">
                 Last saved: {state.lastSaved.toLocaleString()}
@@ -177,8 +206,8 @@ export default function Settings() {
               <Download className="w-4 h-4 mr-2" />
               Export
             </Button>
-            <Button 
-              onClick={handleSave} 
+            <Button
+              onClick={handleSave}
               disabled={saving}
               className="bg-primary hover:bg-primary/90"
             >
@@ -211,13 +240,17 @@ export default function Settings() {
                     <Palette className="w-5 h-5 mr-2" />
                     Appearance
                   </CardTitle>
-                  <CardDescription>Customize the interface appearance</CardDescription>
+                  <CardDescription>
+                    Customize the interface appearance
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Dark Mode</Label>
-                      <p className="text-sm text-muted-foreground">Use dark theme for better trading visibility</p>
+                      <p className="text-sm text-muted-foreground">
+                        Use dark theme for better trading visibility
+                      </p>
                     </div>
                     <Switch checked={darkMode} onCheckedChange={setDarkMode} />
                   </div>
@@ -229,9 +262,15 @@ export default function Settings() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="professional">Professional (Default)</SelectItem>
-                        <SelectItem value="high-contrast">High Contrast</SelectItem>
-                        <SelectItem value="colorblind">Colorblind Friendly</SelectItem>
+                        <SelectItem value="professional">
+                          Professional (Default)
+                        </SelectItem>
+                        <SelectItem value="high-contrast">
+                          High Contrast
+                        </SelectItem>
+                        <SelectItem value="colorblind">
+                          Colorblind Friendly
+                        </SelectItem>
                         <SelectItem value="minimal">Minimal</SelectItem>
                       </SelectContent>
                     </Select>
@@ -254,7 +293,10 @@ export default function Settings() {
 
                   <div className="space-y-2">
                     <Label>Dashboard Layout</Label>
-                    <Select value={dashboardLayout} onValueChange={setDashboardLayout}>
+                    <Select
+                      value={dashboardLayout}
+                      onValueChange={setDashboardLayout}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -275,7 +317,9 @@ export default function Settings() {
                     <Globe className="w-5 h-5 mr-2" />
                     Regional Settings
                   </CardTitle>
-                  <CardDescription>Configure regional preferences</CardDescription>
+                  <CardDescription>
+                    Configure regional preferences
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
@@ -305,7 +349,9 @@ export default function Settings() {
                         <SelectItem value="et">Eastern Time</SelectItem>
                         <SelectItem value="pt">Pacific Time</SelectItem>
                         <SelectItem value="gmt">GMT</SelectItem>
-                        <SelectItem value="cet">Central European Time</SelectItem>
+                        <SelectItem value="cet">
+                          Central European Time
+                        </SelectItem>
                         <SelectItem value="jst">Japan Standard Time</SelectItem>
                       </SelectContent>
                     </Select>
@@ -329,7 +375,10 @@ export default function Settings() {
 
                   <div className="space-y-2">
                     <Label>Number Format</Label>
-                    <Select value={numberFormat} onValueChange={setNumberFormat}>
+                    <Select
+                      value={numberFormat}
+                      onValueChange={setNumberFormat}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -354,68 +403,86 @@ export default function Settings() {
                     <Target className="w-5 h-5 mr-2" />
                     Default Trading Parameters
                   </CardTitle>
-                  <CardDescription>Set default values for new trades</CardDescription>
+                  <CardDescription>
+                    Set default values for new trades
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
                     <Label>Default Risk per Trade (%)</Label>
-                    <Input 
-                      type="number" 
-                      value={defaultRisk} 
+                    <Input
+                      type="number"
+                      value={defaultRisk}
                       onChange={(e) => setDefaultRisk(Number(e.target.value))}
-                      min="0.1" 
-                      max="10" 
-                      step="0.1" 
+                      min="0.1"
+                      max="10"
+                      step="0.1"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Default Stop Loss (pips)</Label>
-                    <Input 
-                      type="number" 
+                    <Input
+                      type="number"
                       value={defaultStopLoss}
-                      onChange={(e) => setDefaultStopLoss(Number(e.target.value))}
+                      onChange={(e) =>
+                        setDefaultStopLoss(Number(e.target.value))
+                      }
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Default Take Profit (pips)</Label>
-                    <Input 
-                      type="number" 
+                    <Input
+                      type="number"
                       value={defaultTakeProfit}
-                      onChange={(e) => setDefaultTakeProfit(Number(e.target.value))}
+                      onChange={(e) =>
+                        setDefaultTakeProfit(Number(e.target.value))
+                      }
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Default Position Size</Label>
-                    <Select value={defaultPositionSize} onValueChange={setDefaultPositionSize}>
+                    <Select
+                      value={defaultPositionSize}
+                      onValueChange={setDefaultPositionSize}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="auto">Auto Calculate</SelectItem>
                         <SelectItem value="fixed">Fixed Lots</SelectItem>
-                        <SelectItem value="percent">Percentage of Balance</SelectItem>
+                        <SelectItem value="percent">
+                          Percentage of Balance
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
                     <Label>Slippage Tolerance (pips)</Label>
-                    <Input 
-                      type="number" 
+                    <Input
+                      type="number"
                       value={slippageTolerance}
-                      onChange={(e) => setSlippageTolerance(Number(e.target.value))}
+                      onChange={(e) =>
+                        setSlippageTolerance(Number(e.target.value))
+                      }
                     />
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>One-Click Trading</Label>
-                      <p className="text-sm text-muted-foreground">Enable quick trade execution</p>
+                      <p className="text-sm text-muted-foreground">
+                        Enable quick trade execution
+                      </p>
                     </div>
-                    <Switch checked={oneClickTrading} onCheckedChange={setOneClickTrading} />
+                    <Switch
+                      checked={oneClickTrading}
+                      onCheckedChange={setOneClickTrading}
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -426,31 +493,43 @@ export default function Settings() {
                     <Brain className="w-5 h-5 mr-2" />
                     AI Enhancement Settings
                   </CardTitle>
-                  <CardDescription>Configure AI optimization preferences</CardDescription>
+                  <CardDescription>
+                    Configure AI optimization preferences
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>AI Signal Validation</Label>
-                      <p className="text-sm text-muted-foreground">Require AI confirmation for trades</p>
+                      <p className="text-sm text-muted-foreground">
+                        Require AI confirmation for trades
+                      </p>
                     </div>
-                    <Switch checked={aiSignalValidation} onCheckedChange={setAiSignalValidation} />
+                    <Switch
+                      checked={aiSignalValidation}
+                      onCheckedChange={setAiSignalValidation}
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>AI Confidence Threshold (%)</Label>
-                    <Input 
-                      type="number" 
+                    <Input
+                      type="number"
                       value={aiConfidenceThreshold}
-                      onChange={(e) => setAiConfidenceThreshold(Number(e.target.value))}
-                      min="50" 
-                      max="95" 
+                      onChange={(e) =>
+                        setAiConfidenceThreshold(Number(e.target.value))
+                      }
+                      min="50"
+                      max="95"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Optimization Frequency</Label>
-                    <Select value={optimizationFrequency} onValueChange={setOptimizationFrequency}>
+                    <Select
+                      value={optimizationFrequency}
+                      onValueChange={setOptimizationFrequency}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -466,15 +545,22 @@ export default function Settings() {
 
                   <div className="space-y-2">
                     <Label>Model Selection</Label>
-                    <Select value={modelSelection} onValueChange={setModelSelection}>
+                    <Select
+                      value={modelSelection}
+                      onValueChange={setModelSelection}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="auto">Auto Select Best</SelectItem>
                         <SelectItem value="xgboost">XGBoost</SelectItem>
-                        <SelectItem value="lstm">LSTM Neural Network</SelectItem>
-                        <SelectItem value="ensemble">Ensemble Methods</SelectItem>
+                        <SelectItem value="lstm">
+                          LSTM Neural Network
+                        </SelectItem>
+                        <SelectItem value="ensemble">
+                          Ensemble Methods
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -482,9 +568,14 @@ export default function Settings() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Learning Mode</Label>
-                      <p className="text-sm text-muted-foreground">Allow AI to learn from your trades</p>
+                      <p className="text-sm text-muted-foreground">
+                        Allow AI to learn from your trades
+                      </p>
                     </div>
-                    <Switch checked={learningMode} onCheckedChange={setLearningMode} />
+                    <Switch
+                      checked={learningMode}
+                      onCheckedChange={setLearningMode}
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -499,7 +590,9 @@ export default function Settings() {
                   <Database className="w-5 h-5 mr-2" />
                   MT5 Connection Settings
                 </CardTitle>
-                <CardDescription>Configure MetaTrader 5 connection</CardDescription>
+                <CardDescription>
+                  Configure MetaTrader 5 connection
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid lg:grid-cols-2 gap-6">
@@ -508,14 +601,14 @@ export default function Settings() {
                     <div className="space-y-3">
                       <div className="space-y-2">
                         <Label>Server Address</Label>
-                        <Input 
-                          value={mt5Server} 
+                        <Input
+                          value={mt5Server}
                           onChange={(e) => setMt5Server(e.target.value)}
                         />
                       </div>
                       <div className="space-y-2">
                         <Label>Account Number</Label>
-                        <Input 
+                        <Input
                           value={mt5Login}
                           onChange={(e) => setMt5Login(e.target.value)}
                         />
@@ -523,8 +616,8 @@ export default function Settings() {
                       <div className="space-y-2">
                         <Label>Password</Label>
                         <div className="relative">
-                          <Input 
-                            type={showPassword ? "text" : "password"} 
+                          <Input
+                            type={showPassword ? "text" : "password"}
                             value={mt5Password}
                             onChange={(e) => setMt5Password(e.target.value)}
                           />
@@ -535,7 +628,11 @@ export default function Settings() {
                             className="absolute right-0 top-0 h-full px-3"
                             onClick={() => setShowPassword(!showPassword)}
                           >
-                            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showPassword ? (
+                              <EyeOff className="w-4 h-4" />
+                            ) : (
+                              <Eye className="w-4 h-4" />
+                            )}
                           </Button>
                         </div>
                       </div>
@@ -547,22 +644,33 @@ export default function Settings() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <Label>Enable Expert Advisors</Label>
-                        <Switch checked={enableEA} onCheckedChange={setEnableEA} />
+                        <Switch
+                          checked={enableEA}
+                          onCheckedChange={setEnableEA}
+                        />
                       </div>
                       <div className="flex items-center justify-between">
                         <Label>Allow Automated Trading</Label>
-                        <Switch checked={allowAutoTrading} onCheckedChange={setAllowAutoTrading} />
+                        <Switch
+                          checked={allowAutoTrading}
+                          onCheckedChange={setAllowAutoTrading}
+                        />
                       </div>
                       <div className="flex items-center justify-between">
                         <Label>Real-time Data Feed</Label>
-                        <Switch checked={realtimeDataFeed} onCheckedChange={setRealtimeDataFeed} />
+                        <Switch
+                          checked={realtimeDataFeed}
+                          onCheckedChange={setRealtimeDataFeed}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label>Update Frequency (ms)</Label>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           value={updateFrequency}
-                          onChange={(e) => setUpdateFrequency(Number(e.target.value))}
+                          onChange={(e) =>
+                            setUpdateFrequency(Number(e.target.value))
+                          }
                         />
                       </div>
                     </div>
@@ -581,48 +689,75 @@ export default function Settings() {
                     <Bell className="w-5 h-5 mr-2" />
                     Alert Preferences
                   </CardTitle>
-                  <CardDescription>Choose when and how to receive notifications</CardDescription>
+                  <CardDescription>
+                    Choose when and how to receive notifications
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Trade Execution</Label>
-                        <p className="text-sm text-muted-foreground">Notify when trades are executed</p>
+                        <p className="text-sm text-muted-foreground">
+                          Notify when trades are executed
+                        </p>
                       </div>
-                      <Switch checked={tradeExecution} onCheckedChange={setTradeExecution} />
+                      <Switch
+                        checked={tradeExecution}
+                        onCheckedChange={setTradeExecution}
+                      />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Profit/Loss Targets</Label>
-                        <p className="text-sm text-muted-foreground">Alert when TP/SL is hit</p>
+                        <p className="text-sm text-muted-foreground">
+                          Alert when TP/SL is hit
+                        </p>
                       </div>
-                      <Switch checked={profitLossTargets} onCheckedChange={setProfitLossTargets} />
+                      <Switch
+                        checked={profitLossTargets}
+                        onCheckedChange={setProfitLossTargets}
+                      />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>AI Signals</Label>
-                        <p className="text-sm text-muted-foreground">Notify on AI trade recommendations</p>
+                        <p className="text-sm text-muted-foreground">
+                          Notify on AI trade recommendations
+                        </p>
                       </div>
-                      <Switch checked={aiSignals} onCheckedChange={setAiSignals} />
+                      <Switch
+                        checked={aiSignals}
+                        onCheckedChange={setAiSignals}
+                      />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>System Errors</Label>
-                        <p className="text-sm text-muted-foreground">Alert on system issues</p>
+                        <p className="text-sm text-muted-foreground">
+                          Alert on system issues
+                        </p>
                       </div>
-                      <Switch checked={systemErrors} onCheckedChange={setSystemErrors} />
+                      <Switch
+                        checked={systemErrors}
+                        onCheckedChange={setSystemErrors}
+                      />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
                         <Label>Market News</Label>
-                        <p className="text-sm text-muted-foreground">Economic events and news</p>
+                        <p className="text-sm text-muted-foreground">
+                          Economic events and news
+                        </p>
                       </div>
-                      <Switch checked={marketNews} onCheckedChange={setMarketNews} />
+                      <Switch
+                        checked={marketNews}
+                        onCheckedChange={setMarketNews}
+                      />
                     </div>
                   </div>
                 </CardContent>
@@ -634,7 +769,9 @@ export default function Settings() {
                     <Smartphone className="w-5 h-5 mr-2" />
                     Delivery Methods
                   </CardTitle>
-                  <CardDescription>Configure notification channels</CardDescription>
+                  <CardDescription>
+                    Configure notification channels
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
@@ -643,7 +780,10 @@ export default function Settings() {
                         <Bell className="w-4 h-4" />
                         <Label>In-App Notifications</Label>
                       </div>
-                      <Switch checked={inAppNotifications} onCheckedChange={setInAppNotifications} />
+                      <Switch
+                        checked={inAppNotifications}
+                        onCheckedChange={setInAppNotifications}
+                      />
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -651,7 +791,10 @@ export default function Settings() {
                         <Mail className="w-4 h-4" />
                         <Label>Email Alerts</Label>
                       </div>
-                      <Switch checked={emailAlerts} onCheckedChange={setEmailAlerts} />
+                      <Switch
+                        checked={emailAlerts}
+                        onCheckedChange={setEmailAlerts}
+                      />
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -659,7 +802,10 @@ export default function Settings() {
                         <Smartphone className="w-4 h-4" />
                         <Label>Push Notifications</Label>
                       </div>
-                      <Switch checked={pushNotifications} onCheckedChange={setPushNotifications} />
+                      <Switch
+                        checked={pushNotifications}
+                        onCheckedChange={setPushNotifications}
+                      />
                     </div>
                   </div>
 
@@ -668,8 +814,8 @@ export default function Settings() {
                   <div className="space-y-3">
                     <div className="space-y-2">
                       <Label>Email Address</Label>
-                      <Input 
-                        type="email" 
+                      <Input
+                        type="email"
                         value={emailAddress}
                         onChange={(e) => setEmailAddress(e.target.value)}
                       />
@@ -677,21 +823,21 @@ export default function Settings() {
 
                     <div className="space-y-2">
                       <Label>Phone Number (SMS)</Label>
-                      <Input 
-                        type="tel" 
+                      <Input
+                        type="tel"
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
-                        placeholder="+1 (555) 123-4567" 
+                        placeholder="+1 (555) 123-4567"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <Label>Telegram Bot Token</Label>
-                      <Input 
-                        type="password" 
+                      <Input
+                        type="password"
                         value={telegramToken}
                         onChange={(e) => setTelegramToken(e.target.value)}
-                        placeholder="Enter bot token" 
+                        placeholder="Enter bot token"
                       />
                     </div>
                   </div>
@@ -709,20 +855,32 @@ export default function Settings() {
                     <Shield className="w-5 h-5 mr-2" />
                     Account Security
                   </CardTitle>
-                  <CardDescription>Protect your trading account</CardDescription>
+                  <CardDescription>
+                    Protect your trading account
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Two-Factor Authentication</Label>
-                      <p className="text-sm text-muted-foreground">Add extra security to your account</p>
+                      <p className="text-sm text-muted-foreground">
+                        Add extra security to your account
+                      </p>
                     </div>
-                    <Switch checked={twoFactorAuth} onCheckedChange={setTwoFactorAuth} />
+                    <Switch
+                      checked={twoFactorAuth}
+                      onCheckedChange={setTwoFactorAuth}
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Session Timeout (minutes)</Label>
-                    <Select value={sessionTimeout.toString()} onValueChange={(value) => setSessionTimeout(Number(value))}>
+                    <Select
+                      value={sessionTimeout.toString()}
+                      onValueChange={(value) =>
+                        setSessionTimeout(Number(value))
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -739,14 +897,19 @@ export default function Settings() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>IP Whitelist</Label>
-                      <p className="text-sm text-muted-foreground">Restrict access to specific IP addresses</p>
+                      <p className="text-sm text-muted-foreground">
+                        Restrict access to specific IP addresses
+                      </p>
                     </div>
-                    <Switch checked={ipWhitelist} onCheckedChange={setIpWhitelist} />
+                    <Switch
+                      checked={ipWhitelist}
+                      onCheckedChange={setIpWhitelist}
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Allowed IP Addresses</Label>
-                    <Textarea 
+                    <Textarea
                       value={allowedIPs}
                       onChange={(e) => setAllowedIPs(e.target.value)}
                       placeholder="192.168.1.1&#10;203.0.113.1&#10;198.51.100.1"
@@ -762,7 +925,9 @@ export default function Settings() {
                     <Key className="w-5 h-5 mr-2" />
                     API Keys & Security
                   </CardTitle>
-                  <CardDescription>Manage API access and security settings</CardDescription>
+                  <CardDescription>
+                    Manage API access and security settings
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
@@ -771,10 +936,16 @@ export default function Settings() {
                         <h4 className="font-medium">Trading API Key</h4>
                         <Badge variant="default">Active</Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">sk-trading-xxxxxxxxxxxxxxxx</p>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        sk-trading-xxxxxxxxxxxxxxxx
+                      </p>
                       <div className="flex space-x-2">
-                        <Button variant="outline" size="sm">Regenerate</Button>
-                        <Button variant="outline" size="sm">Revoke</Button>
+                        <Button variant="outline" size="sm">
+                          Regenerate
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          Revoke
+                        </Button>
                       </div>
                     </div>
 
@@ -783,10 +954,16 @@ export default function Settings() {
                         <h4 className="font-medium">Data Feed API Key</h4>
                         <Badge variant="default">Active</Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">pk-data-xxxxxxxxxxxxxxxx</p>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        pk-data-xxxxxxxxxxxxxxxx
+                      </p>
                       <div className="flex space-x-2">
-                        <Button variant="outline" size="sm">Regenerate</Button>
-                        <Button variant="outline" size="sm">Revoke</Button>
+                        <Button variant="outline" size="sm">
+                          Regenerate
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          Revoke
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -809,20 +986,30 @@ export default function Settings() {
                     <Download className="w-5 h-5 mr-2" />
                     Data Backup
                   </CardTitle>
-                  <CardDescription>Backup your trading data and settings</CardDescription>
+                  <CardDescription>
+                    Backup your trading data and settings
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Automatic Backups</Label>
-                      <p className="text-sm text-muted-foreground">Regular automated backups</p>
+                      <p className="text-sm text-muted-foreground">
+                        Regular automated backups
+                      </p>
                     </div>
-                    <Switch checked={automaticBackups} onCheckedChange={setAutomaticBackups} />
+                    <Switch
+                      checked={automaticBackups}
+                      onCheckedChange={setAutomaticBackups}
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Backup Frequency</Label>
-                    <Select value={backupFrequency} onValueChange={setBackupFrequency}>
+                    <Select
+                      value={backupFrequency}
+                      onValueChange={setBackupFrequency}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -837,7 +1024,10 @@ export default function Settings() {
 
                   <div className="space-y-2">
                     <Label>Backup Location</Label>
-                    <Select value={backupLocation} onValueChange={setBackupLocation}>
+                    <Select
+                      value={backupLocation}
+                      onValueChange={setBackupLocation}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -876,32 +1066,50 @@ export default function Settings() {
                     <RefreshCw className="w-5 h-5 mr-2" />
                     System Maintenance
                   </CardTitle>
-                  <CardDescription>System cleanup and optimization</CardDescription>
+                  <CardDescription>
+                    System cleanup and optimization
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Clear Cache</h4>
-                        <p className="text-sm text-muted-foreground">Remove temporary files</p>
+                        <p className="text-sm text-muted-foreground">
+                          Remove temporary files
+                        </p>
                       </div>
-                      <Button variant="outline" size="sm">Clear</Button>
+                      <Button variant="outline" size="sm">
+                        Clear
+                      </Button>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Optimize Database</h4>
-                        <p className="text-sm text-muted-foreground">Improve performance</p>
+                        <p className="text-sm text-muted-foreground">
+                          Improve performance
+                        </p>
                       </div>
-                      <Button variant="outline" size="sm">Optimize</Button>
+                      <Button variant="outline" size="sm">
+                        Optimize
+                      </Button>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Reset All Settings</h4>
-                        <p className="text-sm text-muted-foreground">Restore default configuration</p>
+                        <p className="text-sm text-muted-foreground">
+                          Restore default configuration
+                        </p>
                       </div>
-                      <Button variant="destructive" size="sm" onClick={handleReset}>Reset</Button>
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={handleReset}
+                      >
+                        Reset
+                      </Button>
                     </div>
                   </div>
 
@@ -909,8 +1117,14 @@ export default function Settings() {
 
                   <div className="space-y-2">
                     <h4 className="font-medium">Export Configuration</h4>
-                    <p className="text-sm text-muted-foreground">Download your current settings</p>
-                    <Button variant="outline" className="w-full" onClick={handleExport}>
+                    <p className="text-sm text-muted-foreground">
+                      Download your current settings
+                    </p>
+                    <Button
+                      variant="outline"
+                      className="w-full"
+                      onClick={handleExport}
+                    >
                       <Download className="w-4 h-4 mr-2" />
                       Export Configuration
                     </Button>
