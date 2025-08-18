@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
+import Trading from "./pages/Trading";
 import Optimizer from "./pages/Optimizer";
 import Backtest from "./pages/Backtest";
 import Automation from "./pages/Automation";
@@ -24,6 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/trading" element={<Trading />} />
           <Route path="/optimizer" element={<Optimizer />} />
           <Route path="/backtest" element={<Backtest />} />
           <Route path="/automation" element={<Automation />} />
