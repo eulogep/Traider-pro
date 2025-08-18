@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   TrendingUp,
@@ -22,7 +28,8 @@ export default function Index() {
     {
       icon: Brain,
       title: "AI Strategy Analysis",
-      description: "Analyzes your manual Forex/Gold strategies and optimizes them automatically",
+      description:
+        "Analyzes your manual Forex/Gold strategies and optimizes them automatically",
       color: "text-primary",
     },
     {
@@ -40,13 +47,15 @@ export default function Index() {
     {
       icon: Shield,
       title: "Risk Management",
-      description: "Advanced money management with multiple TP, trailing stops, and position sizing",
+      description:
+        "Advanced money management with multiple TP, trailing stops, and position sizing",
       color: "text-trading-green-500",
     },
     {
       icon: Activity,
       title: "Anomaly Detection",
-      description: "Identifies weaknesses, abnormal losses, and optimization opportunities",
+      description:
+        "Identifies weaknesses, abnormal losses, and optimization opportunities",
       color: "text-trading-red-500",
     },
     {
@@ -58,14 +67,40 @@ export default function Index() {
   ];
 
   const stats = [
-    { label: "Win Rate", value: "78.4%", icon: TrendingUp, color: "text-trading-green-500" },
-    { label: "Profit Factor", value: "2.31", icon: DollarSign, color: "text-trading-gold-500" },
-    { label: "Max Drawdown", value: "12.8%", icon: TrendingDown, color: "text-trading-red-500" },
-    { label: "Sharpe Ratio", value: "1.85", icon: BarChart3, color: "text-chart-line-blue" },
+    {
+      label: "Win Rate",
+      value: "78.4%",
+      icon: TrendingUp,
+      color: "text-trading-green-500",
+    },
+    {
+      label: "Profit Factor",
+      value: "2.31",
+      icon: DollarSign,
+      color: "text-trading-gold-500",
+    },
+    {
+      label: "Max Drawdown",
+      value: "12.8%",
+      icon: TrendingDown,
+      color: "text-trading-red-500",
+    },
+    {
+      label: "Sharpe Ratio",
+      value: "1.85",
+      icon: BarChart3,
+      color: "text-chart-line-blue",
+    },
   ];
 
   const assets = ["XAU/USD (Gold)", "EUR/USD", "GBP/USD", "USD/JPY", "BTC/USD"];
-  const indicators = ["RSI", "MACD", "Support/Resistance", "Pullback Patterns", "Breakout Patterns"];
+  const indicators = [
+    "RSI",
+    "MACD",
+    "Support/Resistance",
+    "Pullback Patterns",
+    "Breakout Patterns",
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -73,7 +108,10 @@ export default function Index() {
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
         <div className="relative max-w-7xl mx-auto text-center">
-          <Badge variant="outline" className="mb-6 text-primary border-primary/20">
+          <Badge
+            variant="outline"
+            className="mb-6 text-primary border-primary/20"
+          >
             <Lightbulb className="w-4 h-4 mr-2" />
             AI-Powered Trading Optimization
           </Badge>
@@ -86,11 +124,17 @@ export default function Index() {
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             <span className="text-primary font-semibold">backtested</span>,{" "}
             <span className="text-accent font-semibold">optimized</span>, and{" "}
-            <span className="text-trading-green-500 font-semibold">automated</span> systems
+            <span className="text-trading-green-500 font-semibold">
+              automated
+            </span>{" "}
+            systems
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/dashboard">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
                 Start Optimizing
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -115,7 +159,9 @@ export default function Index() {
                   <CardContent className="pt-6">
                     <Icon className={`w-8 h-8 mx-auto mb-2 ${stat.color}`} />
                     <div className="text-2xl font-bold mb-1">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {stat.label}
+                    </div>
                   </CardContent>
                 </Card>
               );
@@ -132,14 +178,18 @@ export default function Index() {
               Complete Trading Intelligence
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              From manual strategy analysis to fully optimized automated trading systems
+              From manual strategy analysis to fully optimized automated trading
+              systems
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <Card key={index} className="border-border/50 hover:border-primary/20 transition-colors">
+                <Card
+                  key={index}
+                  className="border-border/50 hover:border-primary/20 transition-colors"
+                >
                   <CardHeader>
                     <Icon className={`w-10 h-10 ${feature.color} mb-2`} />
                     <CardTitle className="text-xl">{feature.title}</CardTitle>
@@ -163,7 +213,8 @@ export default function Index() {
                 Your Trading Setup, Optimized
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                We've validated your complete trading infrastructure. Now let AI take it to the next level.
+                We've validated your complete trading infrastructure. Now let AI
+                take it to the next level.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -201,7 +252,9 @@ export default function Index() {
               </Card>
               <Card className="border-border/50">
                 <CardHeader>
-                  <CardTitle className="text-lg">Technical Indicators</CardTitle>
+                  <CardTitle className="text-lg">
+                    Technical Indicators
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
@@ -225,7 +278,8 @@ export default function Index() {
             Ready to Optimize Your Trading?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Transform your intuitive manual system into a backtested, robust, and pilotable AI trading system.
+            Transform your intuitive manual system into a backtested, robust,
+            and pilotable AI trading system.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/dashboard">

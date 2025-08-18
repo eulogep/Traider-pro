@@ -1,7 +1,13 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { AlertTriangle, Home, ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
@@ -25,7 +31,7 @@ const NotFound = () => {
             </Button>
           </Link>
         </div>
-        
+
         <Card className="border-border/50">
           <CardHeader className="text-center py-12">
             <AlertTriangle className="w-16 h-16 text-accent mx-auto mb-4" />
@@ -36,7 +42,8 @@ const NotFound = () => {
           </CardHeader>
           <CardContent className="text-center pb-12">
             <p className="text-muted-foreground mb-6">
-              The page you're looking for might have been moved, deleted, or doesn't exist yet.
+              The page you're looking for might have been moved, deleted, or
+              doesn't exist yet.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/">
@@ -46,9 +53,7 @@ const NotFound = () => {
                 </Button>
               </Link>
               <Link to="/dashboard">
-                <Button variant="outline">
-                  View Dashboard
-                </Button>
+                <Button variant="outline">View Dashboard</Button>
               </Link>
             </div>
           </CardContent>
