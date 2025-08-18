@@ -12,6 +12,7 @@ import {
   PerformanceMetrics,
   MarketOverview,
 } from "@/components/TradingChart";
+import { MT5AccountSummary } from "@/components/MT5Connection";
 import {
   TrendingUp,
   TrendingDown,
