@@ -1,4 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { MT5AccountSummary } from "@/components/MT5Connection";
 import { MT5TradingPanel } from "@/components/MT5Trading";
 import { MarketOverview } from "@/components/TradingChart";
@@ -25,10 +31,9 @@ export default function Trading() {
               MT5 Trading Terminal
             </h1>
             <p className="text-muted-foreground">
-              {connected 
-                ? "Connected to MetaTrader 5 - Live trading active" 
-                : "Connect to MetaTrader 5 to start live trading"
-              }
+              {connected
+                ? "Connected to MetaTrader 5 - Live trading active"
+                : "Connect to MetaTrader 5 to start live trading"}
             </p>
           </div>
         </div>
@@ -42,7 +47,8 @@ export default function Trading() {
                 <div>
                   <h3 className="font-semibold">MT5 Not Connected</h3>
                   <p className="text-sm text-muted-foreground">
-                    Connect to your MetaTrader 5 account to access live trading features
+                    Connect to your MetaTrader 5 account to access live trading
+                    features
                   </p>
                 </div>
               </div>
@@ -73,9 +79,11 @@ export default function Trading() {
               <div>
                 <h3 className="font-semibold text-destructive">Risk Warning</h3>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Trading forex and CFDs involves significant risk of loss and may not be suitable for all investors. 
-                  Past performance is not indicative of future results. Please ensure you fully understand the risks 
-                  and seek independent advice if necessary. Only trade with money you can afford to lose.
+                  Trading forex and CFDs involves significant risk of loss and
+                  may not be suitable for all investors. Past performance is not
+                  indicative of future results. Please ensure you fully
+                  understand the risks and seek independent advice if necessary.
+                  Only trade with money you can afford to lose.
                 </p>
               </div>
             </div>

@@ -2,11 +2,30 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useMT5, useMT5Symbol } from "@/hooks/useMT5";
 import {
@@ -43,11 +62,11 @@ export function MT5QuickTrade({ symbol = "XAUUSD" }: { symbol?: string }) {
         volume: parseFloat(volume),
         sl: sl ? parseFloat(sl) : undefined,
         tp: tp ? parseFloat(tp) : undefined,
-        comment: "Quick Trade"
+        comment: "Quick Trade",
       });
       setIsOrderDialogOpen(false);
     } catch (error) {
-      console.error('Trade failed:', error);
+      console.error("Trade failed:", error);
     }
   };
 
@@ -81,18 +100,29 @@ export function MT5QuickTrade({ symbol = "XAUUSD" }: { symbol?: string }) {
           <div className="flex items-center space-x-2">
             <div className="text-right">
               <p className="text-sm text-muted-foreground">Bid</p>
-              <p className="font-mono text-sm">{symbolData.bid.toFixed(symbolData.digits)}</p>
+              <p className="font-mono text-sm">
+                {symbolData.bid.toFixed(symbolData.digits)}
+              </p>
             </div>
             <div className="text-right">
               <p className="text-sm text-muted-foreground">Ask</p>
-              <p className="font-mono text-sm">{symbolData.ask.toFixed(symbolData.digits)}</p>
+              <p className="font-mono text-sm">
+                {symbolData.ask.toFixed(symbolData.digits)}
+              </p>
             </div>
           </div>
         </CardTitle>
         <CardDescription>
-          Spread: {symbolData.spread} | Change: 
-          <span className={symbolData.change >= 0 ? 'text-trading-green-500' : 'text-trading-red-500'}>
-            {symbolData.change >= 0 ? '+' : ''}{symbolData.changePercent.toFixed(3)}%
+          Spread: {symbolData.spread} | Change:
+          <span
+            className={
+              symbolData.change >= 0
+                ? "text-trading-green-500"
+                : "text-trading-red-500"
+            }
+          >
+            {symbolData.change >= 0 ? "+" : ""}
+            {symbolData.changePercent.toFixed(3)}%
           </span>
         </CardDescription>
       </CardHeader>
@@ -100,7 +130,7 @@ export function MT5QuickTrade({ symbol = "XAUUSD" }: { symbol?: string }) {
         <div className="grid grid-cols-2 gap-3">
           <Dialog open={isOrderDialogOpen} onOpenChange={setIsOrderDialogOpen}>
             <DialogTrigger asChild>
-              <Button 
+              <Button
                 className="bg-trading-green-500 hover:bg-trading-green-600 text-white"
                 onClick={() => setOrderType("BUY")}
               >
@@ -109,7 +139,7 @@ export function MT5QuickTrade({ symbol = "XAUUSD" }: { symbol?: string }) {
               </Button>
             </DialogTrigger>
             <DialogTrigger asChild>
-              <Button 
+              <Button
                 variant="destructive"
                 onClick={() => setOrderType("SELL")}
               >
@@ -117,22 +147,25 @@ export function MT5QuickTrade({ symbol = "XAUUSD" }: { symbol?: string }) {
                 SELL {symbolData.bid.toFixed(symbolData.digits)}
               </Button>
             </DialogTrigger>
-            
+
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>{orderType} {symbolData.symbol}</DialogTitle>
+                <DialogTitle>
+                  {orderType} {symbolData.symbol}
+                </DialogTitle>
                 <DialogDescription>
-                  Execute at {orderType === "BUY" ? symbolData.ask : symbolData.bid}
+                  Execute at{" "}
+                  {orderType === "BUY" ? symbolData.ask : symbolData.bid}
                 </DialogDescription>
               </DialogHeader>
-              
+
               {error && (
                 <Alert variant="destructive">
                   <AlertTriangle className="h-4 w-4" />
                   <AlertDescription>{error}</AlertDescription>
                 </Alert>
               )}
-              
+
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label>Volume (lots)</Label>
@@ -145,7 +178,7 @@ export function MT5QuickTrade({ symbol = "XAUUSD" }: { symbol?: string }) {
                     min="0.01"
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
                     <Label>Stop Loss</Label>
@@ -168,8 +201,8 @@ export function MT5QuickTrade({ symbol = "XAUUSD" }: { symbol?: string }) {
                     />
                   </div>
                 </div>
-                
-                <Button 
+
+                <Button
                   onClick={() => handleQuickTrade(orderType)}
                   className="w-full"
                   variant={orderType === "BUY" ? "default" : "destructive"}
@@ -203,7 +236,7 @@ export function MT5Positions() {
     try {
       await closePosition(ticket);
     } catch (error) {
-      console.error('Failed to close position:', error);
+      console.error("Failed to close position:", error);
     }
   };
 
@@ -218,13 +251,20 @@ export function MT5Positions() {
       </CardHeader>
       <CardContent>
         {positions.length === 0 ? (
-          <p className="text-muted-foreground text-center py-4">No open positions</p>
+          <p className="text-muted-foreground text-center py-4">
+            No open positions
+          </p>
         ) : (
           <div className="space-y-3">
             {positions.map((position) => (
-              <div key={position.ticket} className="flex items-center justify-between p-3 rounded-lg border border-border/30">
+              <div
+                key={position.ticket}
+                className="flex items-center justify-between p-3 rounded-lg border border-border/30"
+              >
                 <div className="flex items-center space-x-3">
-                  <Badge variant={position.type === 'BUY' ? 'default' : 'secondary'}>
+                  <Badge
+                    variant={position.type === "BUY" ? "default" : "secondary"}
+                  >
                     {position.type}
                   </Badge>
                   <div>
@@ -235,10 +275,15 @@ export function MT5Positions() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className={`font-medium ${
-                    position.profit >= 0 ? 'text-trading-green-500' : 'text-trading-red-500'
-                  }`}>
-                    {position.profit >= 0 ? '+' : ''}${position.profit.toFixed(2)}
+                  <p
+                    className={`font-medium ${
+                      position.profit >= 0
+                        ? "text-trading-green-500"
+                        : "text-trading-red-500"
+                    }`}
+                  >
+                    {position.profit >= 0 ? "+" : ""}$
+                    {position.profit.toFixed(2)}
                   </p>
                   <div className="flex items-center space-x-2">
                     <p className="text-sm text-muted-foreground">
@@ -264,7 +309,7 @@ export function MT5Positions() {
 
 export function MT5MarketWatch() {
   const { symbols, connected } = useMT5();
-  const [selectedSymbols] = useState(['XAUUSD', 'EURUSD', 'GBPUSD', 'USDJPY']);
+  const [selectedSymbols] = useState(["XAUUSD", "EURUSD", "GBPUSD", "USDJPY"]);
 
   if (!connected) {
     return (
@@ -277,7 +322,9 @@ export function MT5MarketWatch() {
     );
   }
 
-  const watchedSymbols = symbols.filter(s => selectedSymbols.includes(s.symbol));
+  const watchedSymbols = symbols.filter((s) =>
+    selectedSymbols.includes(s.symbol),
+  );
 
   return (
     <Card className="border-border/50">
@@ -291,29 +338,45 @@ export function MT5MarketWatch() {
       <CardContent>
         <div className="space-y-3">
           {watchedSymbols.map((symbol) => (
-            <div key={symbol.symbol} className="flex items-center justify-between p-3 rounded-lg border border-border/30">
+            <div
+              key={symbol.symbol}
+              className="flex items-center justify-between p-3 rounded-lg border border-border/30"
+            >
               <div className="flex items-center space-x-3">
-                <div className={`w-2 h-2 rounded-full animate-pulse ${
-                  symbol.change >= 0 ? 'bg-trading-green-500' : 'bg-trading-red-500'
-                }`} />
+                <div
+                  className={`w-2 h-2 rounded-full animate-pulse ${
+                    symbol.change >= 0
+                      ? "bg-trading-green-500"
+                      : "bg-trading-red-500"
+                  }`}
+                />
                 <span className="font-medium">{symbol.symbol}</span>
               </div>
               <div className="text-right">
                 <div className="flex items-center space-x-4">
                   <div>
                     <p className="text-xs text-muted-foreground">Bid</p>
-                    <p className="font-mono text-sm">{symbol.bid.toFixed(symbol.digits)}</p>
+                    <p className="font-mono text-sm">
+                      {symbol.bid.toFixed(symbol.digits)}
+                    </p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Ask</p>
-                    <p className="font-mono text-sm">{symbol.ask.toFixed(symbol.digits)}</p>
+                    <p className="font-mono text-sm">
+                      {symbol.ask.toFixed(symbol.digits)}
+                    </p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Change</p>
-                    <p className={`text-sm font-medium ${
-                      symbol.change >= 0 ? 'text-trading-green-500' : 'text-trading-red-500'
-                    }`}>
-                      {symbol.change >= 0 ? '+' : ''}{symbol.changePercent.toFixed(2)}%
+                    <p
+                      className={`text-sm font-medium ${
+                        symbol.change >= 0
+                          ? "text-trading-green-500"
+                          : "text-trading-red-500"
+                      }`}
+                    >
+                      {symbol.change >= 0 ? "+" : ""}
+                      {symbol.changePercent.toFixed(2)}%
                     </p>
                   </div>
                 </div>
@@ -334,7 +397,9 @@ export function MT5TradeHistory() {
       <Card className="border-border/50">
         <CardHeader>
           <CardTitle>Trade History</CardTitle>
-          <CardDescription>Connect to MT5 to view trade history</CardDescription>
+          <CardDescription>
+            Connect to MT5 to view trade history
+          </CardDescription>
         </CardHeader>
       </Card>
     );
@@ -351,30 +416,43 @@ export function MT5TradeHistory() {
       </CardHeader>
       <CardContent>
         {tradeHistory.length === 0 ? (
-          <p className="text-muted-foreground text-center py-4">No trade history</p>
+          <p className="text-muted-foreground text-center py-4">
+            No trade history
+          </p>
         ) : (
           <div className="space-y-3">
             {tradeHistory.slice(0, 10).map((trade) => (
-              <div key={trade.ticket} className="flex items-center justify-between p-3 rounded-lg border border-border/30">
+              <div
+                key={trade.ticket}
+                className="flex items-center justify-between p-3 rounded-lg border border-border/30"
+              >
                 <div className="flex items-center space-x-3">
-                  <Badge variant={trade.type === 'BUY' ? 'default' : 'secondary'}>
+                  <Badge
+                    variant={trade.type === "BUY" ? "default" : "secondary"}
+                  >
                     {trade.type}
                   </Badge>
                   <div>
                     <p className="font-medium">{trade.symbol}</p>
                     <p className="text-sm text-muted-foreground">
-                      {trade.volume} lots • {new Date(trade.openTime).toLocaleDateString()}
+                      {trade.volume} lots •{" "}
+                      {new Date(trade.openTime).toLocaleDateString()}
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className={`font-medium ${
-                    trade.profit >= 0 ? 'text-trading-green-500' : 'text-trading-red-500'
-                  }`}>
-                    {trade.profit >= 0 ? '+' : ''}${trade.profit.toFixed(2)}
+                  <p
+                    className={`font-medium ${
+                      trade.profit >= 0
+                        ? "text-trading-green-500"
+                        : "text-trading-red-500"
+                    }`}
+                  >
+                    {trade.profit >= 0 ? "+" : ""}${trade.profit.toFixed(2)}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {trade.openPrice.toFixed(5)} → {trade.closePrice?.toFixed(5)}
+                    {trade.openPrice.toFixed(5)} →{" "}
+                    {trade.closePrice?.toFixed(5)}
                   </p>
                 </div>
               </div>
@@ -396,19 +474,19 @@ export function MT5TradingPanel() {
           <TabsTrigger value="market">Market</TabsTrigger>
           <TabsTrigger value="history">History</TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="trade" className="space-y-4">
           <MT5QuickTrade />
         </TabsContent>
-        
+
         <TabsContent value="positions" className="space-y-4">
           <MT5Positions />
         </TabsContent>
-        
+
         <TabsContent value="market" className="space-y-4">
           <MT5MarketWatch />
         </TabsContent>
-        
+
         <TabsContent value="history" className="space-y-4">
           <MT5TradeHistory />
         </TabsContent>

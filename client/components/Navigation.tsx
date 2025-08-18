@@ -1,7 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MT5ConnectionButton, MT5StatusIndicator } from "@/components/MT5Connection";
+import {
+  MT5ConnectionButton,
+  MT5StatusIndicator,
+} from "@/components/MT5Connection";
 import {
   TrendingUp,
   BarChart3,
@@ -59,7 +62,7 @@ export function Navigation() {
                     size="sm"
                     className={cn(
                       "flex items-center space-x-2",
-                      isActive && "bg-primary/10 text-primary"
+                      isActive && "bg-primary/10 text-primary",
                     )}
                   >
                     <Icon className="w-4 h-4" />
@@ -83,7 +86,11 @@ export function Navigation() {
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </Button>
         </div>
       </div>
@@ -106,7 +113,7 @@ export function Navigation() {
                     size="sm"
                     className={cn(
                       "w-full justify-start space-x-2",
-                      isActive && "bg-primary/10 text-primary"
+                      isActive && "bg-primary/10 text-primary",
                     )}
                   >
                     <Icon className="w-4 h-4" />

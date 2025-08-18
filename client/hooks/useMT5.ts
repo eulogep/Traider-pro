@@ -1,5 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
-import { mt5Service, MT5AccountInfo, MT5Symbol, MT5Position, MT5Order, MT5Trade, MT5ConnectionConfig } from '@/lib/mt5Service';
+import { useState, useEffect, useCallback } from "react";
+import {
+  mt5Service,
+  MT5AccountInfo,
+  MT5Symbol,
+  MT5Position,
+  MT5Order,
+  MT5Trade,
+  MT5ConnectionConfig,
+} from "@/lib/mt5Service";
 
 export interface MT5State {
   connected: boolean;
@@ -26,12 +34,12 @@ export function useMT5() {
 
   // Connection management
   const connect = useCallback(async (config: MT5ConnectionConfig) => {
-    setState(prev => ({ ...prev, connecting: true, error: null }));
-    
+    setState((prev) => ({ ...prev, connecting: true, error: null }));
+
     try {
       const success = await mt5Service.connect(config);
       if (success) {
-        setState(prev => ({
+        setState((prev) => ({
           ...prev,
           connected: true,
           connecting: false,
@@ -42,17 +50,17 @@ export function useMT5() {
           tradeHistory: mt5Service.getTradeHistory(50),
         }));
       } else {
-        setState(prev => ({
+        setState((prev) => ({
           ...prev,
           connecting: false,
-          error: 'Failed to connect to MT5',
+          error: "Failed to connect to MT5",
         }));
       }
     } catch (error) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
         connecting: false,
-        error: error instanceof Error ? error.message : 'Connection failed',
+        error: error instanceof Error ? error.message : "Connection failed",
       }));
     }
   }, []);
@@ -76,16 +84,16 @@ export function useMT5() {
     try {
       const ticket = await mt5Service.placeMarketOrder(order);
       // Refresh positions
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
         positions: mt5Service.getPositions(),
         account: mt5Service.getAccountInfo(),
       }));
       return ticket;
     } catch (error) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        error: error instanceof Error ? error.message : 'Order failed',
+        error: error instanceof Error ? error.message : "Order failed",
       }));
       throw error;
     }
@@ -94,16 +102,16 @@ export function useMT5() {
   const closePosition = useCallback(async (ticket: number) => {
     try {
       await mt5Service.closePosition(ticket);
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
         positions: mt5Service.getPositions(),
         tradeHistory: mt5Service.getTradeHistory(50),
         account: mt5Service.getAccountInfo(),
       }));
     } catch (error) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        error: error instanceof Error ? error.message : 'Close position failed',
+        error: error instanceof Error ? error.message : "Close position failed",
       }));
       throw error;
     }
@@ -112,15 +120,15 @@ export function useMT5() {
   const placePendingOrder = useCallback(async (order: any) => {
     try {
       const ticket = await mt5Service.placePendingOrder(order);
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
         orders: mt5Service.getOrders(),
       }));
       return ticket;
     } catch (error) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        error: error instanceof Error ? error.message : 'Pending order failed',
+        error: error instanceof Error ? error.message : "Pending order failed",
       }));
       throw error;
     }
@@ -129,14 +137,14 @@ export function useMT5() {
   const deleteOrder = useCallback(async (ticket: number) => {
     try {
       await mt5Service.deleteOrder(ticket);
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
         orders: mt5Service.getOrders(),
       }));
     } catch (error) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        error: error instanceof Error ? error.message : 'Delete order failed',
+        error: error instanceof Error ? error.message : "Delete order failed",
       }));
       throw error;
     }
@@ -146,9 +154,9 @@ export function useMT5() {
   useEffect(() => {
     const unsubscribe = mt5Service.subscribe((data) => {
       switch (data.type) {
-        case 'connection':
-          if (data.status === 'connected') {
-            setState(prev => ({
+        case "connection":
+          if (data.status === "connected") {
+            setState((prev) => ({
               ...prev,
               connected: true,
               account: data.account,
@@ -157,8 +165,8 @@ export function useMT5() {
               orders: mt5Service.getOrders(),
               tradeHistory: mt5Service.getTradeHistory(50),
             }));
-          } else if (data.status === 'disconnected') {
-            setState(prev => ({
+          } else if (data.status === "disconnected") {
+            setState((prev) => ({
               ...prev,
               connected: false,
               account: null,
@@ -167,16 +175,16 @@ export function useMT5() {
               orders: [],
               tradeHistory: [],
             }));
-          } else if (data.status === 'error') {
-            setState(prev => ({
+          } else if (data.status === "error") {
+            setState((prev) => ({
               ...prev,
-              error: data.error?.message || 'Connection error',
+              error: data.error?.message || "Connection error",
             }));
           }
           break;
 
-        case 'price_update':
-          setState(prev => ({
+        case "price_update":
+          setState((prev) => ({
             ...prev,
             symbols: data.symbols,
             account: data.account,
@@ -184,16 +192,16 @@ export function useMT5() {
           }));
           break;
 
-        case 'order_executed':
-          setState(prev => ({
+        case "order_executed":
+          setState((prev) => ({
             ...prev,
             positions: mt5Service.getPositions(),
             account: mt5Service.getAccountInfo(),
           }));
           break;
 
-        case 'position_closed':
-          setState(prev => ({
+        case "position_closed":
+          setState((prev) => ({
             ...prev,
             positions: mt5Service.getPositions(),
             tradeHistory: mt5Service.getTradeHistory(50),
@@ -201,15 +209,15 @@ export function useMT5() {
           }));
           break;
 
-        case 'order_placed':
-          setState(prev => ({
+        case "order_placed":
+          setState((prev) => ({
             ...prev,
             orders: mt5Service.getOrders(),
           }));
           break;
 
-        case 'order_deleted':
-          setState(prev => ({
+        case "order_deleted":
+          setState((prev) => ({
             ...prev,
             orders: mt5Service.getOrders(),
           }));
@@ -219,7 +227,7 @@ export function useMT5() {
 
     // Check if already connected
     if (mt5Service.isConnected()) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
         connected: true,
         account: mt5Service.getAccountInfo(),
@@ -241,15 +249,18 @@ export function useMT5() {
     closePosition,
     placePendingOrder,
     deleteOrder,
-    clearError: useCallback(() => setState(prev => ({ ...prev, error: null })), []),
+    clearError: useCallback(
+      () => setState((prev) => ({ ...prev, error: null })),
+      [],
+    ),
   };
 }
 
 // Hook for specific symbol data
 export function useMT5Symbol(symbol: string) {
   const { symbols, connected } = useMT5();
-  const symbolData = symbols.find(s => s.symbol === symbol);
-  
+  const symbolData = symbols.find((s) => s.symbol === symbol);
+
   return {
     symbol: symbolData,
     connected,
@@ -260,7 +271,7 @@ export function useMT5Symbol(symbol: string) {
 // Hook for account summary
 export function useMT5Account() {
   const { account, connected, positions } = useMT5();
-  
+
   const summary = {
     balance: account?.balance || 0,
     equity: account?.equity || 0,
@@ -269,7 +280,7 @@ export function useMT5Account() {
     marginLevel: account?.marginLevel || 0,
     profit: account?.profit || 0,
     openPositions: positions.length,
-    currency: account?.currency || 'USD',
+    currency: account?.currency || "USD",
   };
 
   return {

@@ -39,7 +39,7 @@ export interface MT5Symbol {
 export interface MT5Position {
   ticket: number;
   symbol: string;
-  type: 'BUY' | 'SELL';
+  type: "BUY" | "SELL";
   volume: number;
   openPrice: number;
   currentPrice: number;
@@ -54,7 +54,7 @@ export interface MT5Position {
 export interface MT5Order {
   ticket: number;
   symbol: string;
-  type: 'BUY_LIMIT' | 'SELL_LIMIT' | 'BUY_STOP' | 'SELL_STOP';
+  type: "BUY_LIMIT" | "SELL_LIMIT" | "BUY_STOP" | "SELL_STOP";
   volume: number;
   price: number;
   sl: number;
@@ -66,7 +66,7 @@ export interface MT5Order {
 export interface MT5Trade {
   ticket: number;
   symbol: string;
-  type: 'BUY' | 'SELL';
+  type: "BUY" | "SELL";
   volume: number;
   openPrice: number;
   closePrice?: number;
@@ -82,7 +82,7 @@ export interface MT5Trade {
 
 export interface MarketOrder {
   symbol: string;
-  type: 'BUY' | 'SELL';
+  type: "BUY" | "SELL";
   volume: number;
   sl?: number;
   tp?: number;
@@ -91,7 +91,7 @@ export interface MarketOrder {
 
 export interface PendingOrder {
   symbol: string;
-  type: 'BUY_LIMIT' | 'SELL_LIMIT' | 'BUY_STOP' | 'SELL_STOP';
+  type: "BUY_LIMIT" | "SELL_LIMIT" | "BUY_STOP" | "SELL_STOP";
   volume: number;
   price: number;
   sl?: number;
@@ -126,38 +126,42 @@ export class MT5Service {
   async connect(config: MT5ConnectionConfig): Promise<boolean> {
     try {
       // Simulate connection process
-      console.log('Connecting to MT5 server:', config.server);
-      
+      console.log("Connecting to MT5 server:", config.server);
+
       // In production, this would make actual MT5 API calls
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       this.connectionConfig = config;
       this.connected = true;
-      
+
       // Initialize account info
       this.accountInfo = {
         login: config.login,
-        balance: 50000.00,
-        equity: 52340.50,
-        margin: 1250.00,
-        freeMargin: 51090.50,
+        balance: 50000.0,
+        equity: 52340.5,
+        margin: 1250.0,
+        freeMargin: 51090.5,
         marginLevel: 4187.24,
-        profit: 2340.50,
-        currency: 'USD',
-        company: 'MetaQuotes Software Corp.',
-        name: 'John Trader',
-        server: config.server
+        profit: 2340.5,
+        currency: "USD",
+        company: "MetaQuotes Software Corp.",
+        name: "John Trader",
+        server: config.server,
       };
 
       // Start real-time data feed
       this.startPriceFeed();
-      
-      this.notifySubscribers({ type: 'connection', status: 'connected', account: this.accountInfo });
+
+      this.notifySubscribers({
+        type: "connection",
+        status: "connected",
+        account: this.accountInfo,
+      });
       return true;
     } catch (error) {
-      console.error('Failed to connect to MT5:', error);
+      console.error("Failed to connect to MT5:", error);
       this.connected = false;
-      this.notifySubscribers({ type: 'connection', status: 'error', error });
+      this.notifySubscribers({ type: "connection", status: "error", error });
       return false;
     }
   }
@@ -167,7 +171,7 @@ export class MT5Service {
     this.connectionConfig = null;
     this.accountInfo = null;
     this.stopPriceFeed();
-    this.notifySubscribers({ type: 'connection', status: 'disconnected' });
+    this.notifySubscribers({ type: "connection", status: "disconnected" });
   }
 
   isConnected(): boolean {
@@ -193,7 +197,7 @@ export class MT5Service {
   }
 
   getPosition(ticket: number): MT5Position | undefined {
-    return this.positions.find(pos => pos.ticket === ticket);
+    return this.positions.find((pos) => pos.ticket === ticket);
   }
 
   // Order Management
@@ -203,7 +207,7 @@ export class MT5Service {
 
   async placeMarketOrder(order: MarketOrder): Promise<number | null> {
     if (!this.connected) {
-      throw new Error('Not connected to MT5');
+      throw new Error("Not connected to MT5");
     }
 
     const symbol = this.symbols.get(order.symbol);
@@ -213,8 +217,8 @@ export class MT5Service {
 
     // Simulate order execution
     const ticket = Date.now() + Math.floor(Math.random() * 1000);
-    const executionPrice = order.type === 'BUY' ? symbol.ask : symbol.bid;
-    
+    const executionPrice = order.type === "BUY" ? symbol.ask : symbol.bid;
+
     const position: MT5Position = {
       ticket,
       symbol: order.symbol,
@@ -224,31 +228,32 @@ export class MT5Service {
       currentPrice: executionPrice,
       profit: 0,
       swap: 0,
-      comment: order.comment || '',
+      comment: order.comment || "",
       openTime: Date.now(),
       sl: order.sl || 0,
-      tp: order.tp || 0
+      tp: order.tp || 0,
     };
 
     this.positions.push(position);
-    
+
     // Update account balance (simulate commission)
     if (this.accountInfo) {
       this.accountInfo.margin += order.volume * 100; // Simplified margin calculation
-      this.accountInfo.freeMargin = this.accountInfo.equity - this.accountInfo.margin;
+      this.accountInfo.freeMargin =
+        this.accountInfo.equity - this.accountInfo.margin;
     }
 
-    this.notifySubscribers({ type: 'order_executed', order: position });
+    this.notifySubscribers({ type: "order_executed", order: position });
     return ticket;
   }
 
   async placePendingOrder(order: PendingOrder): Promise<number | null> {
     if (!this.connected) {
-      throw new Error('Not connected to MT5');
+      throw new Error("Not connected to MT5");
     }
 
     const ticket = Date.now() + Math.floor(Math.random() * 1000);
-    
+
     const pendingOrder: MT5Order = {
       ticket,
       symbol: order.symbol,
@@ -257,21 +262,23 @@ export class MT5Service {
       price: order.price,
       sl: order.sl || 0,
       tp: order.tp || 0,
-      comment: order.comment || '',
-      time: Date.now()
+      comment: order.comment || "",
+      time: Date.now(),
     };
 
     this.orders.push(pendingOrder);
-    this.notifySubscribers({ type: 'order_placed', order: pendingOrder });
+    this.notifySubscribers({ type: "order_placed", order: pendingOrder });
     return ticket;
   }
 
   async closePosition(ticket: number): Promise<boolean> {
     if (!this.connected) {
-      throw new Error('Not connected to MT5');
+      throw new Error("Not connected to MT5");
     }
 
-    const positionIndex = this.positions.findIndex(pos => pos.ticket === ticket);
+    const positionIndex = this.positions.findIndex(
+      (pos) => pos.ticket === ticket,
+    );
     if (positionIndex === -1) {
       throw new Error(`Position ${ticket} not found`);
     }
@@ -283,10 +290,11 @@ export class MT5Service {
     }
 
     // Calculate final profit
-    const closePrice = position.type === 'BUY' ? symbol.bid : symbol.ask;
-    const profit = position.type === 'BUY' 
-      ? (closePrice - position.openPrice) * position.volume * 100
-      : (position.openPrice - closePrice) * position.volume * 100;
+    const closePrice = position.type === "BUY" ? symbol.bid : symbol.ask;
+    const profit =
+      position.type === "BUY"
+        ? (closePrice - position.openPrice) * position.volume * 100
+        : (position.openPrice - closePrice) * position.volume * 100;
 
     // Create trade history record
     const trade: MT5Trade = {
@@ -297,13 +305,13 @@ export class MT5Service {
       openPrice: position.openPrice,
       closePrice,
       profit,
-      commission: -7.50, // Simulated commission
+      commission: -7.5, // Simulated commission
       swap: position.swap,
       openTime: position.openTime,
       closeTime: Date.now(),
       comment: position.comment,
       sl: position.sl,
-      tp: position.tp
+      tp: position.tp,
     };
 
     this.tradeHistory.unshift(trade);
@@ -311,29 +319,33 @@ export class MT5Service {
 
     // Update account info
     if (this.accountInfo) {
-      this.accountInfo.balance += profit - 7.50;
-      this.accountInfo.equity = this.accountInfo.balance + this.calculateOpenProfit();
+      this.accountInfo.balance += profit - 7.5;
+      this.accountInfo.equity =
+        this.accountInfo.balance + this.calculateOpenProfit();
       this.accountInfo.margin -= position.volume * 100;
-      this.accountInfo.freeMargin = this.accountInfo.equity - this.accountInfo.margin;
+      this.accountInfo.freeMargin =
+        this.accountInfo.equity - this.accountInfo.margin;
       this.accountInfo.profit = this.calculateOpenProfit();
     }
 
-    this.notifySubscribers({ type: 'position_closed', trade });
+    this.notifySubscribers({ type: "position_closed", trade });
     return true;
   }
 
   async deleteOrder(ticket: number): Promise<boolean> {
     if (!this.connected) {
-      throw new Error('Not connected to MT5');
+      throw new Error("Not connected to MT5");
     }
 
-    const orderIndex = this.orders.findIndex(order => order.ticket === ticket);
+    const orderIndex = this.orders.findIndex(
+      (order) => order.ticket === ticket,
+    );
     if (orderIndex === -1) {
       throw new Error(`Order ${ticket} not found`);
     }
 
     this.orders.splice(orderIndex, 1);
-    this.notifySubscribers({ type: 'order_deleted', ticket });
+    this.notifySubscribers({ type: "order_deleted", ticket });
     return true;
   }
 
@@ -349,22 +361,58 @@ export class MT5Service {
   }
 
   private notifySubscribers(data: any): void {
-    this.subscribers.forEach(callback => callback(data));
+    this.subscribers.forEach((callback) => callback(data));
   }
 
   // Private Methods
   private initializeMockData(): void {
     // Initialize popular trading symbols with realistic data
     const symbolData = [
-      { symbol: 'XAUUSD', bid: 1985.45, ask: 1985.65, volume: 156234, change: 12.80 },
-      { symbol: 'EURUSD', bid: 1.0875, ask: 1.0876, volume: 892456, change: -0.0023 },
-      { symbol: 'GBPUSD', bid: 1.2634, ask: 1.2636, volume: 445678, change: 0.0045 },
-      { symbol: 'USDJPY', bid: 149.82, ask: 149.84, volume: 678923, change: -0.34 },
-      { symbol: 'USDCHF', bid: 0.8945, ask: 0.8947, volume: 234567, change: 0.0012 },
-      { symbol: 'AUDUSD', bid: 0.6523, ask: 0.6525, volume: 345678, change: 0.0034 },
+      {
+        symbol: "XAUUSD",
+        bid: 1985.45,
+        ask: 1985.65,
+        volume: 156234,
+        change: 12.8,
+      },
+      {
+        symbol: "EURUSD",
+        bid: 1.0875,
+        ask: 1.0876,
+        volume: 892456,
+        change: -0.0023,
+      },
+      {
+        symbol: "GBPUSD",
+        bid: 1.2634,
+        ask: 1.2636,
+        volume: 445678,
+        change: 0.0045,
+      },
+      {
+        symbol: "USDJPY",
+        bid: 149.82,
+        ask: 149.84,
+        volume: 678923,
+        change: -0.34,
+      },
+      {
+        symbol: "USDCHF",
+        bid: 0.8945,
+        ask: 0.8947,
+        volume: 234567,
+        change: 0.0012,
+      },
+      {
+        symbol: "AUDUSD",
+        bid: 0.6523,
+        ask: 0.6525,
+        volume: 345678,
+        change: 0.0034,
+      },
     ];
 
-    symbolData.forEach(data => {
+    symbolData.forEach((data) => {
       const symbol: MT5Symbol = {
         symbol: data.symbol,
         bid: data.bid,
@@ -373,9 +421,9 @@ export class MT5Service {
         volume: data.volume,
         time: Date.now(),
         spread: Math.round((data.ask - data.bid) * Math.pow(10, 5)),
-        digits: data.symbol === 'USDJPY' ? 3 : 5,
+        digits: data.symbol === "USDJPY" ? 3 : 5,
         change: data.change,
-        changePercent: (data.change / data.bid) * 100
+        changePercent: (data.change / data.bid) * 100,
       };
       this.symbols.set(data.symbol, symbol);
     });
@@ -388,36 +436,36 @@ export class MT5Service {
     const mockTrades: MT5Trade[] = [
       {
         ticket: 12345,
-        symbol: 'XAUUSD',
-        type: 'BUY',
+        symbol: "XAUUSD",
+        type: "BUY",
         volume: 0.1,
-        openPrice: 1980.50,
+        openPrice: 1980.5,
         closePrice: 1985.45,
-        profit: 495.00,
-        commission: -7.50,
+        profit: 495.0,
+        commission: -7.5,
         swap: 0,
         openTime: Date.now() - 3600000,
         closeTime: Date.now() - 1800000,
-        comment: 'AI Signal',
-        sl: 1975.00,
-        tp: 1990.00
+        comment: "AI Signal",
+        sl: 1975.0,
+        tp: 1990.0,
       },
       {
         ticket: 12344,
-        symbol: 'EURUSD',
-        type: 'SELL',
+        symbol: "EURUSD",
+        type: "SELL",
         volume: 0.5,
-        openPrice: 1.0890,
+        openPrice: 1.089,
         closePrice: 1.0875,
-        profit: 750.00,
-        commission: -7.50,
-        swap: -2.50,
+        profit: 750.0,
+        commission: -7.5,
+        swap: -2.5,
         openTime: Date.now() - 7200000,
         closeTime: Date.now() - 3600000,
-        comment: 'Pullback Strategy',
-        sl: 1.0910,
-        tp: 1.0860
-      }
+        comment: "Pullback Strategy",
+        sl: 1.091,
+        tp: 1.086,
+      },
     ];
 
     this.tradeHistory.push(...mockTrades);
@@ -445,7 +493,7 @@ export class MT5Service {
       // Simulate realistic price movement
       const volatility = 0.0001; // 0.01% volatility
       const change = (Math.random() - 0.5) * 2 * volatility * symbol.bid;
-      
+
       symbol.bid += change;
       symbol.ask = symbol.bid + (symbol.ask - symbol.bid); // Maintain spread
       symbol.last = symbol.bid;
@@ -462,34 +510,46 @@ export class MT5Service {
     // Update account equity
     if (this.accountInfo) {
       this.accountInfo.profit = this.calculateOpenProfit();
-      this.accountInfo.equity = this.accountInfo.balance + this.accountInfo.profit;
+      this.accountInfo.equity =
+        this.accountInfo.balance + this.accountInfo.profit;
       if (this.accountInfo.margin > 0) {
-        this.accountInfo.marginLevel = (this.accountInfo.equity / this.accountInfo.margin) * 100;
+        this.accountInfo.marginLevel =
+          (this.accountInfo.equity / this.accountInfo.margin) * 100;
       }
-      this.accountInfo.freeMargin = this.accountInfo.equity - this.accountInfo.margin;
+      this.accountInfo.freeMargin =
+        this.accountInfo.equity - this.accountInfo.margin;
     }
 
-    this.notifySubscribers({ 
-      type: 'price_update', 
+    this.notifySubscribers({
+      type: "price_update",
       symbols: Array.from(this.symbols.values()),
-      account: this.accountInfo 
+      account: this.accountInfo,
     });
   }
 
   private updatePositionProfits(): void {
-    this.positions.forEach(position => {
+    this.positions.forEach((position) => {
       const symbol = this.symbols.get(position.symbol);
       if (symbol) {
-        position.currentPrice = position.type === 'BUY' ? symbol.bid : symbol.ask;
-        position.profit = position.type === 'BUY'
-          ? (position.currentPrice - position.openPrice) * position.volume * 100
-          : (position.openPrice - position.currentPrice) * position.volume * 100;
+        position.currentPrice =
+          position.type === "BUY" ? symbol.bid : symbol.ask;
+        position.profit =
+          position.type === "BUY"
+            ? (position.currentPrice - position.openPrice) *
+              position.volume *
+              100
+            : (position.openPrice - position.currentPrice) *
+              position.volume *
+              100;
       }
     });
   }
 
   private calculateOpenProfit(): number {
-    return this.positions.reduce((total, position) => total + position.profit, 0);
+    return this.positions.reduce(
+      (total, position) => total + position.profit,
+      0,
+    );
   }
 }
 
