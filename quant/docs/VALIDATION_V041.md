@@ -428,7 +428,7 @@ Journaux de reproduction : `research_campaign/results/repro_tests/`.
 
 **Nouveaux, hors campagne (10)** :
 - `client/components/research/StudyView.spec.tsx`
-- `docs/CODEX_HANDOFF_V041.md`
+- `docs/handoffs/CODEX_HANDOFF_V041.md`
 - `quant/docs/VALIDATION_V041.md`
 - `quant/src/ai_trader_optimizer/research/inference.py`
 - `quant/src/ai_trader_optimizer/research/registry.py`
@@ -444,7 +444,7 @@ Journaux de reproduction : `research_campaign/results/repro_tests/`.
 - `results/`.
 
 **Documentation** : `quant/docs/VALIDATION_V041.md` (nouveau), `VALIDATION.md`, `CHANGELOG.md`,
-`KNOWN_LIMITATIONS.md`, `ROADMAP.md` et `docs/CODEX_HANDOFF_V041.md` (nouveau).
+`KNOWN_LIMITATIONS.md`, `ROADMAP.md` et `docs/handoffs/CODEX_HANDOFF_V041.md` (nouveau).
 
 Aucun fichier supprimé. Fins de ligne préservées : CRLF pour les fichiers suivis qui l'étaient, LF pour les nouveaux.
 

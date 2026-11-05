@@ -82,7 +82,7 @@ React (client/)  ──HTTP JSON /api/v1──►  API Python (ai_trader_optimiz
 Règles : **aucune route d'ordre** ; pas de champ identifiant/mot de passe ; écoute `127.0.0.1` ; erreurs = 4xx
 avec message français ; types TS générés dans `shared/api-v1.ts` (jamais écrits à la main).
 
-## 4. Correctifs critiques réalisés (détails et preuves : `docs/CODEX_REVIEW_HANDOFF.md`)
+## 4. Correctifs critiques réalisés (détails et preuves : `docs/handoffs/CODEX_REVIEW_HANDOFF.md`)
 
 **App React / Express**
 - C1 Mot de passe MT5 et token Telegram stockés en clair dans `localStorage` **et** dans `data/settings.json`

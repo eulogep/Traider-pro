@@ -9,7 +9,7 @@ Documents de référence :
 - `quant/docs/SECURITY_V05.md` ;
 - `quant/docs/VALIDATION_V05.md`.
 
-Le handoff v0.4.1 (`docs/CODEX_HANDOFF_V041.md`) reste ouvert et séparé.
+Le handoff v0.4.1 (`docs/handoffs/CODEX_HANDOFF_V041.md`) reste ouvert et séparé.
 
 **Règles**
 - Aucun compte de trading, aucun ordre, aucun secret, aucun push, aucune opération Git destructive.

@@ -1,7 +1,8 @@
 # KB-001 — « Du Backtest Fragile à la Plateforme de Recherche Financière »
 
-**Source** : `Du Backtest Fragile à la Plateforme de Recherche Financière _ Une Architecture pour la Fiabilité
-Scientifique de l'AI Trader Optimizer.md`, à la racine du dépôt. 107 lignes, SHA-256 `99ef3b51…a3766c1d17fbfc81b7b81a50c1a884fdfd5`.
+**Source** : [`sources/2026-11-05_du-backtest-fragile-a-la-plateforme-de-recherche.md`](sources/2026-11-05_du-backtest-fragile-a-la-plateforme-de-recherche.md)
+(nom d'origine : « Du Backtest Fragile à la Plateforme de Recherche Financière _ Une Architecture pour la Fiabilité
+Scientifique de l'AI Trader Optimizer.md », déposé à la racine du dépôt puis rangé ici, contenu inchangé). 107 lignes, SHA-256 `99ef3b51…a3766c1d17fbfc81b7b81a50c1a884fdfd5`.
 
 **Nature** : synthèse de recherche rédigée par le propriétaire avec une quarantaine de liens web. Elle couvre :
 - le résumé de l'audit Codex V0.3 ;
@@ -30,7 +31,7 @@ Scientifique de l'AI Trader Optimizer.md`, à la racine du dépôt. 107 lignes, 
 
 | # | Affirmation de la source | État réel du projet (v0.4.1) | Exact ? | Décision |
 |---|---|---|---|---|
-| 1 | B1 corrigé : « les paquets de sources sont maintenant inclus dans le suivi Git » | `quant/` **n'est pas suivi par Git** : `git ls-files quant` est vide (KNOWN_LIMITATIONS n° 20). Le paquet `data` est présent sur disque, ce que Codex a vérifié (« PASS technique »). | **Faux** pour le suivi Git | Inchangé : commit seulement avec l'accord du propriétaire (`docs/CONSOLIDATION_AUDIT.md`) |
+| 1 | B1 corrigé : « les paquets de sources sont maintenant inclus dans le suivi Git » | `quant/` **n'est pas suivi par Git** : `git ls-files quant` est vide (KNOWN_LIMITATIONS n° 20). Le paquet `data` est présent sur disque, ce que Codex a vérifié (« PASS technique »). | **Faux** pour le suivi Git | Inchangé : commit seulement avec l'accord du propriétaire (`docs/project/CONSOLIDATION_AUDIT.md`) |
 | 2 | B2/B3/I1–I10 corrigés en V0.3.1, « base solide » | Le contre-audit Codex V0.3.1 a trouvé **6 corrections partielles** et N1–N10 ; elles sont traitées en v0.4.1 (`VALIDATION_V041.md` §7) | **Incomplet** | Déjà traité |
 | 3 | I4 : « jeton CSRF adapté aux mutations » | Le projet utilise un en-tête personnalisé `X-ATO-Request` plus un contrôle Host/Origin, côté FastAPI et côté Express (N10), et non un jeton CSRF | **Inexact** (mécanisme différent, même objectif) | Inchangé |
 | 4 | WFA : ré-optimiser les paramètres fenêtre par fenêtre, mesurer leur stabilité | Le walk-forward existe pour la validation des signaux (modèle ré-entraîné) et la comparaison IS/OOS de variantes. Il n'y a pas de mesure de stabilité des paramètres optimaux. | Exact en principe | Backlog (§4, B5) |

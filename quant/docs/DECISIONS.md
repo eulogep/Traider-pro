@@ -68,7 +68,7 @@ tierce avec `usage_rights: unclear` est refusée à l'exécution.
 `analytics`. Les versions de pandas/numpy ne sont pas incluses (à décider).
 
 **D-19 · (0.2.1) Produit cible : React (`client/`) + API Python** ; Streamlit reste la console de recherche jusqu'à la
-parité ; Express retiré à terme. Détails et plan : `../../docs/CONSOLIDATION_AUDIT.md`. FastAPI non ajouté sans accord.
+parité ; Express retiré à terme. Détails et plan : `../../docs/project/CONSOLIDATION_AUDIT.md`. FastAPI non ajouté sans accord.
 
 **D-20 · (2026-11-03) Renommage des dossiers.** `ai-trader-optimizer-v0.1/` → `quant/` (moteur quantitatif ; la version
 vit dans `pyproject.toml`, pas dans un nom de dossier) ; `ai-trader-optimizer/` → `archive/legacy-student-ai-trader-optimizer/`.

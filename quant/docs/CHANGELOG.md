@@ -3,7 +3,7 @@
 ## 0.5.0 — 2026-11-05 (External Bot Analysis & Optimization Lab)
 
 Moteur inchangé ; `research_code_hash` inchangé (`5e6a8f926021b343`). Détail : `EXTERNAL_LAB.md`, `REFERENCE_V370.md`,
-`SECURITY_V05.md`, `VALIDATION_V05.md` ; contre-audit : `../../docs/CODEX_HANDOFF_V05.md`.
+`SECURITY_V05.md`, `VALIDATION_V05.md` ; contre-audit : `../../docs/handoffs/CODEX_HANDOFF_V05.md`.
 - **Importateur MT5** (`external_lab/`) :
   - formats : HTML (UTF-16), XLSX (bibliothèque standard, DOCTYPE refusé), CSV, ZIP borné ;
   - extraction : réglages, 41 paramètres, résumé MT5 (brut et lu), Orders, Deals ;
@@ -134,7 +134,7 @@ les runs existants restent reproductibles).
 ## 0.3.1 — 2026-11-04 (Financial Integrity Hardening — suite à l'audit Codex V0.3)
 
 Chaque défaut a été reproduit (sonde Codex ou test) avant correction ; régressions dans `tests/test_codex_v03_regressions.py`,
-sondes adaptées dans `scripts/codex_probes_v031.py`, preuves d'origine dans `../docs/audits/codex-v03-2026-11-04/`.
+sondes adaptées dans `scripts/codex_probes_v031.py`, preuves d'origine dans `../../docs/audits/codex-v03-2026-11-04/`.
 
 ### Bloquants
 - **B1** `.gitignore` : `data/` non ancré ignorait le package `ai_trader_optimizer/data/` → règles ancrées (`/data/`,
@@ -187,7 +187,7 @@ sondes adaptées dans `scripts/codex_probes_v031.py`, preuves d'origine dans `..
 
 ## 0.2.1 — 2026-11-03 (consolidation)
 
-### Corrigé (défauts reproduits par sonde sur 0.2.0 — voir `../../docs/CODEX_REVIEW_HANDOFF.md`)
+### Corrigé (défauts reproduits par sonde sur 0.2.0 — voir `../../docs/handoffs/CODEX_REVIEW_HANDOFF.md`)
 - Stop plus proche que spread + glissement : perte réelle 2,2× le risque prévu → refus `STOP_INSIDE_SPREAD`.
 - Contrat incohérent avec le symbole des données (EURUSD dimensionné avec le contrat or : 50 lots) →
   `CONTRACT_SYMBOL_MISMATCH` ; devise de cotation contrôlée contre le symbole d'une paire.

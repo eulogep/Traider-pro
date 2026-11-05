@@ -16,7 +16,7 @@ Simulation uniquement : aucun ordre, aucun courtier, aucun commit, push ni dépl
 | Tests Python, TypeScript et navigateur | **Oui** (§3) | — |
 | Aucun chemin d'exécution d'ordres | **Oui** : liste blanche des routes ; « mt5 » seulement sur 3 routes en lecture seule | `test_no_order_route_and_only_allowlisted_routes`, test d'intégration JS |
 | Limites méthodologiques affichées | **Oui** : bandeau « pas un backtest du moteur », constats et hypothèses séparés, qualification des hypothèses, encadré des limites | `SimulationView.spec.tsx` |
-| Dossier de contre-audit Codex | **Oui** : `docs/CODEX_HANDOFF_V05.md` | — |
+| Dossier de contre-audit Codex | **Oui** : `docs/handoffs/CODEX_HANDOFF_V05.md` | — |
 
 ## 2. Critères d'acceptation (mission §11)
 | # | Critère | Test(s) |
@@ -81,12 +81,12 @@ Simulation uniquement : aucun ordre, aucun courtier, aucun commit, push ni dépl
   - `e2e/pages-tour.mjs`, `e2e/backtest-flow.mjs`.
 - **Documentation** :
   - nouvelle : `quant/docs/{EXTERNAL_LAB,REFERENCE_V370,SECURITY_V05,VALIDATION_V05}.md`, `docs/knowledge/*`,
-    `docs/CODEX_HANDOFF_V05.md` ;
+    `docs/handoffs/CODEX_HANDOFF_V05.md` ;
   - modifiée : `quant/docs/{CHANGELOG,KNOWN_LIMITATIONS,ROADMAP,VALIDATION_V041}.md`.
 
 Non modifiés :
 - les originaux du propriétaire (`~/Documents/*`, le dossier MT5) ;
-- `AI_Trader_Optimizer_MT5_Baseline_V370/` ;
+- l'export CSV normalisé de V3.70 (déplacé ensuite, à l'identique, dans `quant/tests/fixtures/mt5/v370_normalized_export/`) ;
 - `research/` ;
 - le moteur.
 
