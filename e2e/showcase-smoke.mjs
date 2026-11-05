@@ -3,7 +3,7 @@
  * Static SHOWCASE check: serves dist/spa exactly like Netlify (static files + SPA fallback, NO API, NO Python) and
  * drives Chrome through every page. Build first: `pnpm build:showcase`.
  *
- * Usage:  node e2e/showcase-smoke.mjs [--shots-dir DIR]
+ * Usage:  node e2e/showcase-smoke.mjs [--shots-dir DIR] [--base /Traider-pro/]   (--base: GitHub Pages build, `pnpm build:pages`)
  */
 import { spawn } from "node:child_process";
 import { existsSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
@@ -18,6 +18,8 @@ const DIST = path.join(ROOT, "dist", "spa");
 const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const shotsArg = process.argv.indexOf("--shots-dir");
 const SHOTS = shotsArg > 0 ? process.argv[shotsArg + 1] : null;
+const baseArg = process.argv.indexOf("--base");
+const BASE = baseArg > 0 ? `/${process.argv[baseArg + 1].replace(/^\/|\/$/g, "")}/` : "/";
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json",
   ".svg": "image/svg+xml", ".ico": "image/x-icon", ".csv": "text/csv", ".gz": "application/gzip", ".txt": "text/plain" };
 
@@ -36,8 +38,10 @@ const sim = JSON.parse(readFileSync(path.join(DIST, "showcase", `external-sims__
 // Netlify-like static server: file if it exists, otherwise index.html (SPA fallback). /api/* is NOT served.
 const apiHits = [];
 const server = createServer((req, res) => {
-  const url = decodeURIComponent(new URL(req.url, "http://x").pathname);
-  if (url.startsWith("/api/")) apiHits.push(url);
+  const full = decodeURIComponent(new URL(req.url, "http://x").pathname);
+  if (full.includes("/api/")) apiHits.push(full);
+  if (!full.startsWith(BASE)) { res.writeHead(404); res.end(); return; } // like GitHub Pages: nothing outside the base
+  const url = "/" + full.slice(BASE.length);
   let file = path.join(DIST, url);
   if (!file.startsWith(DIST) || !existsSync(file) || statSync(file).isDirectory()) file = path.join(DIST, "index.html");
   res.writeHead(200, { "Content-Type": TYPES[path.extname(file)] ?? "application/octet-stream" });
@@ -48,7 +52,7 @@ const procs = [];
 try {
   const [port, cdpPort] = [await freePort(), await freePort()];
   await new Promise((r) => server.listen(port, "127.0.0.1", r));
-  const app = `http://127.0.0.1:${port}`;
+  const app = `http://127.0.0.1:${port}${BASE.replace(/\/$/, "")}`;
   procs.push(spawn(CHROME, ["--headless=new", `--remote-debugging-port=${cdpPort}`, `--user-data-dir=${path.join(tmp, "chrome")}`,
     "--no-first-run", "--no-default-browser-check", "--window-size=1400,1800", "about:blank"], { stdio: "ignore" }));
   for (let t0 = Date.now(); ; await sleep(200)) {

@@ -65,9 +65,11 @@ export interface ImportDatasetInput {
 export const SHOWCASE_MODE = import.meta.env.VITE_SHOWCASE === "1";
 export const SHOWCASE_READ_ONLY =
   "Vitrine en lecture seule : importer, lancer ou recalculer est désactivé ici. Installez la plateforme pour l'utiliser.";
+/** Where the showcase files live: follows the site's base path ("/" locally and on Netlify, "/Traider-pro/" on GitHub Pages). */
+export const SHOWCASE_ROOT = `${import.meta.env.BASE_URL}showcase`;
 const SHOWCASE_CHARS: Record<string, string> = { "/": "__", "?": "--", "&": "_", "=": "-" };
 export function showcaseFile(path: string): string {
-  return `/showcase/${path.replace(/^\//, "").replace(/[/?&=]/g, (c) => SHOWCASE_CHARS[c])}.json`;
+  return `${SHOWCASE_ROOT}/${path.replace(/^\//, "").replace(/[/?&=]/g, (c) => SHOWCASE_CHARS[c])}.json`;
 }
 
 export function createQuantClient(baseUrl = "", fetchImpl: typeof fetch = fetch, showcase = SHOWCASE_MODE) {
@@ -196,7 +198,7 @@ export function createQuantClient(baseUrl = "", fetchImpl: typeof fetch = fetch,
     getEdgeStudy: (id: string) => request<EdgeStudy>(`/research/edge-studies/${encodeURIComponent(id)}`),
     exportUrl: (runId: string, name: ExportName) =>
       showcase
-        ? `${baseUrl}/showcase/exports/${encodeURIComponent(runId)}/${name}`
+        ? `${baseUrl}${SHOWCASE_ROOT}/exports/${encodeURIComponent(runId)}/${name}`
         : `${root}/backtests/${encodeURIComponent(runId)}/export/${name}`,
   };
 }
