@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { StatusChip } from "@/components/layout/AppShell";
 import { Page } from "@/components/layout/Page";
 import { NAV_ITEMS } from "@/lib/modules";
-import { quantApi } from "@/lib/quantApi";
+import { SHOWCASE_MODE, quantApi } from "@/lib/quantApi";
 import { cn } from "@/lib/utils";
 
 const STEPS: Array<{ icon: LucideIcon; title: string; text: string; href: string; cta: string }> = [
@@ -76,7 +76,7 @@ function LabState() {
         <p className="text-sm font-semibold">État du laboratoire</p>
         <span className={cn("flex items-center gap-1.5 text-xs", online ? "text-primary" : "text-red-400")}>
           <span className={cn("h-2 w-2 rounded-full", online ? "bg-primary" : "bg-red-500")} />
-          {health.isLoading ? "connexion…" : online ? "moteur en ligne" : "moteur hors ligne"}
+          {SHOWCASE_MODE ? "vitrine : résultats figés" : health.isLoading ? "connexion…" : online ? "moteur en ligne" : "moteur hors ligne"}
         </span>
       </div>
       {online ? (

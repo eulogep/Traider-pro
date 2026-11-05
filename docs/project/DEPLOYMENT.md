@@ -32,6 +32,7 @@ Le fichier `manifest.json` date la génération et contient l'empreinte de chaqu
 pnpm showcase:data          # recalcule showcase/data/ avec le moteur actuel
 pnpm build:showcase         # build VITE_SHOWCASE=1 + copie des données dans dist/spa/showcase/
 node e2e/showcase-smoke.mjs # sert dist/spa comme Netlify (fichiers statiques, AUCUNE API) et vérifie chaque page
+node e2e/readme-screenshots.mjs  # refait les captures du README (docs/images/) depuis la vitrine
 ```
 Ensuite :
 1. commitez `showcase/data/` ;
