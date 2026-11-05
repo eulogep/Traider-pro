@@ -1,0 +1,13 @@
+/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+/private/tmp/codex-counter-v031-d7c34xx6/extended_probes.py:20: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  assert aligned.h_close.iloc[:14].isna().all();assert aligned.h_available_at.iloc[14]==f.timestamp.iloc[14]+pd.Timedelta(minutes=1)
+{"name": "mtf_availability", "pass_": true, "first_context_bar": 14, "perturbed_future_from": 30}
+{"name": "original_B3", "is_trades": 0, "oos_trades": 1, "oos_pnl": 31.79000000000003}
+{"name": "intermediate_infinite_exit", "refused": true, "error": "calcul non fini pour prix de sortie (inf) : simulation interrompue, rien n'est enregistr\u00e9"}
+{"name": "post_rename_interruption", "directory_present": true, "indexed_rows": 0, "readable": false}
+{"name": "post_rename_recovery", "pass_": true}
+{"name": "concurrent_writers_reader", "writers": 4, "reads": 10, "not_yet_published": 10, "partial_errors": []}
+{"name": "fingerprint_coverage", "changed_semantic_module": "storage/integrity.py consistency tolerance", "hash_unchanged": true}
+{"name": "close_timestamp", "exit_time": "2026-09-07 12:02:00+00:00", "last_bar_open": "2026-09-07 12:02:00+00:00", "actual_last_close": "2026-09-07T12:03:00+00:00", "exit_price": 100.95}
+{"name": "no_origin_local_header", "status": 201}

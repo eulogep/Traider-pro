@@ -1,0 +1,9 @@
+/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+/private/tmp/codex-counter-v031-d7c34xx6/boundary_and_publication.py:14: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  cut=chronological_split(ds.bars.timestamp.iloc[0],ds.bars.timestamp.iloc[-1],.5,embargo=pd.Timedelta(minutes=-1))
+{"name": "negative_embargo_overlap", "train_end": "2026-09-07 12:05:00+00:00", "test_start": "2026-09-07 12:04:00+00:00", "is_trades": [{"entry_time": "2026-09-07 12:04:00+00:00", "net_pnl": 31.79000000000003}], "oos_trades": [{"entry_time": "2026-09-07 12:04:00+00:00", "net_pnl": 31.79000000000003}]}
+/private/tmp/codex-counter-v031-d7c34xx6/boundary_and_publication.py:17: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  w=walk_forward_splits(pd.Timestamp('2026-09-07T12:00Z'),pd.Timestamp('2026-09-07T13:00Z'),pd.Timedelta(minutes=10),pd.Timedelta(minutes=5),embargo=pd.Timedelta(minutes=-1))
+{"name": "walk_forward_negative_embargo", "folds": 10, "first_train_end": "2026-09-07 12:10:00+00:00", "first_test_start": "2026-09-07 12:09:00+00:00"}
+{"name": "concurrent_visibility", "writers": 4, "missing": 7, "verified": 2, "partial_errors": []}

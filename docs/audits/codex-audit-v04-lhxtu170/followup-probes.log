@@ -1,0 +1,5 @@
+/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{"name": "latest_is_training_row", "latest": "2026-09-25T16:31:00+00:00", "in_training_labels": true, "latest_outcome": [{"exit_time": "2026-09-25 16:34:00+00:00", "win": false, "r": -1.0000000000001117}], "dataset_end": "2026-09-25T23:59:00+00:00"}
+{"name": "timeframe_mismatch", "dataset_timeframe": "M5", "strategy_execution": "M1", "main_engine": "La strat\u00e9gie s'ex\u00e9cute en M1, le jeu de donn\u00e9es est en M5.", "study_accepted": true, "study_verdict": "INSUFFICIENT"}
+{"name": "zero_auc_interval", "auc": {"value": 0.0, "ci": [null, null], "rating": "non d\u00e9montr\u00e9"}}

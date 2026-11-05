@@ -1,0 +1,11 @@
+PASS  built SPA served on /backtest
+PASS  /api/v1/health relayed to Python — backtest-engine/0.3.1
+PASS  POST demo dataset through production server
+PASS  POST backtest through production server — 10 trades
+PASS  results readable and consistent
+PASS  reproduce: deterministic and artefacts intact
+PASS  foreign-origin mutation refused (403)
+PASS  mutation without X-ATO-Request refused (403)
+PASS  Express mock routes still served
+
+9/9 checks passed

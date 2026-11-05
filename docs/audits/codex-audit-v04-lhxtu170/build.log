@@ -1,0 +1,39 @@
+
+> fusion-starter@ build /private/tmp/codex-audit-v04-lhxtu170/repo
+> npm run build:client && npm run build:server
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> build:client
+> vite build
+
+vite v7.1.2 building for production...
+transforming...
+Browserslist: browsers data (caniuse-lite) is 15 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2450 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/spa/index.html                   0.64 kB │ gzip:   0.39 kB
+dist/spa/assets/index-Bfv7xrhZ.css   75.01 kB │ gzip:  13.10 kB
+dist/spa/assets/index-DX0bScSP.js   919.26 kB │ gzip: 269.21 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.55s
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> build:server
+> vite build --config vite.config.server.ts
+
+vite v7.1.2 building SSR bundle for production...
+transforming...
+✓ 14 modules transformed.
+rendering chunks...
+dist/server/node-build.mjs  25.49 kB │ map: 54.52 kB
+✓ built in 145ms

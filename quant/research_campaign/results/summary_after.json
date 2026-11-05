@@ -1,0 +1,1057 @@
+{
+ "phase": "after",
+ "manifest": {
+  "phase": "after",
+  "started": "2026-11-04T22:13:34Z",
+  "campaign_seed": 20261104,
+  "reps": {
+   "codex": 1000,
+   "null": 800,
+   "e2e_null": 800,
+   "search": 150,
+   "power": 300
+  },
+  "override_reps": null,
+  "env": {
+   "software_version": "0.4.1",
+   "engine_version": "backtest-engine/0.3.1",
+   "research_code_hash": "5e6a8f926021b343",
+   "src": "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/research_campaign/frozen/v0.4.1/src",
+   "src_tree_sha256": "780f86756a9370245400c751c8d130823cffbffe864f048139a5e02ad2494655",
+   "python": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+   "platform": "macOS-26.2-arm64-arm-64bit",
+   "numpy": "2.5.4",
+   "pandas": "2.3.3",
+   "git_head": "2dedf6c758ec124098db5f6abd4076e1d8dd134b",
+   "pip_freeze_sha256": "101cd9786ad549d9d336f89687f2aa1dbb125a65bd645e31b5ebdf8229701e74"
+  },
+  "protocol_sha256": "0163eb419f5cde59ad84c49cd0f75b6b314734571f9bba5c4fc5feb9796af155",
+  "scenarios_py_sha256": "aa80d87db5a927220fa7b96fb397805b302ef1959ecb9dab364576942f027dd3",
+  "runner_sha256": "72855816c997cd2f209f7fbb3f64a1684ac1efcf4fdf34da28e715792d3963cb",
+  "calibration": {
+   "P1_edge_005": {
+    "A_pooled_mean_r_at_q1": 0.23144326872298393,
+    "n_signals": 51127,
+    "target": 0.05,
+    "q": 0.608017831488211,
+    "errors": 0
+   },
+   "P2_edge_010": {
+    "A_pooled_mean_r_at_q1": 0.22595034910783554,
+    "n_signals": 51560,
+    "target": 0.1,
+    "q": 0.7212875536480687,
+    "errors": 0
+   },
+   "P3_edge_020": {
+    "A_pooled_mean_r_at_q1": 0.2306492797692143,
+    "n_signals": 51303,
+    "target": 0.2,
+    "q": 0.933558691794135,
+    "errors": 0
+   },
+   "P4_edge_010_burst20": {
+    "A_pooled_mean_r_at_q1": 0.17811123797096723,
+    "n_signals": 49048,
+    "target": 0.1,
+    "q": 0.7807234432234432,
+    "errors": 0
+   },
+   "P5_edge_020_stochvol": {
+    "A_pooled_mean_r_at_q1": 0.24591704852543766,
+    "n_signals": 51066,
+    "target": 0.2,
+    "q": 0.9066411849020545,
+    "errors": 0
+   },
+   "P6_edge_010_sparse": {
+    "A_pooled_mean_r_at_q1": 0.22667185069984447,
+    "n_signals": 10288,
+    "target": 0.1,
+    "q": 0.7205831903945111,
+    "errors": 0
+   },
+   "P7_conditional_hours": {
+    "A_pooled_mean_r_at_q1": 0.0916589219330855,
+    "n_signals": 51648,
+    "target": 0.3,
+    "q": 1.0,
+    "errors": 0
+   }
+  },
+  "finished": "2026-11-05T00:40:21Z",
+  "seconds": 8806.1,
+  "outputs_sha256": {
+   "C0_codex_indep.jsonl": "5bdccfc6ceba05738fa02d573ad748871dfc4e9e3eccca1f14a5957c4319a1a1",
+   "C1_codex_cluster100.jsonl": "6f32df88bf4081c3f81f4417885bdd565baeb8c679b5ca5235959d5b21c37d0a",
+   "E1_e2e_baseline_stochvol.jsonl": "f17527b2236e072cf3d23e3d62ecd7290385b9a3ecde003fea8e83220566c5a1",
+   "N10_corr_2h.jsonl": "d01b8d3d85ce4e6daa983304270dafff864d85ced27801b38d3405ddd48e7053",
+   "N11_corr_1d.jsonl": "e83d1d44d62c07a82d64834ce7869769448319186e98246593e874b8d4730dd8",
+   "N1_rand_sparse.jsonl": "3d31ba968bbf4f956a305b251c738220bf8f1364792e9eae3da5f85d49455559",
+   "N2_rand_mid.jsonl": "f9a8ef7a092cf8ffdd93c94111d9f482cf588cdc1b994c959c16ffce2aaec832",
+   "N3_rand_dense.jsonl": "de01e3ad85ace5011a6aa52be2d2b3442f93cb99c60e46d55113666d24b3b329",
+   "N4_burst10.jsonl": "7cf98c135b5129e46b2d2fc0f50bac1219c86b0ee255038e27fa90c7a11b7713",
+   "N5_burst60.jsonl": "315fe343272131a173bd8ad8f17fba1e835461abb26d05464250768e12848232",
+   "N6_rule_momentum.jsonl": "a10d35bc647bf4bbe6b8a4f5c98f079320c4d53969d15301d2bca0a89882d0e7",
+   "N7_volswitch.jsonl": "dd403fcd4829ac4d6fe420018c45b3dd76956ecb28303992d4e8afcd095ceee1",
+   "N8_stochvol.jsonl": "ad8b62e37a83fd684b44c1f5a7ec3b1db0da7ca973ec8735df33449061275ffb",
+   "N9_stochvol_burst30.jsonl": "3331530167f0d76d7bd2e9facf95a14e824db715ce2395bf5f541f8724bd0579",
+   "P1_edge_005.jsonl": "8a2395d5091bdf0f09cb8aac188c7fa6a19219ec4e32b8d453e7c4649a671054",
+   "P2_edge_010.jsonl": "826c2db4d78ad270f1538ab1e431a87362b6cc55201125066eeec826165a7785",
+   "P3_edge_020.jsonl": "a5975d53861403ff6b3cc1e6180222f96133c10bf753b9cdd82660a362b79513",
+   "P4_edge_010_burst20.jsonl": "680409d69141c67eefb23104bbdd9353252b0b272d02efa23685fa66eea6d107",
+   "P5_edge_020_stochvol.jsonl": "77d53c9dc11f0f3b280c7ff42369dd3ff9329b67a24e41598d4480db935d5f82",
+   "P6_edge_010_sparse.jsonl": "bcafe8dbed188fc35251a49099bf757da590b5e53c81ac886e136e42ba083705",
+   "P7_conditional_hours.jsonl": "568905cb99e7afda3743bc15dda7b21cc3f21cdfc8859c0d926aadb304693550",
+   "S1_search_10_variants.jsonl": "4b0f984f698f574e17de2c718c86627a7c05de26bd5f34de568f3565846c490d"
+  }
+ },
+ "scenarios": {
+  "C0_codex_indep": {
+   "family": "codex",
+   "description": "Codex : Bernoulli p=0,40 indépendant, 1 500 signaux",
+   "n_rows": 1000,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "NO_EDGE": 939,
+    "EDGE": 54,
+    "NEGATIVE": 7
+   },
+   "edge": {
+    "k": 54,
+    "n": 1000,
+    "rate": 0.054,
+    "ci95": [
+     0.040823351125604646,
+     0.06987400557706544
+    ],
+    "p_vs_5pct": 0.30016742878527425,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "filtered_effect": {
+    "mean": 0.0005505945883719062,
+    "ci95": [
+     -0.0033174833483880645,
+     0.004418672525131877
+    ],
+    "n_rep": 1000
+   },
+   "median_n_oos": 750,
+   "median_units_oos": 750
+  },
+  "C1_codex_cluster100": {
+   "family": "codex",
+   "description": "Codex : résultat commun par groupe de 100, 3 000 signaux",
+   "n_rows": 1000,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "INSUFFICIENT": 1000
+   },
+   "edge": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.003682083896865671
+    ],
+    "p_vs_5pct": 1.0,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "filtered_effect": {
+    "mean": -0.044485029755668114,
+    "ci95": [
+     -0.0687146758551046,
+     -0.020255383656231623
+    ],
+    "n_rep": 997
+   },
+   "median_n_oos": 1500,
+   "median_units_oos": 15
+  },
+  "E1_e2e_baseline_stochvol": {
+   "family": "e2e_null",
+   "description": "Chaîne applicative complète, stratégie baseline réelle, vol. stochastique, coûts nuls",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "NO_EDGE": 763,
+    "EDGE": 29,
+    "NEGATIVE": 8
+   },
+   "edge": {
+    "k": 29,
+    "n": 800,
+    "rate": 0.03625,
+    "ci95": [
+     0.024409078930727517,
+     0.051648075565139645
+    ],
+    "p_vs_5pct": 0.9736025914866697,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": null,
+    "ci95": null,
+    "n_rep": 0
+   },
+   "filtered_effect": {
+    "mean": 0.005618351626019132,
+    "ci95": [
+     0.0010939304646279983,
+     0.010142772787410267
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 1116,
+   "median_units_oos": 643
+  },
+  "N10_corr_2h": {
+   "family": "null",
+   "description": "Résultats corrélés : régimes de tendance et de sens indépendants (~2 h)",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "EDGE": 294,
+    "NO_EDGE": 506
+   },
+   "edge": {
+    "k": 294,
+    "n": 800,
+    "rate": 0.3675,
+    "ci95": [
+     0.3340070821849481,
+     0.4019734344854
+    ],
+    "p_vs_5pct": 1.6224189448662862e-167,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": -3.549471069638511e-05,
+    "ci95": [
+     -0.002317278834400449,
+     0.002246289413007679
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": -1.4581893371362911e-05,
+    "mean_signals_per_rep": 1285.84125
+   },
+   "filtered_effect": {
+    "mean": 0.09473485461687961,
+    "ci95": [
+     0.088818397442109,
+     0.10065131179165022
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 628,
+   "median_units_oos": 513
+  },
+  "N11_corr_1d": {
+   "family": "null",
+   "description": "Résultats corrélés : régimes ~1 jour (mémoire longue)",
+   "n_rows": 800,
+   "errors": 4,
+   "error_examples": [
+    "ValueError: NON_POSITIVE_PRICE: Prix nuls ou négatifs."
+   ],
+   "verdicts": {
+    "NO_EDGE": 129,
+    "EDGE": 666,
+    "NEGATIVE": 1
+   },
+   "edge": {
+    "k": 666,
+    "n": 796,
+    "rate": 0.8366834170854272,
+    "ci95": [
+     0.8091386424394655,
+     0.8617060465072599
+    ],
+    "p_vs_5pct": 0.0,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": -0.0013983061620137906,
+    "ci95": [
+     -0.004255073470943733,
+     0.0014584611469161514
+    ],
+    "n_rep": 796,
+    "pooled_mean_r": -0.001411907346024855,
+    "mean_signals_per_rep": 1284.8366834170854
+   },
+   "filtered_effect": {
+    "mean": 0.21267638430134014,
+    "ci95": [
+     0.20629616655598804,
+     0.21905660204669225
+    ],
+    "n_rep": 796
+   },
+   "median_n_oos": 627,
+   "median_units_oos": 514
+  },
+  "N1_rand_sparse": {
+   "family": "null",
+   "description": "Vol. constante, signaux aléatoires rares (ρ=0,01)",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "NO_EDGE": 701,
+    "EDGE": 47,
+    "INSUFFICIENT": 41,
+    "NEGATIVE": 11
+   },
+   "edge": {
+    "k": 47,
+    "n": 800,
+    "rate": 0.05875,
+    "ci95": [
+     0.043483019677104495,
+     0.07736224758153698
+    ],
+    "p_vs_5pct": 0.14621681445598383,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.0018816249760786124,
+    "ci95": [
+     -0.003570172187143239,
+     0.0073334221393004636
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": 0.001830152282308747,
+    "mean_signals_per_rep": 257.5275
+   },
+   "filtered_effect": {
+    "mean": 0.007711977598988755,
+    "ci95": [
+     -0.0009391371028532472,
+     0.01636309230083076
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 126,
+   "median_units_oos": 118
+  },
+  "N2_rand_mid": {
+   "family": "null",
+   "description": "Vol. constante, signaux aléatoires (ρ=0,05)",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "NO_EDGE": 755,
+    "EDGE": 39,
+    "NEGATIVE": 6
+   },
+   "edge": {
+    "k": 39,
+    "n": 800,
+    "rate": 0.04875,
+    "ci95": [
+     0.03489232958880843,
+     0.06604315993690449
+    ],
+    "p_vs_5pct": 0.587147046561542,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.0026014312202391034,
+    "ci95": [
+     0.0002686724058991001,
+     0.004934190034579107
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": 0.002602215287525099,
+    "mean_signals_per_rep": 1284.6275
+   },
+   "filtered_effect": {
+    "mean": 0.006108046030605298,
+    "ci95": [
+     0.0013116727745844702,
+     0.010904419286626124
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 627,
+   "median_units_oos": 458
+  },
+  "N3_rand_dense": {
+   "family": "null",
+   "description": "Vol. constante, signaux aléatoires denses (ρ=0,2)",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "EDGE": 41,
+    "NO_EDGE": 750,
+    "NEGATIVE": 9
+   },
+   "edge": {
+    "k": 41,
+    "n": 800,
+    "rate": 0.05125,
+    "ci95": [
+     0.037025445367942264,
+     0.06888703814412853
+    ],
+    "p_vs_5pct": 0.45806801972632866,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.00031874363655945095,
+    "ci95": [
+     -0.0008956505284158985,
+     0.0015331378015348005
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": 0.0003261690829464828,
+    "mean_signals_per_rep": 5142.7575
+   },
+   "filtered_effect": {
+    "mean": 0.002067293413543391,
+    "ci95": [
+     -0.0005188611383368852,
+     0.004653447965423667
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 2509,
+   "median_units_oos": 798
+  },
+  "N4_burst10": {
+   "family": "null",
+   "description": "Rafales de 10 signaux consécutifs même sens",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "INSUFFICIENT": 800
+   },
+   "edge": {
+    "k": 0,
+    "n": 800,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00460048452074544
+    ],
+    "p_vs_5pct": 1.0,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": -0.0005796438012314484,
+    "ci95": [
+     -0.005719326689087361,
+     0.004560039086624464
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": -0.00037259813291219126,
+    "mean_signals_per_rep": 1237.53875
+   },
+   "filtered_effect": {
+    "mean": 0.004117549753052594,
+    "ci95": [
+     -0.00574401762697142,
+     0.013979117133076608
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 603,
+   "median_units_oos": 66
+  },
+  "N5_burst60": {
+   "family": "null",
+   "description": "Rafales de 60 signaux consécutifs même sens",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "INSUFFICIENT": 800
+   },
+   "edge": {
+    "k": 0,
+    "n": 800,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00460048452074544
+    ],
+    "p_vs_5pct": 1.0,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.004035059697420695,
+    "ci95": [
+     -0.0012663623478095468,
+     0.009336481742650936
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": 0.003642293918356525,
+    "mean_signals_per_rep": 2228.90125
+   },
+   "filtered_effect": {
+    "mean": 0.004359862038942127,
+    "ci95": [
+     -0.005855564941111159,
+     0.014575289018995415
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 1088,
+   "median_units_oos": 30
+  },
+  "N6_rule_momentum": {
+   "family": "null",
+   "description": "Règle causale de momentum (rafales naturelles)",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "NO_EDGE": 755,
+    "EDGE": 38,
+    "NEGATIVE": 7
+   },
+   "edge": {
+    "k": 38,
+    "n": 800,
+    "rate": 0.0475,
+    "ci95": [
+     0.03382980290769112,
+     0.0646173234857588
+    ],
+    "p_vs_5pct": 0.6498666490751829,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": -0.0008095624527759172,
+    "ci95": [
+     -0.0027154212576239282,
+     0.001096296352072094
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": -0.0005805161335391593,
+    "mean_signals_per_rep": 11578.12125
+   },
+   "filtered_effect": {
+    "mean": 0.0009761787681533789,
+    "ci95": [
+     -0.0025658351558663483,
+     0.004518192692173106
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 5655,
+   "median_units_oos": 542
+  },
+  "N7_volswitch": {
+   "family": "null",
+   "description": "Régimes de volatilité calme/stress (Markov, ~1 j)",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "NO_EDGE": 749,
+    "EDGE": 44,
+    "NEGATIVE": 7
+   },
+   "edge": {
+    "k": 44,
+    "n": 800,
+    "rate": 0.055,
+    "ci95": [
+     0.040243911834328475,
+     0.07313465697193214
+    ],
+    "p_vs_5pct": 0.27953393746398325,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": -0.000638644583946208,
+    "ci95": [
+     -0.003026100395387161,
+     0.0017488112274947447
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": -0.0006630618853956255,
+    "mean_signals_per_rep": 1282.67875
+   },
+   "filtered_effect": {
+    "mean": 0.004837635152235834,
+    "ci95": [
+     -0.00013319830927158854,
+     0.009808468613743257
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 626,
+   "median_units_oos": 459
+  },
+  "N8_stochvol": {
+   "family": "null",
+   "description": "Volatilité stochastique (log-AR(1), demi-vie 8 h)",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "NO_EDGE": 753,
+    "EDGE": 34,
+    "NEGATIVE": 13
+   },
+   "edge": {
+    "k": 34,
+    "n": 800,
+    "rate": 0.0425,
+    "ci95": [
+     0.02960905866570801,
+     0.05888565293384912
+    ],
+    "p_vs_5pct": 0.8550453311906164,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": -0.0018318098907699003,
+    "ci95": [
+     -0.004195548684170241,
+     0.0005319289026304401
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": -0.0018924419865085078,
+    "mean_signals_per_rep": 1289.0625
+   },
+   "filtered_effect": {
+    "mean": -0.0024638052331605684,
+    "ci95": [
+     -0.007305593736099957,
+     0.00237798326977882
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 631,
+   "median_units_oos": 461
+  },
+  "N9_stochvol_burst30": {
+   "family": "null",
+   "description": "Vol. stochastique + rafales de 30",
+   "n_rows": 800,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "INSUFFICIENT": 800
+   },
+   "edge": {
+    "k": 0,
+    "n": 800,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00460048452074544
+    ],
+    "p_vs_5pct": 1.0,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.0025289616166319297,
+    "ci95": [
+     -0.0021821724106955037,
+     0.0072400956439593635
+    ],
+    "n_rep": 800,
+    "pooled_mean_r": 0.0023559932006806533,
+    "mean_signals_per_rep": 2343.55125
+   },
+   "filtered_effect": {
+    "mean": 0.00548239621939919,
+    "ci95": [
+     -0.0039010091520635844,
+     0.014865801590861965
+    ],
+    "n_rep": 800
+   },
+   "median_n_oos": 1157,
+   "median_units_oos": 52
+  },
+  "P1_edge_005": {
+   "family": "power",
+   "description": "Avantage injecté ≈ +0,05 R, régimes 60 min",
+   "n_rows": 300,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "EDGE": 119,
+    "NO_EDGE": 181
+   },
+   "edge": {
+    "k": 119,
+    "n": 300,
+    "rate": 0.39666666666666667,
+    "ci95": [
+     0.3409066879985616,
+     0.4544887432658715
+    ],
+    "p_vs_5pct": 2.2920374981368334e-73,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.04796422864890636,
+    "ci95": [
+     0.04496044504741422,
+     0.050968012250398494
+    ],
+    "n_rep": 300,
+    "pooled_mean_r": 0.04794742336675932,
+    "mean_signals_per_rep": 1286.7566666666667
+   },
+   "filtered_effect": {
+    "mean": 0.09317167051802451,
+    "ci95": [
+     0.08508216192372414,
+     0.10126117911232488
+    ],
+    "n_rep": 300
+   },
+   "median_n_oos": 627,
+   "median_units_oos": 513
+  },
+  "P2_edge_010": {
+   "family": "power",
+   "description": "Avantage injecté ≈ +0,10 R, régimes 60 min",
+   "n_rows": 300,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "EDGE": 217,
+    "NO_EDGE": 83
+   },
+   "edge": {
+    "k": 217,
+    "n": 300,
+    "rate": 0.7233333333333334,
+    "ci95": [
+     0.6690017200987519,
+     0.7731928115959126
+    ],
+    "p_vs_5pct": 2.4473175435434783e-209,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.10432063332050977,
+    "ci95": [
+     0.10102837937519689,
+     0.10761288726582265
+    ],
+    "n_rep": 300,
+    "pooled_mean_r": 0.10427592503255056,
+    "mean_signals_per_rep": 1285.18
+   },
+   "filtered_effect": {
+    "mean": 0.1374493966257605,
+    "ci95": [
+     0.12997907551181645,
+     0.14491971773970455
+    ],
+    "n_rep": 300
+   },
+   "median_n_oos": 627,
+   "median_units_oos": 515
+  },
+  "P3_edge_020": {
+   "family": "power",
+   "description": "Avantage injecté ≈ +0,20 R, régimes 60 min",
+   "n_rows": 300,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "EDGE": 287,
+    "NO_EDGE": 13
+   },
+   "edge": {
+    "k": 287,
+    "n": 300,
+    "rate": 0.9566666666666667,
+    "ci95": [
+     0.9270385357797204,
+     0.9767281589953176
+    ],
+    "p_vs_5pct": 0.0,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.20122503347762605,
+    "ci95": [
+     0.19793960877149042,
+     0.20451045818376168
+    ],
+    "n_rep": 300,
+    "pooled_mean_r": 0.20128315841612401,
+    "mean_signals_per_rep": 1285.37
+   },
+   "filtered_effect": {
+    "mean": 0.2083494687337036,
+    "ci95": [
+     0.20146233932911806,
+     0.21523659813828916
+    ],
+    "n_rep": 300
+   },
+   "median_n_oos": 629,
+   "median_units_oos": 514
+  },
+  "P4_edge_010_burst20": {
+   "family": "power",
+   "description": "≈ +0,10 R, signaux en rafales de 20",
+   "n_rows": 300,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "INSUFFICIENT": 300
+   },
+   "edge": {
+    "k": 0,
+    "n": 300,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.012220974694293549
+    ],
+    "p_vs_5pct": 1.0,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.10519426531808479,
+    "ci95": [
+     0.09790866900211995,
+     0.11247986163404963
+    ],
+    "n_rep": 300,
+    "pooled_mean_r": 0.10564863940700868,
+    "mean_signals_per_rep": 1208.7866666666666
+   },
+   "filtered_effect": {
+    "mean": 0.12939789491630865,
+    "ci95": [
+     0.11376251812178459,
+     0.14503327171083272
+    ],
+    "n_rep": 300
+   },
+   "median_n_oos": 592,
+   "median_units_oos": 48
+  },
+  "P5_edge_020_stochvol": {
+   "family": "power",
+   "description": "≈ +0,20 R, volatilité stochastique",
+   "n_rows": 300,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "EDGE": 288,
+    "NO_EDGE": 12
+   },
+   "edge": {
+    "k": 288,
+    "n": 300,
+    "rate": 0.96,
+    "ci95": [
+     0.9311710118105072,
+     0.9791634236935862
+    ],
+    "p_vs_5pct": 0.0,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.20158796203615487,
+    "ci95": [
+     0.19796752680961574,
+     0.205208397262694
+    ],
+    "n_rep": 300,
+    "pooled_mean_r": 0.20157537070214968,
+    "mean_signals_per_rep": 1285.6233333333332
+   },
+   "filtered_effect": {
+    "mean": 0.23853630592820424,
+    "ci95": [
+     0.23046914250255154,
+     0.24660346935385694
+    ],
+    "n_rep": 300
+   },
+   "median_n_oos": 627,
+   "median_units_oos": 513
+  },
+  "P6_edge_010_sparse": {
+   "family": "power",
+   "description": "≈ +0,10 R, signaux rares (ρ=0,01)",
+   "n_rows": 300,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "EDGE": 84,
+    "NO_EDGE": 208,
+    "INSUFFICIENT": 8
+   },
+   "edge": {
+    "k": 84,
+    "n": 300,
+    "rate": 0.28,
+    "ci95": [
+     0.2299219123174241,
+     0.3344828271652901
+    ],
+    "p_vs_5pct": 8.482039261290424e-39,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.1078997804033974,
+    "ci95": [
+     0.10033222213112768,
+     0.11546733867566712
+    ],
+    "n_rep": 300,
+    "pooled_mean_r": 0.10782416726186611,
+    "mean_signals_per_rep": 256.68333333333334
+   },
+   "filtered_effect": {
+    "mean": 0.11774474148982066,
+    "ci95": [
+     0.10586872227172921,
+     0.12962076070791212
+    ],
+    "n_rep": 300
+   },
+   "median_n_oos": 124,
+   "median_units_oos": 119
+  },
+  "P7_conditional_hours": {
+   "family": "power",
+   "description": "Avantage conditionnel (12-14 h UTC seulement) — filtre utile",
+   "n_rows": 300,
+   "errors": 0,
+   "error_examples": [],
+   "verdicts": {
+    "EDGE": 242,
+    "NO_EDGE": 58
+   },
+   "edge": {
+    "k": 242,
+    "n": 300,
+    "rate": 0.8066666666666666,
+    "ci95": [
+     0.7573636836891595,
+     0.8497963049254025
+    ],
+    "p_vs_5pct": 4.014479888625166e-254,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "true_effect": {
+    "replicate_mean_r": 0.09777952701244501,
+    "ci95": [
+     0.09441269304505245,
+     0.10114636097983756
+    ],
+    "n_rep": 300,
+    "pooled_mean_r": 0.09775717393556407,
+    "mean_signals_per_rep": 1287.0666666666666
+   },
+   "filtered_effect": {
+    "mean": 0.17918719386594345,
+    "ci95": [
+     0.1700663566578187,
+     0.1883080310740682
+    ],
+    "n_rep": 300
+   },
+   "median_n_oos": 627,
+   "median_units_oos": 514
+  },
+  "S1_search_10_variants": {
+   "family": "search",
+   "description": "10 analyses du même historique nul (paramètres/horizons)",
+   "n_rows": 150,
+   "errors": 0,
+   "error_examples": [],
+   "fwer_shared": {
+    "k": 7,
+    "n": 150,
+    "rate": 0.04666666666666667,
+    "ci95": [
+     0.018965569634594392,
+     0.09378586498779717
+    ],
+    "p_vs_5pct": 0.6271236870029114,
+    "significant_excess": false,
+    "judgement": "compatible avec ≤ 5 %"
+   },
+   "fwer_uncorrected": {
+    "k": 18,
+    "n": 150,
+    "rate": 0.12,
+    "ci95": [
+     0.07269346669678953,
+     0.18300887702476265
+    ],
+    "p_vs_5pct": 0.0005413508532665767,
+    "significant_excess": true,
+    "judgement": "DÉPASSEMENT SIGNIFICATIF de 5 %"
+   },
+   "per_variant_edge_rate_shared": [
+    0.02,
+    0.0,
+    0.0,
+    0.013333333333333334,
+    0.013333333333333334,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "alpha_by_rank": [
+    0.03039635509270134,
+    0.007599088773175335,
+    0.0033773727880779263,
+    0.0018997721932938337,
+    0.0012158542037080534,
+    0.0008443431970194816,
+    0.0006203337774020681,
+    0.00047494304832345843,
+    0.0003752636431197696,
+    0.00030396355092701335
+   ]
+  }
+ },
+ "defect_established": true,
+ "power_p3": 0.9566666666666667,
+ "acceptance": false,
+ "defect_valid_nulls": false,
+ "acceptance_valid_nulls": true
+}

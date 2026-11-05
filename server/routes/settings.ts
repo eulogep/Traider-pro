@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import { z } from "zod";
 import fs from "fs/promises";
 import path from "path";
+import { stripSecrets } from "../../shared/security";
 
 // Settings validation schema
 const SettingsSchema = z.object({
@@ -46,7 +47,7 @@ const SettingsSchema = z.object({
   // MT5 Connection
   mt5Server: z.string(),
   mt5Login: z.string(),
-  mt5Password: z.string(),
+  mt5Password: z.string().optional(), // accepted but never stored
   enableEA: z.boolean(),
   allowAutoTrading: z.boolean(),
   realtimeDataFeed: z.boolean(),
@@ -89,13 +90,13 @@ async function ensureDataDir() {
 }
 
 // Get settings
-export const getSettings: RequestHandler = async (req, res) => {
+export const getSettings: RequestHandler = async (_req, res) => {
   try {
     await ensureDataDir();
 
     try {
       const data = await fs.readFile(SETTINGS_FILE, "utf-8");
-      const settings = JSON.parse(data);
+      const settings = stripSecrets(JSON.parse(data));
       res.json(settings);
     } catch (error) {
       // File doesn't exist, return default settings
@@ -125,7 +126,7 @@ export const saveSettings: RequestHandler = async (req, res) => {
     // Save settings to file
     await fs.writeFile(
       SETTINGS_FILE,
-      JSON.stringify(validationResult.data, null, 2),
+      JSON.stringify(stripSecrets(validationResult.data), null, 2),
     );
 
     res.json({ success: true, message: "Settings saved successfully" });
@@ -136,7 +137,7 @@ export const saveSettings: RequestHandler = async (req, res) => {
 };
 
 // Reset settings
-export const resetSettings: RequestHandler = async (req, res) => {
+export const resetSettings: RequestHandler = async (_req, res) => {
   try {
     await ensureDataDir();
 
@@ -155,13 +156,13 @@ export const resetSettings: RequestHandler = async (req, res) => {
 };
 
 // Backup settings
-export const backupSettings: RequestHandler = async (req, res) => {
+export const backupSettings: RequestHandler = async (_req, res) => {
   try {
     await ensureDataDir();
 
     try {
       const data = await fs.readFile(SETTINGS_FILE, "utf-8");
-      const settings = JSON.parse(data);
+      const settings = stripSecrets(JSON.parse(data));
 
       const timestamp = new Date().toISOString().split("T")[0];
       const filename = `ai-trader-settings-${timestamp}.json`;

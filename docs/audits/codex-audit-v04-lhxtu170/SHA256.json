@@ -1,0 +1,11 @@
+{
+  "CODEX_AUDIT_V040_QUANT_IA.md": "3f92dc766f018a9158c9bcdf2d17eb22344b075a155d7efcfc7b17c7b943c6de",
+  "counter-evidence.json": "f90b5fe967ad25b276a0ffac21f152347180e9f91b46779103affbf90ce5c14e",
+  "diagnostic_probes.py": "aa6e30058c2db749873a7aa0316f03a4e17eb4f4f3987dce6664eee105b7bf1c",
+  "followup_probes.py": "5722e6af555ca9307a5fc4137532fecbd1d3aca08584e05ca401a3ff55990971",
+  "prior_regression_probes.py": "32e8a38da731307a5fbaa131585a9750a2fbbb3d5def9920480709d03bf17efa",
+  "research-evidence.json": "b4935929efaf7498fdc058aa423ef82759bc36eb0103b4374425aabda7369b0e",
+  "research_probes.py": "d7499b6b9c6ff359e10067b474aff61caf7fbb0ba173e70e27dd49582100736c",
+  "statistical-evidence.json": "2159b5ab9f4376028edf572f8a06394a608ef8d003f28a845f53e72bee8f63b5",
+  "statistical_probes.py": "64fe3ebe5fd0ea88e4ad4259ce999d06c26dbb2019a44b2ac7f90d6f1ab2d5bd"
+}

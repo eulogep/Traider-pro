@@ -1,0 +1,111 @@
+/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+/private/tmp/codex-audit-v03-u1qibo2e/probes.py:50: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  frame=make_bars([flat_bar()]*3);frame['timestamp']+=pd.Timedelta(milliseconds=500)
+Unexpected API error
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/zoneinfo/_common.py", line 12, in load_tzdata
+    return resources.files(package_name).joinpath(resource_name).open("rb")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/resources/_common.py", line 46, in wrapper
+    return func(anchor)
+           ^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/resources/_common.py", line 56, in files
+    return from_package(resolve(anchor))
+                        ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/functools.py", line 912, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/resources/_common.py", line 82, in _
+    return importlib.import_module(cand)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tzdata.zoneinfo.Not'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 511, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/dependencies/utils.py", line 762, in solve_dependencies
+    ) = await request_body_to_args(  # body_params checked above
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/dependencies/utils.py", line 1190, in request_body_to_args
+    v_, errors_ = _validate_value_with_model_field(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/dependencies/utils.py", line 803, in _validate_value_with_model_field
+    return field.validate(value, values, loc=loc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/_compat/v2.py", line 182, in validate
+    self._type_adapter.validate_python(value, from_attributes=True),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/pydantic/type_adapter.py", line 410, in validate_python
+    return self.validator.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/codex-audit-v03-u1qibo2e/repo/quant/src/ai_trader_optimizer/risk/guardian.py", line 111, in _tz
+    ZoneInfo(v)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/zoneinfo/_common.py", line 24, in load_tzdata
+    raise ZoneInfoNotFoundError(f"No time zone found with key {key}")
+zoneinfo._common.ZoneInfoNotFoundError: 'No time zone found with key Not/AZone'
+/private/tmp/codex-audit-v03-u1qibo2e/repo/quant/src/ai_trader_optimizer/analytics/metrics.py:20: RuntimeWarning: invalid value encountered in subtract
+  dd = series - peak
+{"probe": "tampered_metrics", "served": 987654321, "reproduce": {"identical": true, "stored_hash": "b4a4649e8bd29cc8", "new_hash": "b4a4649e8bd29cc8"}}
+{"probe": "overwrite_same_hash", "accepted": true, "served": 123456}
+{"probe": "relabel_dataset", "status": 201, "id_before": "156b89bc50cf89a2", "id_after": "2253b32278baa4db", "kind_now": "synthetic"}
+{"probe": "lowercase_import", "status": 201, "load_error": "Jeu de donn\u00e9es 332435554b6eeae9 alt\u00e9r\u00e9 sur disque (empreinte diff\u00e9rente)."}
+{"probe": "risk_saved", "status": 201, "trades": 3, "configured_daily_cap": 1}
+{"probe": "risk_override", "status": 201, "trades": 73, "configured_daily_cap": 100}
+{"probe": "open_above_tp", "trade": [{"entry_price": 100.35, "stop_loss": 98.35, "take_profit": 103.35, "exit_reason": "SL", "exit_price": 98.3, "net_pnl": -23.20999999999997}]}
+{"probe": "post_exit_excursions", "trade": [{"exit_reason": "SL", "mae_price": 2.3499999999999943, "mfe_price": 899.65, "mfe_r": 449.825}]}
+{"probe": "fractional_timestamp", "before": "2026-09-07 12:00:00.500000+00:00", "after": "2026-09-07 12:00:00+00:00"}
+{"probe": "dataset_precision_collision", "id1": "a9295dcc876b0456", "id2": "a9295dcc876b0456", "different": true}
+{"probe": "bad_timezone", "status": 500, "body": "{\"error\":\"Erreur interne du moteur (d\u00e9tails dans le journal du serveur).\",\"detail\":null}"}
+{"probe": "nonfinite_config", "field": "initial_equity", "accepted": true}
+{"probe": "nonfinite_config", "field": "costs", "accepted": true}
+{"probe": "mutable_provenance", "kind": "synthetic", "status": 201, "id": "2253b32278baa4db"}
+{"probe": "mutable_provenance", "kind": "historical", "status": 201, "id": "2253b32278baa4db"}
+{"probe": "split_overlap", "segment": "IS", "cut": "2026-09-07 12:05:00+00:00", "trades": [{"entry_time": "2026-09-07 12:05:00+00:00", "exit_time": "2026-09-07 12:05:00+00:00", "net_pnl": 31.79000000000003}]}
+{"probe": "split_overlap", "segment": "OOS", "cut": "2026-09-07 12:05:00+00:00", "trades": [{"entry_time": "2026-09-07 12:05:00+00:00", "exit_time": "2026-09-07 12:05:00+00:00", "net_pnl": 31.79000000000003}]}
+{"probe": "infinite_api", "status": 201, "metrics": {"avg_bars_held": 5.5, "avg_loss": -7985.988604162806, "avg_win": 11256.814609304334, "by_direction": {"BUY": {"net_pnl": 3195.9399815918005, "trades": 2, "win_rate_pct": 50.0}, "SELL": {"net_pnl": 6616.538033832785, "trades": 4, "win_rate_pct": 50.0}}, "commission_total": 1800.0, "data_kind": "synthetic", "drawdown_note": "Drawdown sur equity cl\u00f4tur\u00e9e et mark-to-market aux cl\u00f4tures de bougies : le drawdown intrabougie r\u00e9el peut \u00eatre plus profond.", "exit_reasons": {"SL": 3, "TP": 3}, "expectancy": 1635.4130025707643, "expectancy_r": 0.16807491651785225, "final_equity": null, "gross_loss": 23957.96581248842, "gross_profit": 33770.443827913004, "guardian_rejections": {"MAX_LOSSES_PER_DAY": 69, "MAX_OPEN_POSITIONS": 2, "MAX_TRADES_PER_DAY": 221}, "initial_equity": null, "largest_loss": -8634.259757409654, "largest_win": 11830.199739001455, "losses_beyond_planned_risk": 3, "max_consecutive_losses": 2, "max_dd_closed": null, "max_dd_closed_pct": null, "max_dd_mtm": null, "max_dd_mtm_pct": null, "net_pnl": null, "non_wins": 3, "payoff_ratio": 1.4095705825871785, "pnl_before_costs": null, "profit_factor": 1.4095705825871785, "rejection_reasons": {"MAX_LOSSES_PER_DAY": 69, "MAX_OPEN_POSITIONS": 2, "MAX_TRADES_PER_DAY": 221, "OUTSIDE_SESSION": 366}, "return_pct": null, "sample_note": "6 trade(s) < 30 : \u00e9chantillon insuffisant, conclusion \u00ab non d\u00e9montr\u00e9 \u00bb.", "sample_sufficient": false, "signals": 457, "signals_entered": 6, "signals_rejected": 451, "slippage_cost_total": 3000.0, "spread_cost_total": 9000.0, "total_costs": 13800.0, "trades": 6, "trades_with_data_gap": 0, "unavailable": {"sharpe_sortino": "non calcul\u00e9s en v0.2 : n\u00e9cessitent une s\u00e9rie de rendements p\u00e9riodiques sur donn\u00e9es r\u00e9elles et un \u00e9chantillon suffisant"}, "wait_reasons": {"WAIT:motif baissier sans tendance baissi\u00e8re": 306, "WAIT:motif haussier sans tendance haussi\u00e8re": 283, "WAIT:pas de motif 3 bougies": 3224, "WAIT:warm-up indicateurs": 50}, "win_rate_pct": 50.0, "wins": 3}, "equity": null}
+{"probe": "upload_before_limit", "already_received": 2097687, "limit": 1024}
+{"probe": "upload_result", "status": 413}
+{"probe": "cors_write", "status": 201, "allow_origin": null}

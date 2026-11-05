@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
+import { stripSecrets } from "@shared/security";
 
 export interface AppSettings {
   // Appearance
@@ -93,7 +94,7 @@ const defaultSettings: AppSettings = {
   // MT5 Connection
   mt5Server: "mt5.demo-server.com:443",
   mt5Login: "12345678",
-  mt5Password: "demo123",
+  mt5Password: "", // never persisted: see shared/security.ts
   enableEA: true,
   allowAutoTrading: true,
   realtimeDataFeed: true,
@@ -125,7 +126,11 @@ const defaultSettings: AppSettings = {
 };
 
 type SettingsAction =
-  | { type: "UPDATE_SETTING"; key: keyof AppSettings; value: any }
+  | {
+      type: "UPDATE_SETTING";
+      key: keyof AppSettings;
+      value: AppSettings[keyof AppSettings];
+    }
   | { type: "LOAD_SETTINGS"; settings: Partial<AppSettings> }
   | { type: "RESET_SETTINGS" }
   | { type: "EXPORT_SETTINGS" }
@@ -157,7 +162,7 @@ function settingsReducer(
       };
 
       // Save to localStorage
-      localStorage.setItem("aiTraderSettings", JSON.stringify(newSettings));
+      localStorage.setItem("aiTraderSettings", JSON.stringify(stripSecrets(newSettings)));
 
       return {
         ...state,
@@ -175,7 +180,7 @@ function settingsReducer(
       };
 
     case "RESET_SETTINGS":
-      localStorage.setItem("aiTraderSettings", JSON.stringify(defaultSettings));
+      localStorage.setItem("aiTraderSettings", JSON.stringify(stripSecrets(defaultSettings)));
       return {
         ...state,
         settings: defaultSettings,
@@ -184,7 +189,7 @@ function settingsReducer(
       };
 
     case "EXPORT_SETTINGS":
-      const dataStr = JSON.stringify(state.settings, null, 2);
+      const dataStr = JSON.stringify(stripSecrets(state.settings), null, 2);
       const dataBlob = new Blob([dataStr], { type: "application/json" });
       const url = URL.createObjectURL(dataBlob);
       const link = document.createElement("a");
@@ -196,10 +201,13 @@ function settingsReducer(
       return state;
 
     case "IMPORT_SETTINGS":
-      const importedSettings = { ...state.settings, ...action.settings };
+      const importedSettings = {
+        ...state.settings,
+        ...stripSecrets(action.settings),
+      };
       localStorage.setItem(
         "aiTraderSettings",
-        JSON.stringify(importedSettings),
+        JSON.stringify(stripSecrets(importedSettings)),
       );
 
       return {
@@ -216,7 +224,10 @@ function settingsReducer(
 
 interface SettingsContextType {
   state: SettingsState;
-  updateSetting: (key: keyof AppSettings, value: any) => void;
+  updateSetting: <K extends keyof AppSettings>(
+    key: K,
+    value: AppSettings[K],
+  ) => void;
   resetSettings: () => void;
   exportSettings: () => void;
   importSettings: (settings: Partial<AppSettings>) => void;
@@ -235,7 +246,9 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const savedSettings = localStorage.getItem("aiTraderSettings");
     if (savedSettings) {
       try {
-        const parsedSettings = JSON.parse(savedSettings);
+        // Purge credentials saved by older versions of the app.
+        const parsedSettings = stripSecrets(JSON.parse(savedSettings));
+        localStorage.setItem("aiTraderSettings", JSON.stringify(parsedSettings));
         dispatch({ type: "LOAD_SETTINGS", settings: parsedSettings });
       } catch (error) {
         console.error("Failed to load settings:", error);
@@ -257,7 +270,10 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.setAttribute("data-theme", colorTheme);
   }, [state.settings.darkMode, state.settings.colorTheme]);
 
-  const updateSetting = (key: keyof AppSettings, value: any) => {
+  const updateSetting = <K extends keyof AppSettings>(
+    key: K,
+    value: AppSettings[K],
+  ) => {
     dispatch({ type: "UPDATE_SETTING", key, value });
   };
 
@@ -280,8 +296,9 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-ATO-Request": "1",
         },
-        body: JSON.stringify(state.settings),
+        body: JSON.stringify(stripSecrets(state.settings)),
       });
 
       if (!response.ok) {
@@ -292,7 +309,10 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error("Failed to save settings:", error);
       // Still save locally even if API fails
-      localStorage.setItem("aiTraderSettings", JSON.stringify(state.settings));
+      localStorage.setItem(
+        "aiTraderSettings",
+        JSON.stringify(stripSecrets(state.settings)),
+      );
     }
   };
 

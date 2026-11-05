@@ -1,0 +1,9 @@
+{
+  "CODEX_CONTRE_AUDIT_V031.md": "6679bd23eb199927b591d906581811431633912318821514e9ab15e04e0c4dee",
+  "boundary-publication-evidence.json": "5210ed1d976099cbae94a817932b3134151537a113e81532c722c56f98d000a8",
+  "counter-evidence.json": "4a652c44add0cb776e78e0335e44ce46bf9aeaa2d759ec61470b4a9926bf9572",
+  "counter_probes.py": "32e8a38da731307a5fbaa131585a9750a2fbbb3d5def9920480709d03bf17efa",
+  "extended-evidence.json": "99e6b2e8beb31fc7d5f87161010ee323ce3dfede4cf9b125d27d2d4aa4139407",
+  "extended_probes.py": "5394726809a5a25386ee0f00b4ca49ea95e08d2f58b607397d07e3c360debba4",
+  "original-probes.py": "1c0db26ed8d74e909053390b4aa4d7e5763d16f17cd113eaefcf326dc03496e0"
+}

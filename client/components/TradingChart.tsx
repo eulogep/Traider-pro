@@ -41,7 +41,6 @@ import {
   DollarSign,
   Target,
   Maximize2,
-  Settings,
 } from "lucide-react";
 
 interface TradingChartProps {
@@ -52,7 +51,14 @@ interface TradingChartProps {
 }
 
 // Sample data - in real app this would come from props or API
-const performanceData = [
+interface PerformanceDatum {
+  date: string;
+  profit: number;
+  trades: number;
+  winRate: number;
+}
+
+const performanceData: PerformanceDatum[] = [
   { date: "Jan", profit: 2850, trades: 28, winRate: 82 },
   { date: "Feb", profit: 1920, trades: 24, winRate: 75 },
   { date: "Mar", profit: 3240, trades: 31, winRate: 81 },
@@ -61,7 +67,13 @@ const performanceData = [
   { date: "Jun", profit: 1195, trades: 22, winRate: 73 },
 ];
 
-const equityCurveData = [
+interface EquityCurveDatum {
+  time: string;
+  equity: number;
+  drawdown: number;
+}
+
+const equityCurveData: EquityCurveDatum[] = [
   { time: "00:00", equity: 10000, drawdown: 0 },
   { time: "04:00", equity: 10250, drawdown: -2.1 },
   { time: "08:00", equity: 10180, drawdown: -0.7 },
@@ -70,7 +82,13 @@ const equityCurveData = [
   { time: "20:00", equity: 11240, drawdown: 0 },
 ];
 
-const assetAllocation = [
+interface AssetAllocationDatum {
+  name: string;
+  value: number;
+  color: string;
+}
+
+const assetAllocation: AssetAllocationDatum[] = [
   { name: "XAU/USD", value: 45, color: "#22c55e" },
   { name: "EUR/USD", value: 25, color: "#3b82f6" },
   { name: "GBP/USD", value: 15, color: "#f59e0b" },
@@ -78,7 +96,12 @@ const assetAllocation = [
   { name: "Others", value: 5, color: "#8b5cf6" },
 ];
 
-const hourlyPnL = [
+interface HourlyPnLDatum {
+  hour: string;
+  pnl: number;
+}
+
+const hourlyPnL: HourlyPnLDatum[] = [
   { hour: "00", pnl: 45 },
   { hour: "01", pnl: -12 },
   { hour: "02", pnl: 23 },
@@ -102,12 +125,24 @@ export function TradingChart({
   const [selectedTimeframe, setSelectedTimeframe] = useState(timeframe);
   const { summary } = useMT5Account();
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  type TooltipPayloadEntry = {
+    dataKey: string;
+    value: number;
+    color?: string;
+  };
+
+  interface CustomTooltipProps {
+    active?: boolean;
+    payload?: TooltipPayloadEntry[];
+    label?: string;
+  }
+
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
           <p className="font-medium">{label}</p>
-          {payload.map((entry: any, index: number) => (
+          {payload.map((entry, index) => (
             <p key={index} style={{ color: entry.color }}>
               {`${entry.dataKey}: ${entry.value}${entry.dataKey === "profit" ? "$" : entry.dataKey === "winRate" ? "%" : ""}`}
             </p>
@@ -167,12 +202,7 @@ export function TradingChart({
               <XAxis dataKey="hour" stroke="hsl(215, 20%, 65%)" />
               <YAxis stroke="hsl(215, 20%, 65%)" />
               <Tooltip content={<CustomTooltip />} />
-              <Bar
-                dataKey="pnl"
-                fill={(entry: any) =>
-                  entry.pnl >= 0 ? "hsl(142, 76%, 36%)" : "hsl(0, 84%, 60%)"
-                }
-              />
+              <Bar dataKey="pnl" fill="hsl(142, 76%, 36%)" />
             </BarChart>
           </ResponsiveContainer>
         );
@@ -249,7 +279,10 @@ export function TradingChart({
             </CardDescription>
           </div>
           <div className="flex items-center space-x-2">
-            <Select value={chartType} onValueChange={setChartType}>
+            <Select
+              value={chartType}
+              onValueChange={(v) => setChartType(v as typeof chartType)}
+            >
               <SelectTrigger className="w-24">
                 <SelectValue />
               </SelectTrigger>
@@ -401,46 +434,44 @@ export function PerformanceMetrics() {
 // Real-time market data component - now using real MT5 data
 export function MarketOverview() {
   const { symbols, connected } = useMT5();
-  const displaySymbols =
-    symbols.length > 0
-      ? symbols.slice(0, 5)
-      : [
-          {
-            symbol: "XAU/USD",
-            price: "1,985.45",
-            change: "+12.80",
-            changePercent: "+0.65%",
-            trend: "up",
-          },
-          {
-            symbol: "EUR/USD",
-            price: "1.0875",
-            change: "-0.0023",
-            changePercent: "-0.21%",
-            trend: "down",
-          },
-          {
-            symbol: "GBP/USD",
-            price: "1.2634",
-            change: "+0.0045",
-            changePercent: "+0.36%",
-            trend: "up",
-          },
-          {
-            symbol: "USD/JPY",
-            price: "149.82",
-            change: "-0.34",
-            changePercent: "-0.23%",
-            trend: "down",
-          },
-          {
-            symbol: "BTC/USD",
-            price: "42,567",
-            change: "+1,234",
-            changePercent: "+2.98%",
-            trend: "up",
-          },
-        ];
+  // Static, labelled sample shown only while disconnected (never mixed with live symbols).
+  const sampleSymbols = ([
+            {
+              symbol: "XAU/USD",
+              price: "1,985.45",
+              change: "+12.80",
+              changePercent: "+0.65%",
+              trend: "up" as const,
+            },
+            {
+              symbol: "EUR/USD",
+              price: "1.0875",
+              change: "-0.0023",
+              changePercent: "-0.21%",
+              trend: "down" as const,
+            },
+            {
+              symbol: "GBP/USD",
+              price: "1.2634",
+              change: "+0.0045",
+              changePercent: "+0.36%",
+              trend: "up" as const,
+            },
+            {
+              symbol: "USD/JPY",
+              price: "149.82",
+              change: "-0.34",
+              changePercent: "-0.23%",
+              trend: "down" as const,
+            },
+            {
+              symbol: "BTC/USD",
+              price: "42,567",
+              change: "+1,234",
+              changePercent: "+2.98%",
+              trend: "up" as const,
+            },
+          ] as const);
 
   return (
     <Card className="border-border/50">
@@ -498,7 +529,7 @@ export function MarketOverview() {
                   </div>
                 </div>
               ))
-            : displaySymbols.map((item, index) => (
+            : sampleSymbols.map((item, index) => (
                 <div
                   key={index}
                   className="flex items-center justify-between p-3 rounded-lg border border-border/30 opacity-60"
@@ -506,23 +537,23 @@ export function MarketOverview() {
                   <div className="flex items-center space-x-3">
                     <div
                       className={`w-2 h-2 rounded-full ${
-                        (item as any).trend === "up"
+                        item.trend === "up"
                           ? "bg-trading-green-500"
                           : "bg-trading-red-500"
                       }`}
                     />
-                    <span className="font-medium">{(item as any).symbol}</span>
+                    <span className="font-medium">{item.symbol}</span>
                   </div>
                   <div className="text-right">
-                    <p className="font-medium">{(item as any).price}</p>
+                    <p className="font-medium">{item.price}</p>
                     <p
                       className={`text-sm ${
-                        (item as any).trend === "up"
+                        item.trend === "up"
                           ? "text-trading-green-500"
                           : "text-trading-red-500"
                       }`}
                     >
-                      {(item as any).change} ({(item as any).changePercent})
+                      {item.change} ({item.changePercent})
                     </p>
                   </div>
                 </div>

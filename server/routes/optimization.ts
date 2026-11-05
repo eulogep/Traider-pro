@@ -2,9 +2,9 @@ import { RequestHandler } from "express";
 import { z } from "zod";
 
 // Validation schemas
-const OptimizationRequestSchema = z.object({
+export const OptimizationRequestSchema = z.object({
   strategy: z.string(),
-  parameters: z.record(z.any()),
+  parameters: z.record(z.unknown()),
   timeframe: z.string(),
   symbol: z.string(),
   startDate: z.string(),
@@ -21,9 +21,9 @@ const OptimizationRequestSchema = z.object({
     .optional(),
 });
 
-const BacktestRequestSchema = z.object({
+export const BacktestRequestSchema = z.object({
   strategy: z.string(),
-  parameters: z.record(z.any()),
+  parameters: z.record(z.unknown()),
   symbol: z.string(),
   timeframe: z.string(),
   startDate: z.string(),
@@ -33,7 +33,14 @@ const BacktestRequestSchema = z.object({
 });
 
 // Mock optimization results
-function generateOptimizationResults(request: any) {
+function generateOptimizationResults(request: {
+  strategy: string;
+  symbol: string;
+  timeframe: string;
+  optimizationGoal: string;
+  model?: string;
+  parameters: Record<string, unknown>;
+}) {
   const baseResults = {
     winRate: 75 + Math.random() * 15,
     profitFactor: 1.8 + Math.random() * 0.8,
@@ -60,7 +67,9 @@ function generateOptimizationResults(request: any) {
   };
 }
 
-function generateOptimizedParameters(originalParams: any) {
+function generateOptimizedParameters(
+  _originalParams: Record<string, unknown>,
+) {
   // Simulate parameter optimization
   return {
     rsiPeriod: 14 + Math.floor(Math.random() * 7), // 14-20
@@ -74,7 +83,13 @@ function generateOptimizedParameters(originalParams: any) {
   };
 }
 
-function calculateImprovement(results: any) {
+function calculateImprovement(_results: {
+  winRate: number;
+  profitFactor: number;
+  maxDrawdown: number;
+  sharpeRatio: number;
+  totalProfit: number;
+}) {
   return {
     winRate: `+${(Math.random() * 8 + 2).toFixed(1)}%`,
     profitFactor: `+${(Math.random() * 0.4 + 0.1).toFixed(2)}`,
@@ -95,8 +110,6 @@ export const startOptimization: RequestHandler = async (req, res) => {
         details: validationResult.error.issues,
       });
     }
-
-    const request = validationResult.data;
 
     // In a real implementation, this would queue the optimization job
     const optimizationId = `opt_${Date.now()}`;
@@ -137,7 +150,13 @@ export const getOptimizationStatus: RequestHandler = async (req, res) => {
       progress = 100;
     }
 
-    const response: any = {
+    const response: {
+      id: string;
+      status: string;
+      progress: number;
+      message: string;
+      results?: ReturnType<typeof generateOptimizationResults>;
+    } = {
       id,
       status,
       progress: Math.round(progress),
@@ -151,6 +170,7 @@ export const getOptimizationStatus: RequestHandler = async (req, res) => {
       response.results = generateOptimizationResults({
         strategy: "RSI + MACD",
         symbol: "XAUUSD",
+        timeframe: "1H",
         optimizationGoal: "profit-factor",
         parameters: {},
       });
@@ -167,10 +187,8 @@ export const getOptimizationStatus: RequestHandler = async (req, res) => {
 };
 
 // Get optimization results
-export const getOptimizationResults: RequestHandler = async (req, res) => {
+export const getOptimizationResults: RequestHandler = async (_req, res) => {
   try {
-    const { id } = req.params;
-
     // Mock results
     const results = generateOptimizationResults({
       strategy: "RSI + MACD Enhanced",
@@ -203,7 +221,6 @@ export const startBacktest: RequestHandler = async (req, res) => {
       });
     }
 
-    const request = validationResult.data;
     const backtestId = `bt_${Date.now()}`;
 
     res.json({
@@ -273,7 +290,7 @@ export const getBacktestResults: RequestHandler = async (req, res) => {
 };
 
 // Get available strategies
-export const getAvailableStrategies: RequestHandler = async (req, res) => {
+export const getAvailableStrategies: RequestHandler = async (_req, res) => {
   try {
     const strategies = [
       {

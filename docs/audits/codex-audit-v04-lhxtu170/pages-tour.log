@@ -1,0 +1,7 @@
+PASS  home: no invented figure / fake connectivity
+PASS  home: no password field, no trading switch
+PASS  home: lab state = API (1 dataset, 1 run) — État du laboratoire moteur en ligne 1 Jeux de données 1 Backtests enregistrés 1 Stratégies
+PASS  home: sidebar shows the real engine status
+FAIL  tour completed — Error: ENOENT: no such file or directory, open '../screenshots/home.png'
+
+4/5 checks passed

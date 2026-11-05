@@ -25,3 +25,15 @@ dist-ssr
 
 .config/
 !.env
+
+# Runtime data that may contain user settings or market data — never commit.
+# Anchored paths only: an unanchored "data/" also ignored the Python source package
+# quant/src/ai_trader_optimizer/data/ (audit Codex V0.3, B1).
+/data/
+/quant/data/
+# Audit evidence logs are documentation, not runtime logs
+!/docs/audits/**/logs/
+!/docs/audits/**/*.log
+venv/
+.venv/
+__pycache__/

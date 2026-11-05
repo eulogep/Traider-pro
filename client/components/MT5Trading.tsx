@@ -10,13 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Dialog,
@@ -31,16 +24,11 @@ import { useMT5, useMT5Symbol } from "@/hooks/useMT5";
 import {
   TrendingUp,
   TrendingDown,
-  DollarSign,
-  Target,
   X,
-  Play,
-  Pause,
   BarChart3,
   Clock,
   Activity,
   AlertTriangle,
-  CheckCircle,
 } from "lucide-react";
 
 export function MT5QuickTrade({ symbol = "XAUUSD" }: { symbol?: string }) {

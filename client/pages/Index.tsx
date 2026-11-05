@@ -1,302 +1,213 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  TrendingUp,
-  Brain,
-  Target,
-  Zap,
-  BarChart3,
-  DollarSign,
-  TrendingDown,
-  Activity,
-  ArrowRight,
-  CheckCircle,
-  Shield,
-  Lightbulb,
-} from "lucide-react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Database,
+  FileSearch,
+  Fingerprint,
+  FlaskConical,
+  Lock,
+  Play,
+  ShieldCheck,
+  SlidersHorizontal,
+  type LucideIcon,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { StatusChip } from "@/components/layout/AppShell";
+import { Page } from "@/components/layout/Page";
+import { NAV_ITEMS } from "@/lib/modules";
+import { quantApi } from "@/lib/quantApi";
+import { cn } from "@/lib/utils";
+
+const STEPS: Array<{ icon: LucideIcon; title: string; text: string; href: string; cta: string }> = [
+  {
+    icon: Database,
+    title: "1. Charger des données",
+    text: "Importez un historique (CSV ou export MetaTrader 5). Il est validé tel quel : aucune bougie n'est corrigée ni inventée.",
+    href: "/backtest",
+    cta: "Importer",
+  },
+  {
+    icon: SlidersHorizontal,
+    title: "2. Choisir une stratégie",
+    text: "Chaque stratégie a des règles écrites et des paramètres bornés. Celle du trader reste en brouillon tant qu'elle n'est pas formalisée.",
+    href: "/optimizer",
+    cta: "Voir les stratégies",
+  },
+  {
+    icon: Play,
+    title: "3. Simuler",
+    text: "Le moteur Python rejoue l'historique bougie par bougie, avec coûts, spread et Risk Guardian. Aucun ordre ne part.",
+    href: "/backtest",
+    cta: "Lancer un backtest",
+  },
+  {
+    icon: Fingerprint,
+    title: "4. Vérifier",
+    text: "Chaque résultat porte une empreinte SHA-256 et peut être recalculé à l'identique. Les refus de signaux sont expliqués.",
+    href: "/dashboard",
+    cta: "Voir les runs",
+  },
+];
+
+const PRINCIPLES: Array<{ icon: LucideIcon; title: string; text: string }> = [
+  { icon: ShieldCheck, title: "Aucun argent réel", text: "Pas de compte, pas d'identifiant, pas de route d'ordre. Le moteur le déclare lui-même." },
+  { icon: FileSearch, title: "Données jamais retouchées", text: "Trous, doublons, fuseau douteux : le fichier est refusé ou signalé, jamais « réparé » en silence." },
+  { icon: BadgeCheck, title: "Pas de promesse", text: "Un backtest décrit le passé avec des hypothèses de coûts. Ce n'est ni un gain réalisable ni une prévision." },
+  { icon: Lock, title: "Risque borné", text: "Risque par trade, perte journalière et drawdown sont plafonnés. La martingale est interdite par le code." },
+];
+
+function LabState() {
+  const health = useQuery({ queryKey: ["health"], queryFn: () => quantApi.health(), retry: false });
+  const online = health.isSuccess;
+  const datasets = useQuery({ queryKey: ["datasets"], queryFn: () => quantApi.listDatasets(), enabled: online });
+  const runs = useQuery({ queryKey: ["runs"], queryFn: () => quantApi.listBacktests(), enabled: online });
+  const strategies = useQuery({ queryKey: ["strategies"], queryFn: () => quantApi.listStrategies(), enabled: online });
+  const runnable = strategies.data?.strategies.filter((s) => s.runnable).length;
+  const rows: Array<[string, string | number | undefined]> = [
+    ["Jeux de données", datasets.data?.length],
+    ["Backtests enregistrés", runs.data?.length],
+    ["Stratégies testables", runnable],
+  ];
+  return (
+    <div data-testid="home-lab-state" className="rounded-2xl border border-border/60 bg-card/80 p-5 shadow-xl shadow-black/20">
+      <div className="flex items-center justify-between">
+        <p className="text-sm font-semibold">État du laboratoire</p>
+        <span className={cn("flex items-center gap-1.5 text-xs", online ? "text-primary" : "text-red-400")}>
+          <span className={cn("h-2 w-2 rounded-full", online ? "bg-primary" : "bg-red-500")} />
+          {health.isLoading ? "connexion…" : online ? "moteur en ligne" : "moteur hors ligne"}
+        </span>
+      </div>
+      {online ? (
+        <>
+          <dl className="mt-4 grid grid-cols-3 gap-3">
+            {rows.map(([k, v]) => (
+              <div key={k} className="rounded-lg border border-border/50 bg-background/50 p-3">
+                <dd className="text-2xl font-semibold tabular-nums">{v ?? "…"}</dd>
+                <dt className="text-[11px] leading-tight text-muted-foreground">{k}</dt>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-4 text-xs text-muted-foreground">
+            Moteur <code>{health.data.engine_version}</code> · mode {health.data.execution_mode} ·{" "}
+            {health.data.order_routes} route d'ordre · trading réel {health.data.live_trading_enabled ? "activé" : "désactivé"}
+          </p>
+        </>
+      ) : (
+        <p className="mt-4 text-sm text-muted-foreground">
+          {health.isLoading ? "…" : <>Démarrez le moteur avec <code className="rounded bg-muted px-1">pnpm quant:api</code> pour voir vos données.</>}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export default function Index() {
-  const features = [
-    {
-      icon: Brain,
-      title: "AI Strategy Analysis",
-      description:
-        "Analyzes your manual Forex/Gold strategies and optimizes them automatically",
-      color: "text-primary",
-    },
-    {
-      icon: Target,
-      title: "Backtesting Engine",
-      description: "Tests performance on historical data with precise accuracy",
-      color: "text-accent",
-    },
-    {
-      icon: Zap,
-      title: "Semi-Automated Trading",
-      description: "Robot trading with manual validation for ultimate control",
-      color: "text-trading-gold-500",
-    },
-    {
-      icon: Shield,
-      title: "Risk Management",
-      description:
-        "Advanced money management with multiple TP, trailing stops, and position sizing",
-      color: "text-trading-green-500",
-    },
-    {
-      icon: Activity,
-      title: "Anomaly Detection",
-      description:
-        "Identifies weaknesses, abnormal losses, and optimization opportunities",
-      color: "text-trading-red-500",
-    },
-    {
-      icon: BarChart3,
-      title: "Live Analytics",
-      description: "Real-time performance monitoring with MT5 integration",
-      color: "text-chart-line-blue",
-    },
-  ];
-
-  const stats = [
-    {
-      label: "Win Rate",
-      value: "78.4%",
-      icon: TrendingUp,
-      color: "text-trading-green-500",
-    },
-    {
-      label: "Profit Factor",
-      value: "2.31",
-      icon: DollarSign,
-      color: "text-trading-gold-500",
-    },
-    {
-      label: "Max Drawdown",
-      value: "12.8%",
-      icon: TrendingDown,
-      color: "text-trading-red-500",
-    },
-    {
-      label: "Sharpe Ratio",
-      value: "1.85",
-      icon: BarChart3,
-      color: "text-chart-line-blue",
-    },
-  ];
-
-  const assets = ["XAU/USD (Gold)", "EUR/USD", "GBP/USD", "USD/JPY", "BTC/USD"];
-  const indicators = [
-    "RSI",
-    "MACD",
-    "Support/Resistance",
-    "Pullback Patterns",
-    "Breakout Patterns",
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
-        <div className="relative max-w-7xl mx-auto text-center">
-          <Badge
-            variant="outline"
-            className="mb-6 text-primary border-primary/20"
-          >
-            <Lightbulb className="w-4 h-4 mr-2" />
-            AI-Powered Trading Optimization
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent">
-            AI Trader Optimizer
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto">
-            Transform your manual Forex & Gold trading strategies into
-          </p>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            <span className="text-primary font-semibold">backtested</span>,{" "}
-            <span className="text-accent font-semibold">optimized</span>, and{" "}
-            <span className="text-trading-green-500 font-semibold">
-              automated
-            </span>{" "}
-            systems
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/dashboard">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                Start Optimizing
-                <ArrowRight className="w-5 h-5 ml-2" />
+    <div>
+      <section className="relative overflow-hidden border-b border-border/50">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,hsl(var(--primary)/0.18),transparent_55%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.35)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.35)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+        <Page className="relative grid items-center gap-10 py-12 md:py-16 lg:grid-cols-[minmax(0,1fr)_380px]">
+          <div className="space-y-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+              <FlaskConical className="h-3.5 w-3.5" />
+              Laboratoire de recherche · XAUUSD & Forex · simulation
+            </span>
+            <h1 className="max-w-2xl text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl">
+              Tester une idée de trading <span className="text-primary">avant</span> d'y risquer un centime.
+            </h1>
+            <p className="max-w-xl text-base text-muted-foreground md:text-lg">
+              AI Trader Optimizer rejoue vos règles sur l'historique, compte les coûts, applique des limites de risque et montre
+              chaque refus. Les résultats sont traçables et recalculables, jamais embellis.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/backtest" data-testid="home-cta-backtest">
+                  Lancer un backtest <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
-            </Link>
-            <Link to="/backtest">
-              <Button size="lg" variant="outline">
-                View Demo Results
+              <Button asChild size="lg" variant="outline">
+                <Link to="/optimizer">Voir les stratégies</Link>
               </Button>
-            </Link>
+            </div>
           </div>
-        </div>
+          <LabState />
+        </Page>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-card/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <Card key={index} className="text-center border-border/50">
-                  <CardContent className="pt-6">
-                    <Icon className={`w-8 h-8 mx-auto mb-2 ${stat.color}`} />
-                    <div className="text-2xl font-bold mb-1">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {stat.label}
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+      <Page className="space-y-12">
+        <section className="space-y-5">
+          <div>
+            <h2 className="text-xl font-semibold">Comment ça marche</h2>
+            <p className="text-sm text-muted-foreground">Quatre étapes, toutes réalisées par le moteur Python.</p>
           </div>
-        </div>
-      </section>
+          <ol className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {STEPS.map((s) => (
+              <li key={s.title} className="flex flex-col rounded-xl border border-border/60 bg-card/70 p-5">
+                <s.icon className="h-5 w-5 text-primary" />
+                <h3 className="mt-3 font-semibold">{s.title}</h3>
+                <p className="mt-1 flex-1 text-sm text-muted-foreground">{s.text}</p>
+                <Link to={s.href} className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+                  {s.cta} <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Complete Trading Intelligence
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              From manual strategy analysis to fully optimized automated trading
-              systems
+        <section className="grid gap-8 lg:grid-cols-2">
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold">Ce qui existe vraiment</h2>
+              <p className="text-sm text-muted-foreground">Chaque écran affiche sa nature dans le menu.</p>
+            </div>
+            <ul className="divide-y divide-border/50 rounded-xl border border-border/60 bg-card/70" data-testid="home-modules">
+              {NAV_ITEMS.filter((i) => i.href !== "/").map((i) => (
+                <li key={i.href}>
+                  <Link to={i.href} className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-muted/40">
+                    <i.icon className="h-4 w-4 text-muted-foreground" />
+                    <span className="flex-1">
+                      <span className="block text-sm font-medium">{i.label}</span>
+                      <span className="block text-xs text-muted-foreground">{i.hint}</span>
+                    </span>
+                    <StatusChip status={i.status} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-muted-foreground">
+              <StatusChip status="engine" className="mr-1" /> chiffres du moteur ·{" "}
+              <StatusChip status="reference" className="mx-1" /> documentation, hypothèses ·{" "}
+              <StatusChip status="locked" className="mx-1" /> désactivé volontairement
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <Card
-                  key={index}
-                  className="border-border/50 hover:border-primary/20 transition-colors"
-                >
-                  <CardHeader>
-                    <Icon className={`w-10 h-10 ${feature.color} mb-2`} />
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
-                    <CardDescription className="text-muted-foreground">
-                      {feature.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Trading Setup Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-4">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Your Trading Setup, Optimized
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                We've validated your complete trading infrastructure. Now let AI
-                take it to the next level.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-trading-green-500" />
-                  <span>MT5 journal data converted and analyzed</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-trading-green-500" />
-                  <span>XGBoost predictive model implemented</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-trading-green-500" />
-                  <span>Money management system validated</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-trading-green-500" />
-                  <span>Semi-automated execution ready</span>
-                </div>
-              </div>
+              <h2 className="text-xl font-semibold">Les règles du laboratoire</h2>
+              <p className="text-sm text-muted-foreground">Elles sont appliquées par le code, pas seulement écrites ici.</p>
             </div>
-            <div className="space-y-6">
-              <Card className="border-border/50">
-                <CardHeader>
-                  <CardTitle className="text-lg">Supported Assets</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {assets.map((asset, index) => (
-                      <Badge key={index} variant="secondary">
-                        {asset}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="border-border/50">
-                <CardHeader>
-                  <CardTitle className="text-lg">
-                    Technical Indicators
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {indicators.map((indicator, index) => (
-                      <Badge key={index} variant="outline">
-                        {indicator}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {PRINCIPLES.map((p) => (
+                <div key={p.title} className="rounded-xl border border-border/60 bg-card/70 p-4">
+                  <p className="flex items-center gap-2 text-sm font-semibold">
+                    <p.icon className="h-4 w-4 text-primary" />
+                    {p.title}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">{p.text}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Optimize Your Trading?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Transform your intuitive manual system into a backtested, robust,
-            and pilotable AI trading system.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/dashboard">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Launch AI Optimizer
-                <Brain className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link to="/backtest">
-              <Button size="lg" variant="outline">
-                View Backtest Results
-                <BarChart3 className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+        <p className="border-t border-border/50 pt-6 text-xs text-muted-foreground">
+          Le trading sur le Forex et les CFD comporte un risque élevé de perte. Les performances simulées ne préjugent pas des
+          résultats futurs et ne constituent pas un conseil en investissement.
+        </p>
+      </Page>
     </div>
   );
 }

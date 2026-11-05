@@ -1,0 +1,221 @@
+[
+  {
+    "probe": "tampered_metrics",
+    "served": 987654321,
+    "reproduce": {
+      "identical": true,
+      "stored_hash": "b4a4649e8bd29cc8",
+      "new_hash": "b4a4649e8bd29cc8"
+    }
+  },
+  {
+    "probe": "overwrite_same_hash",
+    "accepted": true,
+    "served": 123456
+  },
+  {
+    "probe": "relabel_dataset",
+    "status": 201,
+    "id_before": "156b89bc50cf89a2",
+    "id_after": "2253b32278baa4db",
+    "kind_now": "synthetic"
+  },
+  {
+    "probe": "lowercase_import",
+    "status": 201,
+    "load_error": "Jeu de données 332435554b6eeae9 altéré sur disque (empreinte différente)."
+  },
+  {
+    "probe": "risk_saved",
+    "status": 201,
+    "trades": 3,
+    "configured_daily_cap": 1
+  },
+  {
+    "probe": "risk_override",
+    "status": 201,
+    "trades": 73,
+    "configured_daily_cap": 100
+  },
+  {
+    "probe": "open_above_tp",
+    "trade": [
+      {
+        "entry_price": 100.35,
+        "stop_loss": 98.35,
+        "take_profit": 103.35,
+        "exit_reason": "SL",
+        "exit_price": 98.3,
+        "net_pnl": -23.20999999999997
+      }
+    ]
+  },
+  {
+    "probe": "post_exit_excursions",
+    "trade": [
+      {
+        "exit_reason": "SL",
+        "mae_price": 2.3499999999999943,
+        "mfe_price": 899.65,
+        "mfe_r": 449.825
+      }
+    ]
+  },
+  {
+    "probe": "fractional_timestamp",
+    "before": "2026-09-07 12:00:00.500000+00:00",
+    "after": "2026-09-07 12:00:00+00:00"
+  },
+  {
+    "probe": "dataset_precision_collision",
+    "id1": "a9295dcc876b0456",
+    "id2": "a9295dcc876b0456",
+    "different": true
+  },
+  {
+    "probe": "bad_timezone",
+    "status": 500,
+    "body": "{\"error\":\"Erreur interne du moteur (détails dans le journal du serveur).\",\"detail\":null}"
+  },
+  {
+    "probe": "nonfinite_config",
+    "field": "initial_equity",
+    "accepted": true
+  },
+  {
+    "probe": "nonfinite_config",
+    "field": "costs",
+    "accepted": true
+  },
+  {
+    "probe": "mutable_provenance",
+    "kind": "synthetic",
+    "status": 201,
+    "id": "2253b32278baa4db"
+  },
+  {
+    "probe": "mutable_provenance",
+    "kind": "historical",
+    "status": 201,
+    "id": "2253b32278baa4db"
+  },
+  {
+    "probe": "split_overlap",
+    "segment": "IS",
+    "cut": "2026-09-07 12:05:00+00:00",
+    "trades": [
+      {
+        "entry_time": "2026-09-07 12:05:00+00:00",
+        "exit_time": "2026-09-07 12:05:00+00:00",
+        "net_pnl": 31.79000000000003
+      }
+    ]
+  },
+  {
+    "probe": "split_overlap",
+    "segment": "OOS",
+    "cut": "2026-09-07 12:05:00+00:00",
+    "trades": [
+      {
+        "entry_time": "2026-09-07 12:05:00+00:00",
+        "exit_time": "2026-09-07 12:05:00+00:00",
+        "net_pnl": 31.79000000000003
+      }
+    ]
+  },
+  {
+    "probe": "infinite_api",
+    "status": 201,
+    "metrics": {
+      "avg_bars_held": 5.5,
+      "avg_loss": -7985.988604162806,
+      "avg_win": 11256.814609304334,
+      "by_direction": {
+        "BUY": {
+          "net_pnl": 3195.9399815918005,
+          "trades": 2,
+          "win_rate_pct": 50.0
+        },
+        "SELL": {
+          "net_pnl": 6616.538033832785,
+          "trades": 4,
+          "win_rate_pct": 50.0
+        }
+      },
+      "commission_total": 1800.0,
+      "data_kind": "synthetic",
+      "drawdown_note": "Drawdown sur equity clôturée et mark-to-market aux clôtures de bougies : le drawdown intrabougie réel peut être plus profond.",
+      "exit_reasons": {
+        "SL": 3,
+        "TP": 3
+      },
+      "expectancy": 1635.4130025707643,
+      "expectancy_r": 0.16807491651785225,
+      "final_equity": null,
+      "gross_loss": 23957.96581248842,
+      "gross_profit": 33770.443827913004,
+      "guardian_rejections": {
+        "MAX_LOSSES_PER_DAY": 69,
+        "MAX_OPEN_POSITIONS": 2,
+        "MAX_TRADES_PER_DAY": 221
+      },
+      "initial_equity": null,
+      "largest_loss": -8634.259757409654,
+      "largest_win": 11830.199739001455,
+      "losses_beyond_planned_risk": 3,
+      "max_consecutive_losses": 2,
+      "max_dd_closed": null,
+      "max_dd_closed_pct": null,
+      "max_dd_mtm": null,
+      "max_dd_mtm_pct": null,
+      "net_pnl": null,
+      "non_wins": 3,
+      "payoff_ratio": 1.4095705825871785,
+      "pnl_before_costs": null,
+      "profit_factor": 1.4095705825871785,
+      "rejection_reasons": {
+        "MAX_LOSSES_PER_DAY": 69,
+        "MAX_OPEN_POSITIONS": 2,
+        "MAX_TRADES_PER_DAY": 221,
+        "OUTSIDE_SESSION": 366
+      },
+      "return_pct": null,
+      "sample_note": "6 trade(s) < 30 : échantillon insuffisant, conclusion « non démontré ».",
+      "sample_sufficient": false,
+      "signals": 457,
+      "signals_entered": 6,
+      "signals_rejected": 451,
+      "slippage_cost_total": 3000.0,
+      "spread_cost_total": 9000.0,
+      "total_costs": 13800.0,
+      "trades": 6,
+      "trades_with_data_gap": 0,
+      "unavailable": {
+        "sharpe_sortino": "non calculés en v0.2 : nécessitent une série de rendements périodiques sur données réelles et un échantillon suffisant"
+      },
+      "wait_reasons": {
+        "WAIT:motif baissier sans tendance baissière": 306,
+        "WAIT:motif haussier sans tendance haussière": 283,
+        "WAIT:pas de motif 3 bougies": 3224,
+        "WAIT:warm-up indicateurs": 50
+      },
+      "win_rate_pct": 50.0,
+      "wins": 3
+    },
+    "equity": null
+  },
+  {
+    "probe": "upload_before_limit",
+    "already_received": 2097687,
+    "limit": 1024
+  },
+  {
+    "probe": "upload_result",
+    "status": 413
+  },
+  {
+    "probe": "cors_write",
+    "status": 201,
+    "allow_origin": null
+  }
+]

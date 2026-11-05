@@ -1,0 +1,250 @@
+{
+  "python": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "packages": [
+    {
+      "name": "altair",
+      "expected": "6.3.0",
+      "actual": "6.3.0"
+    },
+    {
+      "name": "annotated-doc",
+      "expected": "0.0.5",
+      "actual": "0.0.5"
+    },
+    {
+      "name": "annotated-types",
+      "expected": "0.8.0",
+      "actual": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "expected": "4.16.0",
+      "actual": "4.16.0"
+    },
+    {
+      "name": "attrs",
+      "expected": "26.1.0",
+      "actual": "26.1.0"
+    },
+    {
+      "name": "certifi",
+      "expected": "2026.10.23",
+      "actual": "2026.10.23"
+    },
+    {
+      "name": "charset-normalizer",
+      "expected": "3.5.2",
+      "actual": "3.5.2"
+    },
+    {
+      "name": "click",
+      "expected": "8.5.0",
+      "actual": "8.5.0"
+    },
+    {
+      "name": "fastapi",
+      "expected": "0.162.0",
+      "actual": "0.162.0"
+    },
+    {
+      "name": "h11",
+      "expected": "0.16.0",
+      "actual": "0.16.0"
+    },
+    {
+      "name": "httpcore",
+      "expected": "1.0.9",
+      "actual": "1.0.9"
+    },
+    {
+      "name": "httpx",
+      "expected": "0.28.1",
+      "actual": "0.28.1"
+    },
+    {
+      "name": "idna",
+      "expected": "3.20",
+      "actual": "3.20"
+    },
+    {
+      "name": "iniconfig",
+      "expected": "2.3.1",
+      "actual": "2.3.1"
+    },
+    {
+      "name": "itsdangerous",
+      "expected": "2.2.0",
+      "actual": "2.2.0"
+    },
+    {
+      "name": "Jinja2",
+      "expected": "3.1.6",
+      "actual": "3.1.6"
+    },
+    {
+      "name": "jsonschema",
+      "expected": "4.26.0",
+      "actual": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "expected": "2025.9.1",
+      "actual": "2025.9.1"
+    },
+    {
+      "name": "MarkupSafe",
+      "expected": "3.0.4",
+      "actual": "3.0.4"
+    },
+    {
+      "name": "narwhals",
+      "expected": "2.28.0",
+      "actual": "2.28.0"
+    },
+    {
+      "name": "numpy",
+      "expected": "2.5.4",
+      "actual": "2.5.4"
+    },
+    {
+      "name": "opentelemetry-api",
+      "expected": "1.45.2",
+      "actual": "1.45.2"
+    },
+    {
+      "name": "packaging",
+      "expected": "26.3",
+      "actual": "26.3"
+    },
+    {
+      "name": "pandas",
+      "expected": "2.3.3",
+      "actual": "2.3.3"
+    },
+    {
+      "name": "pillow",
+      "expected": "13.0.0",
+      "actual": "13.0.0"
+    },
+    {
+      "name": "pluggy",
+      "expected": "1.7.0",
+      "actual": "1.7.0"
+    },
+    {
+      "name": "protobuf",
+      "expected": "7.36.2",
+      "actual": "7.36.2"
+    },
+    {
+      "name": "pyarrow",
+      "expected": "26.0.1",
+      "actual": "26.0.1"
+    },
+    {
+      "name": "pydantic",
+      "expected": "2.14.2",
+      "actual": "2.14.2"
+    },
+    {
+      "name": "pydantic_core",
+      "expected": "2.50.2",
+      "actual": "2.50.2"
+    },
+    {
+      "name": "pydeck",
+      "expected": "0.9.3",
+      "actual": "0.9.3"
+    },
+    {
+      "name": "Pygments",
+      "expected": "2.21.0",
+      "actual": "2.21.0"
+    },
+    {
+      "name": "pytest",
+      "expected": "9.2.0",
+      "actual": "9.2.0"
+    },
+    {
+      "name": "python-dateutil",
+      "expected": "4.0.0",
+      "actual": "4.0.0"
+    },
+    {
+      "name": "python-multipart",
+      "expected": "0.0.33",
+      "actual": "0.0.33"
+    },
+    {
+      "name": "pytz",
+      "expected": "2026.6",
+      "actual": "2026.6"
+    },
+    {
+      "name": "PyYAML",
+      "expected": "6.0.3",
+      "actual": "6.0.3"
+    },
+    {
+      "name": "referencing",
+      "expected": "0.37.0",
+      "actual": "0.37.0"
+    },
+    {
+      "name": "requests",
+      "expected": "2.34.2",
+      "actual": "2.34.2"
+    },
+    {
+      "name": "rpds-py",
+      "expected": "2026.9.1",
+      "actual": "2026.9.1"
+    },
+    {
+      "name": "ruff",
+      "expected": "0.17.3",
+      "actual": "0.17.3"
+    },
+    {
+      "name": "starlette",
+      "expected": "1.10.0",
+      "actual": "1.10.0"
+    },
+    {
+      "name": "streamlit",
+      "expected": "1.66.1",
+      "actual": "1.66.1"
+    },
+    {
+      "name": "typing-inspection",
+      "expected": "0.4.4",
+      "actual": "0.4.4"
+    },
+    {
+      "name": "typing_extensions",
+      "expected": "4.16.0",
+      "actual": "4.16.0"
+    },
+    {
+      "name": "tzdata",
+      "expected": "2026.6",
+      "actual": "2026.6"
+    },
+    {
+      "name": "urllib3",
+      "expected": "2.8.0",
+      "actual": "2.8.0"
+    },
+    {
+      "name": "uvicorn",
+      "expected": "0.54.0",
+      "actual": "0.54.0"
+    },
+    {
+      "name": "websockets",
+      "expected": "17.4",
+      "actual": "17.4"
+    }
+  ]
+}

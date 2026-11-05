@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export interface Toast {
   id: string;
@@ -14,46 +14,48 @@ interface ToastState {
 
 let toastCount = 0;
 
+// Module-level store shared by every useToast() caller (pages AND the <Toaster/>).
+let memoryState: ToastState = { toasts: [] };
+const listeners = new Set<(s: ToastState) => void>();
+
+function setState(update: (prev: ToastState) => ToastState) {
+  memoryState = update(memoryState);
+  listeners.forEach((l) => l(memoryState));
+}
+
+/** Read-only snapshot of the shared store (used by tests). */
+export function getToastState(): ToastState {
+  return memoryState;
+}
+
+export function dismiss(toastId: string) {
+  setState((prev) => ({ toasts: prev.toasts.filter((t) => t.id !== toastId) }));
+}
+
+export function toast({
+  title,
+  description,
+  variant = "default",
+  duration = 5000,
+}: Omit<Toast, "id">) {
+  const id = (++toastCount).toString();
+  const newToast: Toast = { id, title, description, variant, duration };
+  setState((prev) => ({ toasts: [...prev.toasts, newToast] }));
+  if (duration > 0) setTimeout(() => dismiss(id), duration); // auto dismiss
+  return id;
+}
+
 export function useToast() {
-  const [state, setState] = useState<ToastState>({ toasts: [] });
+  const [state, setLocal] = useState<ToastState>(memoryState);
 
-  const toast = useCallback(
-    ({
-      title,
-      description,
-      variant = "default",
-      duration = 5000,
-    }: Omit<Toast, "id">) => {
-      const id = (++toastCount).toString();
-      const newToast: Toast = { id, title, description, variant, duration };
-
-      setState((prevState) => ({
-        toasts: [...prevState.toasts, newToast],
-      }));
-
-      // Auto dismiss after duration
-      if (duration > 0) {
-        setTimeout(() => {
-          setState((prevState) => ({
-            toasts: prevState.toasts.filter((t) => t.id !== id),
-          }));
-        }, duration);
-      }
-
-      return id;
-    },
-    [],
-  );
-
-  const dismiss = useCallback((toastId: string) => {
-    setState((prevState) => ({
-      toasts: prevState.toasts.filter((t) => t.id !== toastId),
-    }));
+  useEffect(() => {
+    listeners.add(setLocal);
+    return () => {
+      listeners.delete(setLocal);
+    };
   }, []);
 
-  const dismissAll = useCallback(() => {
-    setState({ toasts: [] });
-  }, []);
+  const dismissAll = useCallback(() => setState(() => ({ toasts: [] })), []);
 
   return {
     toast,

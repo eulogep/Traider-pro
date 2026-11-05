@@ -1,0 +1,86 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/v1/health"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/datasets"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/datasets/{dataset_id}"
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/datasets/demo"
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/datasets/import"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/strategies"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/settings/defaults"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/settings/risk-policy"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/reference/rejection-reasons"
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/backtests"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/backtests"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/backtests/{run_id}"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/backtests/{run_id}/trades"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/backtests/{run_id}/decisions"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/backtests/{run_id}/equity"
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/backtests/{run_id}/reproduce"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/backtests/{run_id}/export/{name}"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/backtests/{run_id}/robustness"
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/research/edge-studies"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/research/edge-studies"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/research/edge-studies/{study_id}"
+  }
+]

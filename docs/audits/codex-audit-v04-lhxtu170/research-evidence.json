@@ -1,0 +1,175 @@
+[
+  {
+    "name": "generation_and_overlap",
+    "seed": 7,
+    "days": 20,
+    "all_candidates": 2439,
+    "labelled": 495,
+    "engine_trades": 30,
+    "max_concurrent_labels": 4,
+    "overlapping_pairs": 250,
+    "known_end_labels": 495
+  },
+  {
+    "name": "features_prefix",
+    "pass_": true,
+    "indices": [
+      1000,
+      2000
+    ]
+  },
+  {
+    "name": "real_study",
+    "id": "d987bcbd382f7529",
+    "verdict": {
+      "code": "NO_EDGE",
+      "confidence": "95,0 %",
+      "title": "Aucun avantage démontré",
+      "text": "L'intervalle de confiance de l'espérance contient zéro : le résultat est compatible avec le hasard. Ne pas engager d'argent sur cette base."
+    },
+    "signals": {
+      "candidates": 2439,
+      "labelled": 495,
+      "exit_reasons": {
+        "SL": 303,
+        "TP": 192
+      }
+    },
+    "result": {
+      "n_oos": 250,
+      "n_taken": 92,
+      "auc": {
+        "value": 0.5677363050483352,
+        "ci": [
+          0.45235398779654723,
+          0.663253016614116
+        ],
+        "rating": "non démontré"
+      },
+      "brier": {
+        "model": 0.24308280920272288,
+        "reference": 0.239137778396033,
+        "skill": -0.016496894941277596
+      },
+      "calibration": [
+        {
+          "n": 50,
+          "mean_predicted": 0.17668566550187104,
+          "observed_rate": 0.4
+        },
+        {
+          "n": 50,
+          "mean_predicted": 0.26613181821769005,
+          "observed_rate": 0.28
+        },
+        {
+          "n": 50,
+          "mean_predicted": 0.34339331236267073,
+          "observed_rate": 0.3
+        },
+        {
+          "n": 50,
+          "mean_predicted": 0.42813420891503573,
+          "observed_rate": 0.5
+        },
+        {
+          "n": 50,
+          "mean_predicted": 0.5730202962537058,
+          "observed_rate": 0.48
+        }
+      ]
+    },
+    "latest": {
+      "signal_time": "2026-09-25T16:31:00+00:00",
+      "direction": "SELL",
+      "probability_win": 0.4288751477556821,
+      "threshold": 0.44964028784746396,
+      "opinion": "NE PAS TRADER",
+      "why": "Aucun avantage démontré hors échantillon : la probabilité est indicative."
+    }
+  },
+  {
+    "name": "window_ignored",
+    "same_id": true,
+    "requested_start": "2026-09-25T23:55:00+00:00",
+    "n_labelled": 495,
+    "max_signals_in_requested_window": 5
+  },
+  {
+    "name": "time_exit_mismatch",
+    "engine": [
+      {
+        "net_pnl": -5.059999999999906,
+        "r_multiple": -0.21800947867298176,
+        "exit_reason": "TIME_EXIT",
+        "exit_time": "2026-09-07 12:02:00+00:00"
+      }
+    ],
+    "labels": [
+      {
+        "r": 1.3696682464454992,
+        "exit_reason": "TP",
+        "exit_time": "2026-09-07 12:03:00+00:00"
+      }
+    ]
+  },
+  {
+    "name": "label_availability",
+    "entries_exiting_same_open": 58,
+    "first": [
+      {
+        "entry_time": "2026-09-07 12:19:00+00:00",
+        "exit_time": "2026-09-07 12:22:00+00:00",
+        "exit_reason": "TP"
+      },
+      {
+        "entry_time": "2026-09-07 12:36:00+00:00",
+        "exit_time": "2026-09-07 12:42:00+00:00",
+        "exit_reason": "SL"
+      }
+    ]
+  },
+  {
+    "name": "nan_model_opinion",
+    "opinion": {
+      "signal_time": "2026-09-25T16:31:00+00:00",
+      "direction": "SELL",
+      "probability_win": "NaN (non-finite observed)",
+      "threshold": null,
+      "opinion": "PRENDRE"
+    }
+  },
+  {
+    "name": "ood_prediction",
+    "input": [
+      [
+        1000000000.0,
+        -1000000000.0
+      ]
+    ],
+    "probability": [
+      0.9999999999999993
+    ],
+    "has_ood_gate": false
+  },
+  {
+    "name": "study_tampering",
+    "status": 200,
+    "served_verdict": "EDGE",
+    "repeat_returns_falsified": true
+  },
+  {
+    "name": "repeated_testing",
+    "first_alpha": 0.05,
+    "second_alpha": 0.025,
+    "first_cached_alpha": 0.05,
+    "bootstrap_seed_changes": true
+  },
+  {
+    "name": "supervised_research_override",
+    "status": 201,
+    "contract_symbol": "EURUSD",
+    "dataset_symbol": "XAUUSD-DEMO",
+    "result": "NO_EDGE"
+  }
+]

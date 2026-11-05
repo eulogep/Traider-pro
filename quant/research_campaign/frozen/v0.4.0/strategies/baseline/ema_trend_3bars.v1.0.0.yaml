@@ -1,0 +1,57 @@
+# Baseline illustrative portée depuis le prototype v0.1.
+# NE PAS présenter ses résultats comme ceux d'une stratégie rentable.
+id: baseline.ema_trend_3bars
+name: "Baseline — tendance EMA + séquence 3 bougies"
+version: "1.0.0"
+owner: "Projet AI Trader Optimizer (référence technique)"
+category: baseline
+status: active
+illustrative: true
+usage_rights: project
+implementation: ema_trend_3bars
+description: >
+  Stratégie de référence déterministe servant à tester le logiciel et à comparer
+  les futures variantes (y compris IA) avec les mêmes données et les mêmes coûts.
+  Aucun avantage statistique n'est supposé.
+market: {symbol: XAUUSD, asset_class: metal}
+timeframes: {execution: M1, context: []}
+trading_hours:
+  timezone: UTC
+  sessions: ["12:00-17:00"]
+  weekdays: [0, 1, 2, 3, 4]
+indicators:
+  - {name: EMA, params: {period: ema_fast}}
+  - {name: EMA, params: {period: ema_slow}}
+  - {name: ATR, params: {period: atr_period, method: atr_method}}
+rules:
+  buy:
+    - "Les 3 dernières bougies CLÔTURÉES sont rouge → verte → verte"
+    - "Clôture > EMA rapide > EMA lente"
+  sell:
+    - "Les 3 dernières bougies CLÔTURÉES sont verte → rouge → rouge"
+    - "Clôture < EMA rapide < EMA lente"
+  wait:
+    - "Période d'échauffement des indicateurs non terminée"
+    - "Pas de motif 3 bougies, ou motif sans tendance EMA cohérente"
+    - "Hors des horaires / jours de trading déclarés"
+  invalidation:
+    - "Bougie suivante absente (trou de données) : pas d'entrée"
+    - "Position déjà ouverte, ou sortie dans la même bougie"
+    - "Refus du Risk Guardian (limites, taille minimale, contrat inconnu…)"
+  exit:
+    - "Stop-loss à sl_atr_mult × ATR du point d'entrée"
+    - "Take-profit à rr × distance du stop"
+    - "SL prioritaire si SL et TP sont touchés dans la même bougie M1"
+    - "Clôture forcée en fin de données"
+params:
+  ema_fast: {type: int, default: 20, min: 2, max: 200, description: "Période EMA rapide"}
+  ema_slow: {type: int, default: 50, min: 3, max: 400, description: "Période EMA lente"}
+  atr_period: {type: int, default: 14, min: 2, max: 100, description: "Période ATR"}
+  atr_method: {type: choice, default: sma, choices: [sma, wilder],
+               description: "sma = moyenne simple du True Range (comportement v0.1) ; wilder = ATR MT5/TradingView"}
+  sl_atr_mult: {type: float, default: 1.5, min: 0.5, max: 4.0, description: "Distance du stop en multiples d'ATR"}
+  rr: {type: float, default: 1.5, min: 0.5, max: 5.0, description: "Objectif en multiples du risque (R:R)"}
+  warmup_bars: {type: int, default: 50, min: 50, max: 2000, description: "Bougies ignorées au début (échauffement)"}
+risk_defaults: {risk_per_trade_pct: 0.25, max_daily_loss_pct: 1.0, max_trades_per_day: 2}
+position_scaling: none
+open_questions: []

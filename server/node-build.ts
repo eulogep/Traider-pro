@@ -1,9 +1,17 @@
 import path from "path";
 import { createServer } from "./index";
-import * as express from "express";
+import express from "express";
+import { port as configuredPort } from "./config/env";
+import { quantProxy } from "./quantProxy";
 
-const app = createServer();
-const port = process.env.PORT || 3000;
+// Supported local production topology (I10):
+//   browser -> Express (127.0.0.1:PORT) -> /api/v1/* relayed untouched -> Python API (QUANT_API_URL)
+//                                       -> other /api/* -> Express routes ; everything else -> built SPA
+// The relay is mounted first: createServer() installs express.json(), which would consume POST bodies.
+const app = express();
+app.use("/api/v1", quantProxy());
+app.use(createServer());
+const port = configuredPort;
 
 // In production, serve the built SPA files
 const __dirname = import.meta.dirname;
@@ -13,7 +21,8 @@ const distPath = path.join(__dirname, "../spa");
 app.use(express.static(distPath));
 
 // Handle React Router - serve index.html for all non-API routes
-app.get("*", (req, res) => {
+// Express 5 (path-to-regexp 8) no longer accepts "*": use a named wildcard.
+app.get("/{*splat}", (req, res) => {
   // Don't serve index.html for API routes
   if (req.path.startsWith("/api/") || req.path.startsWith("/health")) {
     return res.status(404).json({ error: "API endpoint not found" });
@@ -22,7 +31,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 
-app.listen(port, () => {
+// Local only by default; set HOST explicitly to expose the server.
+app.listen(Number(port), process.env.HOST ?? "127.0.0.1", () => {
   console.log(`🚀 Fusion Starter server running on port ${port}`);
   console.log(`📱 Frontend: http://localhost:${port}`);
   console.log(`🔧 API: http://localhost:${port}/api`);

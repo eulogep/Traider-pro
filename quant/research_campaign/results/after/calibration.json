@@ -1,0 +1,51 @@
+{
+ "P1_edge_005": {
+  "A_pooled_mean_r_at_q1": 0.23144326872298393,
+  "n_signals": 51127,
+  "target": 0.05,
+  "q": 0.608017831488211,
+  "errors": 0
+ },
+ "P2_edge_010": {
+  "A_pooled_mean_r_at_q1": 0.22595034910783554,
+  "n_signals": 51560,
+  "target": 0.1,
+  "q": 0.7212875536480687,
+  "errors": 0
+ },
+ "P3_edge_020": {
+  "A_pooled_mean_r_at_q1": 0.2306492797692143,
+  "n_signals": 51303,
+  "target": 0.2,
+  "q": 0.933558691794135,
+  "errors": 0
+ },
+ "P4_edge_010_burst20": {
+  "A_pooled_mean_r_at_q1": 0.17811123797096723,
+  "n_signals": 49048,
+  "target": 0.1,
+  "q": 0.7807234432234432,
+  "errors": 0
+ },
+ "P5_edge_020_stochvol": {
+  "A_pooled_mean_r_at_q1": 0.24591704852543766,
+  "n_signals": 51066,
+  "target": 0.2,
+  "q": 0.9066411849020545,
+  "errors": 0
+ },
+ "P6_edge_010_sparse": {
+  "A_pooled_mean_r_at_q1": 0.22667185069984447,
+  "n_signals": 10288,
+  "target": 0.1,
+  "q": 0.7205831903945111,
+  "errors": 0
+ },
+ "P7_conditional_hours": {
+  "A_pooled_mean_r_at_q1": 0.0916589219330855,
+  "n_signals": 51648,
+  "target": 0.3,
+  "q": 1.0,
+  "errors": 0
+ }
+}

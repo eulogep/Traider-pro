@@ -1,0 +1,38 @@
+# BROUILLON — règles exactes non communiquées par le trader. Non exécutable.
+# Infrastructure prête : indicateur MACD (features/indicators.py) et alignement
+# M15 -> M1 sans fuite temporelle (data/resample.py, testé).
+id: pilot.macd_m15_m1
+name: "MACD double confirmation M15 / M1 (brouillon)"
+version: "0.1.0"
+owner: "Trader pilote"
+category: pilot_trader
+status: draft
+illustrative: false
+usage_rights: owner_consent
+implementation: null
+description: >
+  Gabarit destiné à recevoir la stratégie MACD du trader pilote : contexte M15,
+  déclenchement M1. Les conditions ci-dessous sont des emplacements à confirmer,
+  pas des règles validées.
+market: {symbol: XAUUSD, asset_class: metal}
+timeframes: {execution: M1, context: [M15]}
+trading_hours: {timezone: UTC, sessions: ["07:00-17:00"], weekdays: [0, 1, 2, 3, 4]}
+indicators:
+  - {name: MACD, params: {fast: 12, slow: 26, signal: 9}, timeframe: M15}
+  - {name: MACD, params: {fast: 12, slow: 26, signal: 9}, timeframe: M1}
+rules:
+  buy: ["À DÉFINIR avec le trader : condition MACD M15 (contexte) + déclencheur MACD M1"]
+  sell: ["À DÉFINIR avec le trader"]
+  wait: ["À DÉFINIR : désaccord M15/M1, news, spread élevé ?"]
+  invalidation: ["À DÉFINIR"]
+  exit: ["À DÉFINIR : SL structurel, ATR, ou fixe ? TP / sortie sur croisement inverse ?"]
+params: {}
+position_scaling: none
+open_questions:
+  - "Paramètres MACD utilisés (12/26/9 ou autres) sur chaque unité de temps ?"
+  - "Confirmation M15 : croisement, position par rapport à zéro, pente de l'histogramme ?"
+  - "Déclencheur M1 : croisement MACD/signal, ou retour de l'histogramme ?"
+  - "La bougie M15 doit-elle être clôturée (oui par défaut dans le moteur) ?"
+  - "Placement du stop-loss et du take-profit ; sortie anticipée ?"
+  - "Horaires et jours tradés ; fuseau horaire de référence ; filtre news ?"
+  - "Nombre maximal de trades par jour ; comportement après une perte ?"
