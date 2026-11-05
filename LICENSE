@@ -1,0 +1,49 @@
+Copyright (c) 2025-2026 Euloge (GitHub : eulogep). Tous droits réservés.
+
+LICENCE PROPRIÉTAIRE — TOUS DROITS RÉSERVÉS
+
+Ce dépôt (« Traider Pro / AI Trader Optimizer ») est rendu public uniquement pour être CONSULTÉ, par exemple pour
+présenter le projet. La publication du code ne vaut pas licence.
+
+1. Ce qui est autorisé sans accord écrit préalable
+   - Consulter le code et la documentation sur GitHub.
+   - Le cloner ou le télécharger pour un examen personnel, une évaluation ou un audit, sans redistribution.
+
+2. Ce qui est interdit sans accord écrit préalable du titulaire des droits
+   - Copier, reproduire ou redistribuer tout ou partie du code, de la documentation ou des données.
+   - Modifier le code ou en créer des œuvres dérivées.
+   - Toute utilisation commerciale : vente, location, intégration dans un produit ou un service, y compris en ligne.
+   - Retirer ou altérer la présente mention de droits.
+
+3. Exclusions : éléments de tiers, régis par leurs propres conditions
+   - `client/components/ui/` : composants dérivés de shadcn/ui, sous licence MIT
+     (Copyright (c) 2023 shadcn — https://github.com/shadcn-ui/ui). La licence MIT de ces composants s'applique à eux
+     et reste en vigueur.
+   - Base initiale du dépôt : générée à partir du modèle « Fusion Starter » de Builder.io (commits d'août 2025). Les
+     droits éventuels sur ce modèle restent ceux de leur auteur.
+   - `quant/tests/fixtures/mt5/` : rapports du Strategy Tester MetaTrader 5 produits par le titulaire des droits avec un
+     robot de trading commercial de tiers (« Gold Grid Strategy V3.70 EA » / « Quantum Queen MT5 »). Le nom, les
+     paramètres et le comportement de ce robot appartiennent à leurs propriétaires. Ces fichiers ne servent qu'à des
+     fins d'analyse et de test.
+   - `archive/legacy-student-ai-trader-optimizer/` : ancien script copié d'un autre projet, origine et licence non
+     établies. Il est conservé pour mémoire seulement, et aucun droit n'est concédé sur lui.
+   - `docs/audits/` : rapports d'audit indépendants et leurs pièces, conservés comme preuves.
+   - Dépendances installées par pnpm ou pip : chacune sous sa propre licence.
+
+4. Absence de garantie et avertissement de risque
+   - Le logiciel est fourni « EN L'ÉTAT », sans garantie d'aucune sorte, expresse ou implicite.
+   - Il s'agit d'un outil de recherche en simulation : il n'envoie aucun ordre et ne constitue ni un conseil en
+     investissement, ni une promesse de performance.
+   - Aucun résultat simulé n'est une performance réalisable.
+   - Le titulaire des droits décline toute responsabilité pour les pertes ou dommages résultant de son utilisation.
+
+5. Demandes d'autorisation
+   Toute demande d'utilisation, de licence ou de collaboration s'adresse au titulaire des droits via son profil GitHub
+   (https://github.com/eulogep).
+
+---
+
+English summary: All rights reserved. This repository is public for viewing only. No permission is granted to copy,
+modify, redistribute or use it commercially without prior written consent. Third-party components keep their own
+licenses: shadcn/ui-derived code in `client/components/ui/` is under MIT, and MT5 reports of a third-party trading
+robot are used for analysis only. Provided "as is", without warranty. It is not investment advice.

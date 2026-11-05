@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77", "wheel"]  # >=77: SPDX string for project.license
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,6 +7,7 @@ name = "ai-trader-optimizer"
 version = "0.5.0"
 description = "Offline research and strategy backtesting laboratory for XAUUSD/Forex (no live orders)."
 requires-python = ">=3.10"
+license = "LicenseRef-Proprietary"  # all rights reserved — see ../LICENSE
 dependencies = [
   "pandas>=2.0,<3",
   "numpy>=1.24,<3",

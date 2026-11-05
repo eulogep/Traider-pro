@@ -87,6 +87,12 @@ Documentation :
 - **Robots externes** : leur logique interne n'est jamais lue. Tout ce qui la concerne est présenté comme hypothèse.
 - **Conditions non modélisées** : bougies OHLC (pas de ticks), coûts constants, pas de marge ni de swap dans le moteur.
 
+## Licence
+
+**Tous droits réservés**, voir [`LICENSE`](LICENSE). Le dépôt est public pour être consulté ; toute copie, modification,
+redistribution ou utilisation commerciale demande un accord écrit. Les composants de tiers gardent leur propre licence
+(ex. shadcn/ui, MIT).
+
 ## Avertissement de risque
 
 Logiciel de recherche et d'éducation. Aucun résultat simulé n'est une performance réalisable ni une preuve de

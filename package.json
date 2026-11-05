@@ -1,6 +1,7 @@
 {
   "name": "fusion-starter",
   "private": true,
+  "license": "UNLICENSED",
   "type": "module",
   "pkg": {
     "assets": [
