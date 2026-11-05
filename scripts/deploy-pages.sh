@@ -20,7 +20,7 @@ else
   git worktree add -q --detach "$WT"
   git -C "$WT" checkout -q --orphan gh-pages
 fi
-git -C "$WT" rm -rq --ignore-unmatch . >/dev/null
+git -C "$WT" rm -rfq --ignore-unmatch . >/dev/null
 cp -R dist/spa/. "$WT"/
 SRC="$(git rev-parse --short HEAD)"
 git -C "$WT" add -A
