@@ -88,7 +88,7 @@ function EngineStatus() {
     <div data-testid="shell-engine-status" className="rounded-lg border border-border/60 bg-background/40 p-3 text-xs">
       <p className="flex items-center gap-2 font-medium">
         <span className={cn("h-2 w-2 rounded-full", ok ? "bg-primary" : health.isLoading ? "bg-muted-foreground" : "bg-red-500")} />
-        {health.isLoading ? "Connexion au moteur…" : ok ? "Moteur Python en ligne" : "Moteur Python hors ligne"}
+        {SHOWCASE_MODE ? "Résultats figés du moteur Python" : health.isLoading ? "Connexion au moteur…" : ok ? "Moteur Python en ligne" : "Moteur Python hors ligne"}
       </p>
       {ok ? (
         <p className="mt-1 flex items-center gap-1.5 text-muted-foreground">
