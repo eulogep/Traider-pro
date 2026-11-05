@@ -40,7 +40,7 @@ hypothèses qualifiées, pont MT5 local en lecture seule, page « Bot Analysis �
    validation jamais consultée).
 
 ## v0.4.2 — restant avant tout usage sur données réelles
-1. Contre-validation indépendante (Codex) de la campagne et des correctifs (`../../docs/CODEX_HANDOFF_V041.md`).
+1. Contre-validation indépendante (Codex) de la campagne et des correctifs (`../../docs/handoffs/CODEX_HANDOFF_V041.md`).
 2. Rejeu portefeuille des signaux filtrés avec le moteur (une position, limites, dimensionnement) — audit I04-2.
 3. Calibration des scores (sur validation, jamais sur test) ou maintien explicite de « non calibré » — I04-5.
 4. Monte Carlo par blocs avec rejeu du sizing et du Risk Guardian — I04-6.
@@ -53,7 +53,7 @@ hypothèses qualifiées, pont MT5 local en lecture seule, page « Bot Analysis �
 2. Migrer vers React : Market Data (rapport de qualité, trous), Trade Journal (rejeu graphique), Risk Management et
    Settings du moteur (`PUT /api/v1/settings/*`), puis Dashboard ; retirer les routes mock Express correspondantes.
 3. Relais `/api/v1` dans le serveur de production Express (ou service statique par FastAPI) + test.
-4. Commits propres selon le plan (`../../docs/CONSOLIDATION_AUDIT.md` §6), après votre accord.
+4. Commits propres selon le plan (`../../docs/project/CONSOLIDATION_AUDIT.md` §6), après votre accord.
 
 ## v0.3 (ancien plan, toujours valable pour la stratégie)
 1. **Entretien avec le trader pilote** (`ENTRETIEN_TRADER.md`) → formaliser sa stratégie MACD M15/M1

@@ -1,4 +1,7 @@
-# Rapport de tests — v0.3.1 (2026-11-04)
+# Rapport de tests — v0.3.1 (2026-11-04) — historique
+
+> Document historique de la v0.3.1. Résultats actuels : `VALIDATION_V05.md` §3 (v0.5.0) et
+> `VALIDATION_V041.md` §8 (v0.4.1).
 
 Environnement : macOS, Python 3.12.14 (`.venv`), pandas 2.3.3, numpy 2.5.4, streamlit 1.66.1, pydantic 2.14.2,
 pytest 9.2.0, ruff 0.17.3, fastapi 0.162.0, uvicorn 0.54.0, httpx 0.28.1. Node 26.8.1, pnpm 10.14.0, vitest 3.2.4, Chrome (headless).

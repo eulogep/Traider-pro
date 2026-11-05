@@ -1,6 +1,10 @@
-# Architecture — AI Trader Optimizer v0.3.1 (Financial Integrity Hardening)
+# Architecture — AI Trader Optimizer (à jour v0.5.0)
 
-> Plan de migration : `../../docs/CONSOLIDATION_AUDIT.md`. Audit indépendant : `../../docs/audits/codex-v03-2026-11-04/`.
+> Les sections ci-dessous décrivent le socle v0.3.1 (intégrité, temps, risque, garde, production), toujours en
+> vigueur. Couches ajoutées depuis : `research/` (v0.4, voir `VALIDATION.md` et `VALIDATION_V041.md`),
+> `ea_audit/` et `external_lab/` (v0.5, voir `EXTERNAL_LAB.md` et `SECURITY_V05.md`).
+
+> Plan de migration : `../../docs/project/CONSOLIDATION_AUDIT.md`. Audit indépendant : `../../docs/audits/codex-v03-2026-11-04/`.
 
 ## Intégrité des runs (format `ato-run/1`, `storage/integrity.py`)
 
@@ -47,7 +51,7 @@ navigateur → Express 127.0.0.1:PORT ─ /api/v1/* relayé tel quel (server/qua
 ```
 Netlify n'est **pas** une cible supportée (pas de moteur Python).
 
-> Plan de migration et diagnostic du workspace : `../../docs/CONSOLIDATION_AUDIT.md`.
+> Plan de migration et diagnostic du workspace : `../../docs/project/CONSOLIDATION_AUDIT.md`.
 
 **Aucun chemin d'exécution vers un courtier** n'existe dans cette version.
 
@@ -145,6 +149,9 @@ Dataset (bars UTC + DatasetMeta, dataset_id = empreinte)      │
 | `ai/` | Futur module IA | Interfaces `FeatureExtractor`, `SignalScorer`, `ModelCard` ; splits chronologiques et walk-forward testés. Aucun modèle entraîné |
 | `execution/adapters.py` | Adaptateurs | `SimulationAdapter` seulement ; `DemoAccountAdapter` / `LiveAccountAdapter` lèvent `ExecutionDisabledError` |
 | `core.py` | **Référence v0.1 figée** | Non utilisée par l'app ; sert au test de non-régression |
+| `research/` | Validation hors échantillon (v0.4, **expérimentale**) | Étiquetage triple barrière, variables causales, walk-forward purgé, filtre logistique, inférence par grappes (`inference.py`), registre d'essais chaîné (`registry.py`), études scellées `ato-study/2`. Figé par `research_code_hash` : ne change qu'à travers `research_campaign/` |
+| `ea_audit/` | Audit d'EA (v0.5) | Lecture de rapports MT5 (HTML/CSV), signatures grille / martingale / stop-out, test de résistance ; `mt5_local.py` = pont **lecture seule** vers les dossiers du terminal MT5 local |
+| `external_lab/` | Laboratoire de robots externes (v0.5) | `mt5_report.py` (HTML/XLSX/CSV/ZIP → grille → tableaux), `reconstruct.py` (positions, trades, rapprochement MT5, effondrement), `simulation.py` (enregistrement `ato-external-sim/1`), `catalog.py` (stockage immuable `external/`), `whatif.py` (hypothèses qualifiées) |
 
 ## Conventions temporelles
 

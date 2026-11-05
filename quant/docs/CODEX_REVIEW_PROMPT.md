@@ -1,6 +1,6 @@
 # Prompt de revue indépendante — à donner à Codex
 
-> Version la plus récente (workspace complet, correctifs 0.2.1) : `../../docs/CODEX_REVIEW_HANDOFF.md`.
+> Version la plus récente (workspace complet, correctifs 0.2.1) : `../../docs/handoffs/CODEX_REVIEW_HANDOFF.md`.
 
 Tu es relecteur indépendant d'un laboratoire de backtesting Python (XAUUSD, M1) situé dans
 `quant/`. Il ne doit **jamais** envoyer d'ordre à un courtier. Lis d'abord `AGENTS.md`,

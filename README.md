@@ -50,6 +50,14 @@ pnpm test && pnpm typecheck      # tests TypeScript (48) + typage strict
 node e2e/pages-tour.mjs          # parcours navigateur réel (52 vérifications)
 ```
 
+## Par où commencer
+
+| Fichier | Contenu |
+|---|---|
+| [`AGENTS.md`](AGENTS.md) | carte du dépôt, règles non négociables, commandes, comment ajouter une page ou une route |
+| [`docs/README.md`](docs/README.md) | index de toute la documentation, selon votre rôle (trader, développeur, auditeur) |
+| [`quant/README.md`](quant/README.md) | le moteur Python en détail |
+
 ## Architecture
 
 ```
@@ -57,7 +65,9 @@ client/   React (pages, composants) — affiche, ne calcule aucun montant
 server/   Express (relais /api/v1 en production, garde des mutations locales)
 shared/   types partagés de l'API
 quant/    moteur Python : backtest, risque, recherche, ea_audit, external_lab, API FastAPI
-docs/     audits indépendants (Codex), base de connaissances, passations
+docs/     audits indépendants (Codex), passations, base de connaissances, plan de projet
+e2e/      parcours navigateur réels (Chrome headless + vraie API)
+archive/  ancien code conservé pour mémoire, jamais importé
 ```
 
 Documentation :

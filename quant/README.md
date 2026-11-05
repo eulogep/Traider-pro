@@ -1,7 +1,10 @@
-# AI Trader Optimizer — moteur quantitatif (v0.3.1)
+# AI Trader Optimizer — moteur quantitatif (v0.5.0)
 
-Moteur local d'analyse et de backtesting (XAUUSD / Forex, M1) : **API HTTP** consommée par l'application React
-(page « Backtests ») et **console de recherche Streamlit** en français.
+Moteur local d'analyse, de backtesting et de recherche (XAUUSD / Forex, M1). Il est consommé de deux façons :
+- par l'**API HTTP** v1, qu'utilise l'application React (pages Backtests, Validation, Bot Analysis, Audit d'EA) ;
+- par une **console de recherche Streamlit**, en français.
+
+Carte complète du dépôt et règles : `../AGENTS.md`. Index de la documentation : `../docs/README.md`.
 
 > **SÉCURITÉ :** simulation uniquement. Aucun accès courtier, aucun identifiant demandé, aucune fonction d'envoi
 > d'ordre, trading réel et démo désactivés (non implémentés). Aucun modèle IA entraîné. Une simulation ne garantit
@@ -54,9 +57,14 @@ règles v0.1).
 ```
 app.py                         interface Streamlit (7 écrans)
 src/ai_trader_optimizer/       data · features · strategies · risk · backtest · analytics · storage · ai · execution · ui
+                               research (validation hors échantillon, expérimentale) · ea_audit (comportement d'EA,
+                               pont MT5 local en lecture seule) · external_lab (simulations MT5 importées) · api
+tests/                         pytest ; fixtures/mt5/ = rapports MT5 de référence (SHA-256 vérifiés)
+research_campaign/             campagne statistique pré-enregistrée (protocole scellé, copies figées, résultats)
 strategies/                    specs YAML versionnées : baseline/ · pilot_trader/ · third_party/
 data/lab/                      données locales (non versionnées) : lab.db, raw/, datasets/, runs/
-docs/                          audit, architecture, décisions, tests, limites, roadmap, changelog, prompt Codex
+docs/                          architecture, décisions, limites, roadmap, changelog, validations par version,
+                               EXTERNAL_LAB / REFERENCE_V370 / SECURITY_V05 (index : ../docs/README.md)
 ```
 
 ## Stratégie de référence

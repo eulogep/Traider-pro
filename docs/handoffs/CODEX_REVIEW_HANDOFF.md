@@ -78,7 +78,7 @@ s'arrête dès la 1re sonde avec `KeyError: 'metrics'` : le run falsifié renvoi
 - **Nouveaux / non suivis modifiés** : `.env.example`, `server/quantProxy.ts`, `server/quantProxy.spec.ts`,
   `e2e/production-smoke.mjs`, `e2e/backtest-flow.mjs`, `shared/quant-api.ts`, `client/lib/quantApi.ts`,
   `client/lib/format.ts`, `client/lib/quantApi.integration.spec.ts`, `client/components/backtest/{BacktestResults,ConfigPanel}.tsx`,
-  `docs/audits/codex-v03-2026-11-04/*`, `docs/CODEX_REVIEW_HANDOFF.md`, `docs/CONSOLIDATION_AUDIT.md` ;
+  `docs/audits/codex-v03-2026-11-04/*`, `docs/handoffs/CODEX_REVIEW_HANDOFF.md`, `docs/project/CONSOLIDATION_AUDIT.md` ;
   `quant/` : `src/ai_trader_optimizer/{numeric.py, storage/integrity.py, storage/catalog.py, storage/__init__.py,
   api/security.py, api/app.py, api/schemas.py, backtest/engine.py, backtest/models.py, ai/validation.py, data/models.py,
   data/validation.py, data/__init__.py, risk/guardian.py, strategies/base.py, safety.py, services.py, ui/pages_run.py,

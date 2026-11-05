@@ -20,7 +20,8 @@ Rien n'est repris d'un compte rendu précédent sans vérification.
 Emplacements constatés :
 - `~/Documents/` ;
 - le dossier `Documents` du terminal MT5 (Wine) ;
-- `AI_Trader_Optimizer_MT5_Baseline_V370/` à la racine du dépôt (non suivi par Git, laissé intact).
+- export CSV normalisé (deals, ordres, totaux quotidiens, manifeste), placé depuis le 2026-11-05 dans
+  `quant/tests/fixtures/mt5/v370_normalized_export/` (fichiers inchangés, déplacés depuis la racine du dépôt).
 
 ## 2. Environnement (lu dans le rapport)
 | Élément | Valeur |

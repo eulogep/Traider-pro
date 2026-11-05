@@ -1,6 +1,6 @@
 """Non-regression tests for defects confirmed during the 2026-11-03 consolidation audit.
 
-Each defect was reproduced by a probe on v0.2.0 (outputs recorded in docs/CODEX_REVIEW_HANDOFF.md);
+Each defect was reproduced by a probe on v0.2.0 (outputs recorded in docs/handoffs/CODEX_REVIEW_HANDOFF.md);
 these tests encode the corrected behaviour (they were not re-run against the v0.2.0 code).
 """
 

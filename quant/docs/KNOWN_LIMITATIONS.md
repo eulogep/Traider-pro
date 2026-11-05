@@ -128,6 +128,6 @@
 19. Avertissement de dépréciation interne pandas 2.3 × numpy 2.5 (`'generic' unit for NumPy timedelta`) filtré dans
     la configuration pytest ; à revoir lors d'une mise à jour de pandas.
 20. Le dossier du prototype n'est **pas suivi par Git** (dépôt racine = app React). Aucun commit n'a été fait ;
-    plan proposé dans `../../docs/CONSOLIDATION_AUDIT.md`.
+    plan proposé dans `../../docs/project/CONSOLIDATION_AUDIT.md`.
 21. L'application React : seule la page « Backtests » est reliée au moteur (v0.3) ; les autres affichent des données
     de démonstration signalées. Secrets non persistés, ordres simulés désactivés.
