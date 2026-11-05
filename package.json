@@ -17,6 +17,8 @@
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
     "build:showcase": "VITE_SHOWCASE=1 vite build && rm -rf dist/spa/showcase && cp -R showcase/data dist/spa/showcase",
+    "build:pages": "VITE_SHOWCASE=1 vite build --base=/Traider-pro/ && rm -rf dist/spa/showcase && cp -R showcase/data dist/spa/showcase && cp dist/spa/index.html dist/spa/404.html && touch dist/spa/.nojekyll",
+    "deploy:pages": "bash scripts/deploy-pages.sh",
     "showcase:data": "cd quant && .venv/bin/python -W ignore scripts/export_showcase.py ../showcase/data",
     "start": "node dist/server/node-build.mjs",
     "test": "vitest --run",

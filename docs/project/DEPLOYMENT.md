@@ -41,7 +41,19 @@ Ensuite :
 Netlify ne peut pas exécuter Python. Il reconstruit donc l'interface (`pnpm run build:showcase`, voir `netlify.toml`)
 à partir des données **commitées**.
 
-### Mettre le site en ligne (une seule fois)
+### Option recommandée : GitHub Pages (aucun compte tiers)
+Adresse : **https://eulogep.github.io/Traider-pro/**.
+```bash
+pnpm showcase:data   # si le moteur a changé
+pnpm deploy:pages    # build sous /Traider-pro/, contrôle 19 points sans API, puis publication de dist/spa sur la branche gh-pages
+```
+`scripts/deploy-pages.sh` publie seulement `dist/spa`, via un dossier de travail temporaire : votre copie de travail
+et vos autres branches ne sont jamais modifiées. La première fois :
+1. GitHub → *Settings* → *Pages* → *Source : Deploy from a branch* ;
+2. choisir la branche `gh-pages`, dossier `/ (root)`.
+
+### Option Netlify
+#### Mettre le site en ligne (une seule fois)
 Le site Netlify existant (`tiny-quokka-08661a`) servait une version d'août 2025 : il ne se reconstruisait plus
 depuis le dépôt. Deux façons de le rebrancher :
 - **Relier le dépôt** (recommandé, ensuite c'est automatique) :

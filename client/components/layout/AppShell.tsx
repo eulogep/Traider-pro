@@ -2,7 +2,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Cpu, Eye, Menu, ShieldCheck, TrendingUp, WifiOff, X } from "lucide-react";
-import { SHOWCASE_MODE, quantApi } from "@/lib/quantApi";
+import { SHOWCASE_MODE, SHOWCASE_ROOT, quantApi } from "@/lib/quantApi";
 import { NAV_GROUPS, STATUS_LABELS, type ModuleStatus, type NavItem } from "@/lib/modules";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +16,7 @@ const STATUS_STYLE: Record<ModuleStatus, string> = {
 export function ShowcaseBanner() {
   const m = useQuery({
     queryKey: ["showcase-manifest"],
-    queryFn: async () => (await (await fetch("/showcase/manifest.json")).json()) as { generated_at: string; software_version: string; engine_version: string },
+    queryFn: async () => (await (await fetch(`${SHOWCASE_ROOT}/manifest.json`)).json()) as { generated_at: string; software_version: string; engine_version: string },
     enabled: SHOWCASE_MODE,
     staleTime: Infinity,
   });
