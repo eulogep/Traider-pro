@@ -1,0 +1,306 @@
+[
+  {
+    "name": "artifact_corruption",
+    "artifact": "trades.csv",
+    "get": 409,
+    "reproduce": 409,
+    "corrected": true
+  },
+  {
+    "name": "artifact_corruption",
+    "artifact": "decisions.csv",
+    "get": 409,
+    "reproduce": 409,
+    "corrected": true
+  },
+  {
+    "name": "artifact_corruption",
+    "artifact": "equity.csv.gz",
+    "get": 409,
+    "reproduce": 409,
+    "corrected": true
+  },
+  {
+    "name": "artifact_corruption",
+    "artifact": "metrics.json",
+    "get": 409,
+    "reproduce": 409,
+    "corrected": true
+  },
+  {
+    "name": "artifact_corruption",
+    "artifact": "manifest.json",
+    "get": 409,
+    "reproduce": 409,
+    "corrected": true
+  },
+  {
+    "name": "artifact_corruption",
+    "artifact": "integrity.json",
+    "get": 409,
+    "reproduce": 409,
+    "corrected": true
+  },
+  {
+    "name": "original_overwrite",
+    "corrected": true
+  },
+  {
+    "name": "corrupted_run_in_collection",
+    "detail": 409,
+    "collection": 200,
+    "summary": {
+      "run_id": "9e6f277a0719c090",
+      "created_at": "2026-11-04T02:18:45+00:00",
+      "label": "",
+      "dataset_id": "34099c3d11ae6b8a",
+      "data_kind": "synthetic",
+      "strategy_key": "baseline.ema_trend_3bars@1.0.0",
+      "result_hash": "33033d0cff9bc11d0e81d8f9c9ef389b52a064a5c11c37d11637cf315d6cc1fd",
+      "account_currency": "USD",
+      "trades": 6,
+      "net_pnl": 27.366839136113413,
+      "win_rate_pct": 50.0,
+      "profit_factor": 1.3839322984286184,
+      "expectancy": 4.561139856018393,
+      "max_dd_mtm_pct": -0.4710445010026888
+    }
+  },
+  {
+    "name": "sqlite_metric_corruption",
+    "collection_pnl": 987654321,
+    "detail_pnl": 27.366839136113413,
+    "reproduction": {
+      "identical": true,
+      "deterministic": true,
+      "artifacts_intact": true,
+      "stored_hash": "33033d0cff9bc11d0e81d8f9c9ef389b52a064a5c11c37d11637cf315d6cc1fd",
+      "new_hash": "33033d0cff9bc11d0e81d8f9c9ef389b52a064a5c11c37d11637cf315d6cc1fd"
+    }
+  },
+  {
+    "name": "semantic_wrong_fill",
+    "accepted": true,
+    "declared_pnl": -23.78908116094501,
+    "pnl_from_prices": -1723.7890811609452,
+    "problems": []
+  },
+  {
+    "name": "policy_id_reuse",
+    "status": 201,
+    "current_policy": {
+      "mode": "supervised",
+      "enforced": true,
+      "saved_profile": {
+        "risk_per_trade_pct": 0.25,
+        "max_open_positions": 1,
+        "max_daily_loss_pct": 1.0,
+        "max_drawdown_pct": 10.0,
+        "max_trades_per_day": 2,
+        "max_losses_per_day": 2,
+        "max_consecutive_losses": null,
+        "consecutive_loss_scope": "day",
+        "stop_after_daily_win": false,
+        "daily_limit_includes_planned_risk": true,
+        "drawdown_limit_includes_planned_risk": true,
+        "day_timezone": "UTC",
+        "allow_martingale": false
+      }
+    },
+    "returned_policy": {
+      "differs_from_saved_profile": false,
+      "enforced": false,
+      "mode": "research",
+      "note": "Mode recherche : limites et contrat sont des hypoth\u00e8ses modifiables, pas une politique impos\u00e9e.",
+      "saved_profile": {
+        "allow_martingale": false,
+        "consecutive_loss_scope": "day",
+        "daily_limit_includes_planned_risk": true,
+        "day_timezone": "UTC",
+        "drawdown_limit_includes_planned_risk": true,
+        "max_consecutive_losses": null,
+        "max_daily_loss_pct": 1.0,
+        "max_drawdown_pct": 10.0,
+        "max_losses_per_day": 2,
+        "max_open_positions": 1,
+        "max_trades_per_day": 2,
+        "risk_per_trade_pct": 0.25,
+        "stop_after_daily_win": false
+      }
+    }
+  },
+  {
+    "name": "supervised_hypothesis_override",
+    "status": 201,
+    "costs": {
+      "commission_per_lot_per_side": 0.0,
+      "slippage": 0.0,
+      "spread": 0.0
+    },
+    "enforced": true
+  },
+  {
+    "name": "boundary",
+    "tf": "M1",
+    "offset": 0,
+    "is_end": "2026-09-07 12:05:00+00:00",
+    "oos_start": "2026-09-07 12:05:00+00:00",
+    "no_overlap": true
+  },
+  {
+    "name": "boundary",
+    "tf": "M1",
+    "offset": 30.0,
+    "is_end": "2026-09-07 12:05:00+00:00",
+    "oos_start": "2026-09-07 12:06:00+00:00",
+    "no_overlap": true
+  },
+  {
+    "name": "boundary",
+    "tf": "M5",
+    "offset": 0,
+    "is_end": "2026-09-07 12:25:00+00:00",
+    "oos_start": "2026-09-07 12:25:00+00:00",
+    "no_overlap": true
+  },
+  {
+    "name": "boundary",
+    "tf": "M5",
+    "offset": 150.0,
+    "is_end": "2026-09-07 12:25:00+00:00",
+    "oos_start": "2026-09-07 12:30:00+00:00",
+    "no_overlap": true
+  },
+  {
+    "name": "boundary",
+    "tf": "M15",
+    "offset": 0,
+    "is_end": "2026-09-07 13:15:00+00:00",
+    "oos_start": "2026-09-07 13:15:00+00:00",
+    "no_overlap": true
+  },
+  {
+    "name": "boundary",
+    "tf": "M15",
+    "offset": 450.0,
+    "is_end": "2026-09-07 13:15:00+00:00",
+    "oos_start": "2026-09-07 13:30:00+00:00",
+    "no_overlap": true
+  },
+  {
+    "name": "boundary",
+    "tf": "H1",
+    "offset": 0,
+    "is_end": "2026-09-07 17:00:00+00:00",
+    "oos_start": "2026-09-07 17:00:00+00:00",
+    "no_overlap": true
+  },
+  {
+    "name": "boundary",
+    "tf": "H1",
+    "offset": 1800.0,
+    "is_end": "2026-09-07 17:00:00+00:00",
+    "oos_start": "2026-09-07 18:00:00+00:00",
+    "no_overlap": true
+  },
+  {
+    "name": "numeric_input",
+    "value": "1e309",
+    "status": 422,
+    "corrected": true
+  },
+  {
+    "name": "numeric_input",
+    "value": "NaN",
+    "status": 422,
+    "corrected": true
+  },
+  {
+    "name": "numeric_input",
+    "value": "-1e309",
+    "status": 422,
+    "corrected": true
+  },
+  {
+    "name": "numeric_input",
+    "value": "\"10000\"",
+    "status": 422,
+    "corrected": true
+  },
+  {
+    "name": "numeric_input",
+    "value": "true",
+    "status": 422,
+    "corrected": true
+  },
+  {
+    "name": "identity_and_provenance",
+    "lowercase_status": 201,
+    "symbol": "XAUUSD",
+    "conflict": 409
+  },
+  {
+    "name": "import_response_vs_persisted",
+    "response_source": "new source",
+    "persisted_source": "probe"
+  },
+  {
+    "name": "cr_line_limit",
+    "status": 201,
+    "accepted_rows": 30
+  },
+  {
+    "name": "security_variant",
+    "headers": {
+      "Host": "localhost."
+    },
+    "status": 421
+  },
+  {
+    "name": "security_variant",
+    "headers": {
+      "Host": "[::ffff:127.0.0.1]"
+    },
+    "status": 421
+  },
+  {
+    "name": "security_variant",
+    "headers": {
+      "Origin": "null"
+    },
+    "status": 403
+  },
+  {
+    "name": "security_variant",
+    "headers": {
+      "Origin": "https://localhost.evil.example"
+    },
+    "status": 403
+  },
+  {
+    "name": "security_variant",
+    "headers": {
+      "Origin": "https://evil.example"
+    },
+    "status": 403
+  },
+  {
+    "name": "security_variant",
+    "headers": {
+      "Sec-Fetch-Site": "cross-site"
+    },
+    "status": 403
+  },
+  {
+    "name": "stream_limit",
+    "chunks_read": 4,
+    "chunks_offered": 20,
+    "status": 413
+  },
+  {
+    "name": "raw_hash_mismatch",
+    "claimed_sha": "252ea0300a528e1b56f41a6de8b96c6520b39472973991a787b4e2d23cf372df",
+    "actual_sha": "4a5b3ea8ad871dc97943314998c0fa5b0c7c404d9a19935ffdf6e17983059386",
+    "dataset_loads": "3ae0986b4726fdc4"
+  }
+]

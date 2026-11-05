@@ -1,0 +1,10 @@
+# Local-only research lab: never expose it on the network without an explicit decision.
+[server]
+address = "localhost"
+headless = false
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#2563eb"

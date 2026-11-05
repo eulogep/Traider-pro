@@ -1,5 +1,4 @@
 import { RequestHandler } from "express";
-import { z } from "zod";
 
 // Mock trading data for demonstration
 const mockTradingData = {
@@ -59,7 +58,7 @@ function generateDailyPnL() {
 }
 
 // Get trading performance overview
-export const getPerformanceOverview: RequestHandler = async (req, res) => {
+export const getPerformanceOverview: RequestHandler = async (_req, res) => {
   try {
     res.json({
       success: true,
@@ -104,7 +103,7 @@ export const getDailyPnL: RequestHandler = async (req, res) => {
 };
 
 // Get asset allocation
-export const getAssetAllocation: RequestHandler = async (req, res) => {
+export const getAssetAllocation: RequestHandler = async (_req, res) => {
   try {
     res.json({
       success: true,
@@ -164,7 +163,7 @@ export const getTradingStats: RequestHandler = async (req, res) => {
 };
 
 // Get AI insights and recommendations
-export const getAIInsights: RequestHandler = async (req, res) => {
+export const getAIInsights: RequestHandler = async (_req, res) => {
   try {
     const insights = [
       {
@@ -212,7 +211,7 @@ export const getAIInsights: RequestHandler = async (req, res) => {
 };
 
 // Get risk metrics
-export const getRiskMetrics: RequestHandler = async (req, res) => {
+export const getRiskMetrics: RequestHandler = async (_req, res) => {
   try {
     const riskMetrics = {
       currentRisk: {

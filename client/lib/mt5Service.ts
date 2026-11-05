@@ -1,6 +1,19 @@
 // MT5 Service - Manages MetaTrader 5 integration
 // In production, this would connect to actual MT5 terminals via Python bridge or direct API
 
+import { INSTRUMENTS, positionProfit, spreadInPoints } from "@shared/instruments";
+
+// SAFETY: this service is an in-browser SIMULATION (random prices). It has no broker
+// connection, and order placement is disabled: orders must go through the Python
+// Risk Guardian, and no execution adapter exists in this version.
+export const ORDER_EXECUTION_ENABLED = false as boolean;
+export const ORDERS_DISABLED_MESSAGE =
+  "Exécution d'ordres désactivée : simulation uniquement, aucun ordre n'est transmis (voir docs/CONSOLIDATION_AUDIT.md).";
+function assertOrdersEnabled(): void {
+  if (!ORDER_EXECUTION_ENABLED) throw new Error(ORDERS_DISABLED_MESSAGE);
+}
+
+
 export interface MT5ConnectionConfig {
   server: string;
   login: string;
@@ -102,13 +115,12 @@ export interface PendingOrder {
 export class MT5Service {
   private static instance: MT5Service;
   private connected = false;
-  private connectionConfig: MT5ConnectionConfig | null = null;
   private accountInfo: MT5AccountInfo | null = null;
   private symbols: Map<string, MT5Symbol> = new Map();
   private positions: MT5Position[] = [];
   private orders: MT5Order[] = [];
   private tradeHistory: MT5Trade[] = [];
-  private subscribers: Set<(data: any) => void> = new Set();
+  private subscribers: Set<(data: unknown) => void> = new Set();
   private priceUpdateInterval: number | null = null;
 
   private constructor() {
@@ -131,7 +143,6 @@ export class MT5Service {
       // In production, this would make actual MT5 API calls
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      this.connectionConfig = config;
       this.connected = true;
 
       // Initialize account info
@@ -168,7 +179,6 @@ export class MT5Service {
 
   disconnect(): void {
     this.connected = false;
-    this.connectionConfig = null;
     this.accountInfo = null;
     this.stopPriceFeed();
     this.notifySubscribers({ type: "connection", status: "disconnected" });
@@ -206,6 +216,7 @@ export class MT5Service {
   }
 
   async placeMarketOrder(order: MarketOrder): Promise<number | null> {
+    assertOrdersEnabled();
     if (!this.connected) {
       throw new Error("Not connected to MT5");
     }
@@ -248,6 +259,7 @@ export class MT5Service {
   }
 
   async placePendingOrder(order: PendingOrder): Promise<number | null> {
+    assertOrdersEnabled();
     if (!this.connected) {
       throw new Error("Not connected to MT5");
     }
@@ -272,6 +284,7 @@ export class MT5Service {
   }
 
   async closePosition(ticket: number): Promise<boolean> {
+    assertOrdersEnabled();
     if (!this.connected) {
       throw new Error("Not connected to MT5");
     }
@@ -292,9 +305,13 @@ export class MT5Service {
     // Calculate final profit
     const closePrice = position.type === "BUY" ? symbol.bid : symbol.ask;
     const profit =
-      position.type === "BUY"
-        ? (closePrice - position.openPrice) * position.volume * 100
-        : (position.openPrice - closePrice) * position.volume * 100;
+      positionProfit(
+        position.type,
+        position.openPrice,
+        closePrice,
+        position.volume,
+        INSTRUMENTS[position.symbol],
+      ) ?? Number.NaN;
 
     // Create trade history record
     const trade: MT5Trade = {
@@ -355,12 +372,12 @@ export class MT5Service {
   }
 
   // Subscription Management
-  subscribe(callback: (data: any) => void): () => void {
+  subscribe(callback: (data: unknown) => void): () => void {
     this.subscribers.add(callback);
     return () => this.subscribers.delete(callback);
   }
 
-  private notifySubscribers(data: any): void {
+  private notifySubscribers(data: unknown): void {
     this.subscribers.forEach((callback) => callback(data));
   }
 
@@ -420,7 +437,9 @@ export class MT5Service {
         last: data.bid,
         volume: data.volume,
         time: Date.now(),
-        spread: Math.round((data.ask - data.bid) * Math.pow(10, 5)),
+        spread: INSTRUMENTS[data.symbol]
+          ? spreadInPoints(data.bid, data.ask, INSTRUMENTS[data.symbol])
+          : Math.round((data.ask - data.bid) * Math.pow(10, 5)),
         digits: data.symbol === "USDJPY" ? 3 : 5,
         change: data.change,
         changePercent: (data.change / data.bid) * 100,
@@ -494,8 +513,9 @@ export class MT5Service {
       const volatility = 0.0001; // 0.01% volatility
       const change = (Math.random() - 0.5) * 2 * volatility * symbol.bid;
 
+      const spread = symbol.ask - symbol.bid; // measured BEFORE moving the bid
       symbol.bid += change;
-      symbol.ask = symbol.bid + (symbol.ask - symbol.bid); // Maintain spread
+      symbol.ask = symbol.bid + spread; // spread kept constant (was drifting)
       symbol.last = symbol.bid;
       symbol.time = Date.now();
       symbol.change += change;
@@ -534,13 +554,13 @@ export class MT5Service {
         position.currentPrice =
           position.type === "BUY" ? symbol.bid : symbol.ask;
         position.profit =
-          position.type === "BUY"
-            ? (position.currentPrice - position.openPrice) *
-              position.volume *
-              100
-            : (position.openPrice - position.currentPrice) *
-              position.volume *
-              100;
+          positionProfit(
+            position.type,
+            position.openPrice,
+            position.currentPrice,
+            position.volume,
+            INSTRUMENTS[position.symbol],
+          ) ?? Number.NaN; // unknown contract: shown as unavailable, never guessed
       }
     });
   }

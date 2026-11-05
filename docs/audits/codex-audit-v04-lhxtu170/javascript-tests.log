@@ -1,0 +1,22 @@
+
+> fusion-starter@ test /private/tmp/codex-audit-v04-lhxtu170/repo
+> vitest --run
+
+
+ RUN  v3.2.4 /private/tmp/codex-audit-v04-lhxtu170/repo
+
+ ✓ client/lib/utils.spec.ts (5 tests) 5ms
+ ✓ client/hooks/use-toast.spec.ts (2 tests) 5ms
+ ✓ shared/instruments.spec.ts (7 tests) 7ms
+ ✓ client/lib/format.spec.ts (5 tests) 30ms
+ ✓ server/settings.spec.ts (3 tests) 365ms
+ ✓ server/quantProxy.spec.ts (4 tests) 53ms
+ ✓ client/lib/quantApi.integration.spec.ts (6 tests) 4904ms
+   ✓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > runs a full backtest from the client and gets consistent, persisted results  3094ms
+   ✓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > rejects invalid user parameters without storing a fake result  325ms
+
+ Test Files  7 passed (7)
+      Tests  32 passed (32)
+   Start at  13:50:56
+   Duration  5.58s (transform 225ms, setup 0ms, collect 718ms, tests 5.37s, environment 1ms, prepare 714ms)
+

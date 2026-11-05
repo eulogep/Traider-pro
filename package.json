@@ -18,7 +18,9 @@
     "start": "node dist/server/node-build.mjs",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "quant:api": "cd quant && .venv/bin/python -m ai_trader_optimizer.api",
+    "quant:test": "cd quant && .venv/bin/python -m pytest -q"
   },
   "dependencies": {
     "dotenv": "^17.2.1",

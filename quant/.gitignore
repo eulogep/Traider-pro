@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+.env
+.env.*
+!.env.example
+secrets/
+data/private/
+reports/private/
+# Local lab data (imports, validated datasets, runs) — user data, not source code
+data/lab/
+.streamlit/secrets.toml

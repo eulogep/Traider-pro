@@ -1,0 +1,52 @@
+[
+  {
+    "name": "mtf_availability",
+    "pass_": true,
+    "first_context_bar": 14,
+    "perturbed_future_from": 30
+  },
+  {
+    "name": "original_B3",
+    "is_trades": 0,
+    "oos_trades": 1,
+    "oos_pnl": 31.79000000000003
+  },
+  {
+    "name": "intermediate_infinite_exit",
+    "refused": true,
+    "error": "calcul non fini pour prix de sortie (inf) : simulation interrompue, rien n'est enregistr\u00e9"
+  },
+  {
+    "name": "post_rename_interruption",
+    "directory_present": true,
+    "indexed_rows": 0,
+    "readable": false
+  },
+  {
+    "name": "post_rename_recovery",
+    "pass_": true
+  },
+  {
+    "name": "concurrent_writers_reader",
+    "writers": 4,
+    "reads": 10,
+    "not_yet_published": 10,
+    "partial_errors": []
+  },
+  {
+    "name": "fingerprint_coverage",
+    "changed_semantic_module": "storage/integrity.py consistency tolerance",
+    "hash_unchanged": true
+  },
+  {
+    "name": "close_timestamp",
+    "exit_time": "2026-09-07 12:02:00+00:00",
+    "last_bar_open": "2026-09-07 12:02:00+00:00",
+    "actual_last_close": "2026-09-07T12:03:00+00:00",
+    "exit_price": 100.95
+  },
+  {
+    "name": "no_origin_local_header",
+    "status": 201
+  }
+]

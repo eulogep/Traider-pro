@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   MT5ConnectionButton,
   MT5StatusIndicator,
@@ -20,13 +19,13 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/", label: "Overview", icon: TrendingUp },
-  { href: "/dashboard", label: "Dashboard", icon: BarChart3 },
-  { href: "/trading", label: "Trading", icon: Activity },
-  { href: "/optimizer", label: "AI Optimizer", icon: Brain },
-  { href: "/backtest", label: "Backtest", icon: Target },
-  { href: "/automation", label: "Automation", icon: Zap },
-  { href: "/settings", label: "Settings", icon: Settings },
+  { href: "/", label: "Aperçu", icon: TrendingUp },
+  { href: "/dashboard", label: "Tableau de bord", icon: BarChart3 },
+  { href: "/trading", label: "Trading MT5", icon: Activity },
+  { href: "/optimizer", label: "Optimiseur IA", icon: Brain },
+  { href: "/backtest", label: "Backtests", icon: Target },
+  { href: "/automation", label: "Automatisation", icon: Zap },
+  { href: "/settings", label: "Paramètres", icon: Settings },
 ];
 
 export function Navigation() {
@@ -44,7 +43,7 @@ export function Navigation() {
             </div>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                AI Trader
+                Traider Pro
               </h1>
               <p className="text-xs text-muted-foreground">Optimizer</p>
             </div>

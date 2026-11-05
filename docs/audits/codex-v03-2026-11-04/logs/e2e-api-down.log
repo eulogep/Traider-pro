@@ -1,0 +1,5 @@
+PASS  offline API → explicit offline state
+PASS  offline API → no KPI, no results, no run button action
+PASS  offline API → status says offline
+
+3/3 checks passed

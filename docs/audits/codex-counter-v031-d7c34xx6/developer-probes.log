@@ -1,0 +1,20 @@
+/Users/eulogemabiala/Desktop/Developer/traider pro/quant/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+/private/tmp/codex-counter-v031-d7c34xx6/repo/quant/scripts/codex_probes_v031.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  frame["timestamp"] += pd.Timedelta(milliseconds=500)
+PASS  B1            {"check_ignore": "not ignored"}
+PASS  B2            {"get": 409, "reproduce": 409}
+PASS  B2-overwrite  {"refused": "ReproducibilityError"}
+PASS  B3            {"IS": 0, "OOS": 1, "cut": "2026-09-07 12:05:00+00:00"}
+PASS  I1            {"status": 422}
+PASS  I2            {"research": "research", "supervised_status": 403}
+PASS  I3            {"status": 413, "received_before_refusal": 0}
+PASS  I4            {"status": 403}
+PASS  I5            {"status": 201, "load_error": null}
+PASS  I6            {"fractional": "refused", "collision": false}
+PASS  I7            {"synthetic": 201, "historical": 409}
+PASS  I8            {"exit": "TP_GAP", "net_pnl": 31.79}
+PASS  M3            {"status": 422}
+PASS  M4            {"mfe_r": 0.0, "basis": "lower_bound_ohlc"}
+
+14/14 probes: defect no longer reproducible

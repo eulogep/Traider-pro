@@ -1,0 +1,32 @@
+[
+  {
+    "name": "negative_embargo_overlap",
+    "train_end": "2026-09-07 12:05:00+00:00",
+    "test_start": "2026-09-07 12:04:00+00:00",
+    "is_trades": [
+      {
+        "entry_time": "2026-09-07 12:04:00+00:00",
+        "net_pnl": 31.79000000000003
+      }
+    ],
+    "oos_trades": [
+      {
+        "entry_time": "2026-09-07 12:04:00+00:00",
+        "net_pnl": 31.79000000000003
+      }
+    ]
+  },
+  {
+    "name": "walk_forward_negative_embargo",
+    "folds": 10,
+    "first_train_end": "2026-09-07 12:10:00+00:00",
+    "first_test_start": "2026-09-07 12:09:00+00:00"
+  },
+  {
+    "name": "concurrent_visibility",
+    "writers": 4,
+    "missing": 7,
+    "verified": 2,
+    "partial_errors": []
+  }
+]

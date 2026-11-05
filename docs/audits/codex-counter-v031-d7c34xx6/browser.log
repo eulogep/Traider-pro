@@ -1,0 +1,23 @@
+PASS  empty lab shows an explicit empty state (no fake figures)
+PASS  engine status comes from the Python API
+PASS  click « Générer la démo synthétique »
+PASS  click « Lancer le backtest »
+PASS  synthetic results are flagged
+PASS  trades KPI = API metrics.trades — 16
+PASS  net P&L KPI = API metrics.net_pnl — -45.73015330593262
+PASS  win rate KPI = API metrics.win_rate_pct — 37.5
+PASS  profit factor KPI = API metrics.profit_factor — 0.8091547188901554
+PASS  drawdown KPI = API metrics.max_dd_mtm_pct — -1.0153820857764189
+PASS  trade journal rendered — 16 lignes
+PASS  equity curve rendered
+PASS  result hash shown = API
+PASS  click « Reproduire »
+PASS  reproduction identical, artefacts intact, deterministic
+PASS  risk policy shown as research hypotheses (not an enforced policy)
+PASS  click « Lancer le backtest » (2nd run, rr = 2)
+PASS  second run displayed — 6b6437b585def404
+PASS  previous reproduction verdict not carried over (M1)
+PASS  run list amounts carry their currency (M2) — 2026-11-04 02:17 · baseline.ema_trend_3bars@1.0.0 · synthetic · 16 trades · −115
+PASS  no uncaught browser exception
+
+21/21 checks passed

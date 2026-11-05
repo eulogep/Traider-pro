@@ -1,0 +1,41 @@
+PASS  home: no invented figure / fake connectivity
+PASS  home: no password field, no trading switch
+PASS  home: lab state = API (1 dataset, 1 run) — État du laboratoire moteur en ligne 1 Jeux de données 1 Backtests enregistrés 1 Stratégies
+PASS  home: sidebar shows the real engine status
+PASS  dashboard: no invented figure / fake connectivity
+PASS  dashboard: no password field, no trading switch
+PASS  dashboard: one row per stored run
+PASS  dashboard: last P&L tile = API run net_pnl — -536.1065737498229
+PASS  dashboard: synthetic-only runs are flagged
+PASS  dashboard: equity chart rendered
+PASS  dashboard → run row opens that run in Backtests
+PASS  backtest: robustness tab = API bootstrap — -0.25734180957531416
+PASS  validation: no invented figure / fake connectivity
+PASS  validation: no password field, no trading switch
+PASS  validation: verdict shown = API study verdict — NO_EDGE
+PASS  validation: synthetic prices → no edge claimed
+PASS  validation: no trade opinion without a demonstrated edge
+PASS  validation: walk-forward folds listed
+PASS  strategies: no invented figure / fake connectivity
+PASS  strategies: no password field, no trading switch
+PASS  strategies: one card per engine strategy
+PASS  strategies: pilot draft lists the trader's open questions
+PASS  strategies: optimisation prerequisites reflect the lab (no historical data yet)
+PASS  instruments: no invented figure / fake connectivity
+PASS  instruments: no password field, no trading switch
+PASS  instruments: engine contract shown
+PASS  instruments: MT5 export guide shown
+PASS  execution: no invented figure / fake connectivity
+PASS  execution: no password field, no trading switch
+PASS  execution: locks read from the engine
+PASS  execution: Risk Guardian profile shown
+PASS  settings: no invented figure / fake connectivity
+PASS  settings: no password field, no trading switch
+PASS  settings: engine identity = API health
+PASS  settings: defaults and risk profile shown
+PASS  unknown route → French 404
+PASS  every page fits a 390 px phone (no horizontal scroll)
+PASS  no uncaught browser exception
+screenshots: /private/tmp/codex-audit-v04-lhxtu170/screenshots
+
+38/38 checks passed

@@ -19,12 +19,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useMT5 } from "@/hooks/useMT5";
+import { useMT5, useMT5Account } from "@/hooks/useMT5";
 import {
   Database,
   Wifi,
   WifiOff,
-  Settings,
   AlertTriangle,
   CheckCircle,
   Loader2,
@@ -40,7 +39,7 @@ export function MT5ConnectionButton() {
   const [connectionForm, setConnectionForm] = useState({
     server: "mt5.demo-server.com:443",
     login: "12345678",
-    password: "demo123",
+    password: "",
   });
 
   const handleConnect = async () => {
@@ -212,7 +211,7 @@ export function MT5ConnectionButton() {
 }
 
 export function MT5StatusIndicator() {
-  const { connected, account } = useMT5();
+  const { connected } = useMT5();
 
   if (!connected) {
     return (
@@ -238,7 +237,7 @@ export function MT5StatusIndicator() {
 }
 
 export function MT5AccountSummary() {
-  const { account, summary, connected } = useMT5();
+  const { account, summary, connected } = useMT5Account();
 
   if (!connected || !account) {
     return (

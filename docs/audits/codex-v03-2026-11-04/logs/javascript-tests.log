@@ -1,0 +1,66 @@
+
+> fusion-starter@ test /private/tmp/codex-audit-v03-u1qibo2e/repo
+> vitest --run
+
+
+ RUN  v3.2.4 /private/tmp/codex-audit-v03-u1qibo2e/repo
+
+ ✓ shared/instruments.spec.ts (7 tests) 8ms
+ ✓ client/lib/utils.spec.ts (5 tests) 6ms
+ ❯ client/lib/quantApi.integration.spec.ts (5 tests | 5 skipped) 13ms
+   ↓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > reaches the Python engine through the Vite proxy, simulation only
+   ↓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > runs a full backtest from the client and gets consistent, persisted results
+   ↓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > rejects invalid user parameters without storing a fake result
+   ↓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > imports a valid CSV and refuses a corrupted one as a whole
+   ↓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > exposes no way to send an order
+ ✓ client/lib/format.spec.ts (3 tests) 40ms
+ ✓ client/hooks/use-toast.spec.ts (2 tests) 7ms
+ ❯ server/settings.spec.ts (3 tests | 3 skipped) 10005ms
+   ↓ /api/settings never stores or returns credentials > POST strips secrets before writing the file
+   ↓ /api/settings never stores or returns credentials > GET purges secrets left in an old file
+   ↓ /api/settings never stores or returns credentials > CORS does not allow arbitrary websites
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/settings.spec.ts [ server/settings.spec.ts ]
+Error: Hook timed out in 10000ms.
+If this is a long-running hook, pass a timeout value as the last argument or configure it globally with "hookTimeout".
+ ❯ server/settings.spec.ts:27:1
+     25| let close: () => void = () => {};
+     26| 
+     27| beforeAll(async () => {
+       | ^
+     28|   dir = mkdtempSync(path.join(tmpdir(), "ato-settings-"));
+     29|   process.chdir(dir); // SETTINGS_FILE is resolved from the cwd at imp…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  client/lib/quantApi.integration.spec.ts > React client ↔ Vite proxy ↔ FastAPI ↔ Python engine
+Error: listen EPERM: operation not permitted 127.0.0.1
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2306:21
+ ❯ listenInCluster node:net:2437:12
+ ❯ node:net:2666:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "server/settings.spec.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  2 failed | 4 passed (6)
+      Tests  17 passed | 8 skipped (25)
+     Errors  1 error
+   Start at  01:46:41
+   Duration  10.62s (transform 305ms, setup 0ms, collect 429ms, tests 10.08s, environment 1ms, prepare 531ms)
+
+ ELIFECYCLE  Test failed. See above for more details.

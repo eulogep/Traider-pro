@@ -1,0 +1,22 @@
+
+> fusion-starter@ test /private/tmp/codex-counter-v031-d7c34xx6/repo
+> vitest --run
+
+
+ RUN  v3.2.4 /private/tmp/codex-counter-v031-d7c34xx6/repo
+
+ ✓ client/hooks/use-toast.spec.ts (2 tests) 3ms
+ ✓ shared/instruments.spec.ts (7 tests) 3ms
+ ✓ client/lib/utils.spec.ts (5 tests) 6ms
+ ✓ client/lib/format.spec.ts (3 tests) 43ms
+ ✓ server/quantProxy.spec.ts (4 tests) 42ms
+ ✓ server/settings.spec.ts (3 tests) 321ms
+ ✓ client/lib/quantApi.integration.spec.ts (6 tests) 4700ms
+   ✓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > runs a full backtest from the client and gets consistent, persisted results  2587ms
+   ✓ React client ↔ Vite proxy ↔ FastAPI ↔ Python engine > rejects invalid user parameters without storing a fake result  326ms
+
+ Test Files  7 passed (7)
+      Tests  30 passed (30)
+   Start at  03:16:57
+   Duration  5.39s (transform 222ms, setup 0ms, collect 706ms, tests 5.12s, environment 1ms, prepare 578ms)
+

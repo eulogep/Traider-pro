@@ -1,0 +1,155 @@
+{
+ "format": "ato-study/1",
+ "study_id": "1b2fa243ab9ecc55",
+ "created_at": "2026-11-04T13:00:12+00:00",
+ "software_version": "0.4.0",
+ "engine_version": "backtest-engine/0.3.1",
+ "code_hash": "f9055832e70d0f32",
+ "execution_mode": "simulation",
+ "dataset": {
+  "dataset_id": "6dc6ffcc7ca2d50b",
+  "name": "M5",
+  "kind": "synthetic",
+  "symbol": "XAUUSD-DEMO",
+  "timeframe": "M5",
+  "start": "2026-09-07T00:00:00+00:00",
+  "end": "2026-09-25T23:55:00+00:00"
+ },
+ "strategy": {
+  "key": "baseline.ema_trend_3bars@1.0.0",
+  "name": "Baseline — tendance EMA + séquence 3 bougies",
+  "params": {
+   "ema_fast": 20,
+   "ema_slow": 50,
+   "atr_period": 14,
+   "atr_method": "sma",
+   "sl_atr_mult": 1.5,
+   "rr": 1.5,
+   "warmup_bars": 50
+  },
+  "illustrative": true
+ },
+ "settings": {
+  "horizon_bars": 5,
+  "folds": 4,
+  "initial_train_fraction": 0.5,
+  "l2": 1.0,
+  "n_boot": 200,
+  "min_train": 100
+ },
+ "costs": {
+  "spread": 0.3,
+  "slippage": 0.05,
+  "commission_per_lot_per_side": 3.0
+ },
+ "feature_set": "price-action-v1",
+ "features": [
+  {
+   "feature": "ret_5",
+   "label": "Élan 5 bougies (aligné, en ATR)"
+  },
+  {
+   "feature": "ret_15",
+   "label": "Élan 15 bougies (aligné, en ATR)"
+  },
+  {
+   "feature": "ret_60",
+   "label": "Élan 60 bougies (aligné, en ATR)"
+  },
+  {
+   "feature": "ret_240",
+   "label": "Élan 240 bougies (aligné, en ATR)"
+  },
+  {
+   "feature": "trend",
+   "label": "Écart EMA20 / EMA100 (aligné, en ATR)"
+  },
+  {
+   "feature": "range_pos",
+   "label": "Position dans le range des 60 dernières bougies (alignée)"
+  },
+  {
+   "feature": "body",
+   "label": "Corps de la bougie du signal (aligné, en ATR)"
+  },
+  {
+   "feature": "vol_regime",
+   "label": "Volatilité actuelle / volatilité du dernier jour (log)"
+  },
+  {
+   "feature": "stop_atr",
+   "label": "Distance du stop (en ATR)"
+  },
+  {
+   "feature": "cost_r",
+   "label": "Coûts d'un aller-retour (en R)"
+  },
+  {
+   "feature": "hour_sin",
+   "label": "Heure de la journée (sinus)"
+  },
+  {
+   "feature": "hour_cos",
+   "label": "Heure de la journée (cosinus)"
+  }
+ ],
+ "signals": {
+  "candidates": 461,
+  "labelled": 87,
+  "exit_reasons": {
+   "HORIZON": 25,
+   "SL_GAP": 25,
+   "SL": 15,
+   "TP_GAP": 13,
+   "TP": 9
+  }
+ },
+ "multiple_testing": {
+  "studies_on_dataset": 1,
+  "alpha": 0.05
+ },
+ "result": {
+  "folds": [
+   {
+    "fold": 1,
+    "test_start": "2026-09-17T02:40:00+00:00",
+    "test_end": "2026-09-19T06:13:45+00:00",
+    "n_train": 44,
+    "n_test": 12,
+    "skipped": "pas assez de signaux d'entraînement ou de test"
+   },
+   {
+    "fold": 2,
+    "test_start": "2026-09-19T06:13:45+00:00",
+    "test_end": "2026-09-21T09:47:30+00:00",
+    "n_train": 56,
+    "n_test": 0,
+    "skipped": "pas assez de signaux d'entraînement ou de test"
+   },
+   {
+    "fold": 3,
+    "test_start": "2026-09-21T09:47:30+00:00",
+    "test_end": "2026-09-23T13:21:15+00:00",
+    "n_train": 56,
+    "n_test": 16,
+    "skipped": "pas assez de signaux d'entraînement ou de test"
+   },
+   {
+    "fold": 4,
+    "test_start": "2026-09-23T13:21:15+00:00",
+    "test_end": "2026-09-25T16:55:00+00:00",
+    "n_train": 72,
+    "n_test": 15,
+    "skipped": "pas assez de signaux d'entraînement ou de test"
+   }
+  ],
+  "n_oos": 0,
+  "verdict": {
+   "code": "INSUFFICIENT",
+   "confidence": "95,0 %",
+   "title": "Échantillon insuffisant",
+   "text": "Moins de 100 signaux hors échantillon : aucune conclusion possible. Importez un historique plus long."
+  }
+ },
+ "final_model": null
+}

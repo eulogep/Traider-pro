@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-trader-optimizer"
+version = "0.5.0"
+description = "Offline research and strategy backtesting laboratory for XAUUSD/Forex (no live orders)."
+requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.0,<3",
+  "numpy>=1.24,<3",
+  "streamlit>=1.37,<2",
+  "altair>=5,<7",
+  "pydantic>=2.6,<3",
+  "pyyaml>=6,<7",
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.30,<1",
+  "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.5", "httpx>=0.27,<1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+filterwarnings = [
+  # pandas 2.3 x numpy 2.5 internal deprecation (third-party, not our code) — see docs/KNOWN_LIMITATIONS.md
+  "ignore:The 'generic' unit for NumPy timedelta is deprecated:DeprecationWarning",
+  # starlette's TestClient warns about httpx (test-only dependency) — not our code
+  "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+extend-exclude = ["src/ai_trader_optimizer/core.py", "tests/test_core.py",  # frozen v0.1 reference + its tests
+                  "research_campaign"]  # sealed campaign scripts and frozen code snapshots: never rewritten
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["ai_trader_optimizer"]
+known-local-folder = ["conftest"]
