@@ -3,6 +3,8 @@
 **Le laboratoire qui teste une idée de trading sur l'or (XAUUSD) et le Forex _avant_ d'y risquer un centime.**
 Il simule, vérifie et explique. Il ne promet pas de gains.
 
+**▶ Vitrine en ligne : https://eulogep.github.io/Traider-pro/** (lecture seule, résultats pré-calculés par le moteur)
+
 ![version](https://img.shields.io/badge/version-0.5.0-2ea44f)
 ![mode](https://img.shields.io/badge/mode-simulation%20uniquement-blue)
 ![tests Python](https://img.shields.io/badge/tests%20Python-318%20r%C3%A9ussis-brightgreen)
@@ -135,9 +137,12 @@ node e2e/pages-tour.mjs          # parcours navigateur réel, 52 vérifications
 
 ## Vitrine en ligne
 
+**Adresse : https://eulogep.github.io/Traider-pro/**
+
 Une **vitrine en lecture seule** montre les vraies pages avec des résultats déjà calculés par le moteur : une démo
 synthétique et l'analyse complète du cas V3.70. Rien n'y est calculé, et aucun ordre n'est possible. Les captures
-ci-dessus en sont extraites (`node e2e/readme-screenshots.mjs`). Mise à jour et mise en ligne :
+ci-dessus en sont extraites (`node e2e/readme-screenshots.mjs`). Pour la republier après une évolution :
+`pnpm showcase:data && pnpm deploy:pages`. Procédure complète :
 [`docs/project/DEPLOYMENT.md`](docs/project/DEPLOYMENT.md).
 
 ## Fiabilité : ce qui est vérifié, et ce qui ne l'est pas
