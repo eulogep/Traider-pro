@@ -16,6 +16,8 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
+    "build:showcase": "VITE_SHOWCASE=1 vite build && rm -rf dist/spa/showcase && cp -R showcase/data dist/spa/showcase",
+    "showcase:data": "cd quant && .venv/bin/python -W ignore scripts/export_showcase.py ../showcase/data",
     "start": "node dist/server/node-build.mjs",
     "test": "vitest --run",
     "format.fix": "prettier --write .",

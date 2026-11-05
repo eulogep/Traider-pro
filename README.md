@@ -29,6 +29,12 @@ partir des transactions, et les **314 clôtures** sont rattachées à leur ouver
 
 Rapport complet : [`quant/docs/REFERENCE_V370.md`](quant/docs/REFERENCE_V370.md).
 
+## Vitrine en ligne
+
+Une **vitrine en lecture seule** montre les vraies pages avec des résultats déjà calculés par le moteur : une démo
+synthétique et l'analyse complète du rapport V3.70. Rien n'y est calculé et aucun ordre n'est possible. Pour la
+mettre à jour ou la mettre en ligne : [`docs/project/DEPLOYMENT.md`](docs/project/DEPLOYMENT.md).
+
 ## Démarrer (macOS / Linux)
 
 Prérequis : Node.js ≥ 18, pnpm, Python 3.12.

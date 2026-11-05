@@ -1,8 +1,8 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { Cpu, Menu, ShieldCheck, TrendingUp, WifiOff, X } from "lucide-react";
-import { quantApi } from "@/lib/quantApi";
+import { Cpu, Eye, Menu, ShieldCheck, TrendingUp, WifiOff, X } from "lucide-react";
+import { SHOWCASE_MODE, quantApi } from "@/lib/quantApi";
 import { NAV_GROUPS, STATUS_LABELS, type ModuleStatus, type NavItem } from "@/lib/modules";
 import { cn } from "@/lib/utils";
 
@@ -11,6 +11,29 @@ const STATUS_STYLE: Record<ModuleStatus, string> = {
   reference: "border-border bg-muted/50 text-muted-foreground",
   locked: "border-amber-500/30 bg-amber-500/10 text-amber-400",
 };
+
+/** Shown only in the static showcase build: says what the visitor is looking at, and when it was computed. */
+export function ShowcaseBanner() {
+  const m = useQuery({
+    queryKey: ["showcase-manifest"],
+    queryFn: async () => (await (await fetch("/showcase/manifest.json")).json()) as { generated_at: string; software_version: string; engine_version: string },
+    enabled: SHOWCASE_MODE,
+    staleTime: Infinity,
+  });
+  if (!SHOWCASE_MODE) return null;
+  return (
+    <div data-testid="showcase-banner" role="note"
+      className="flex items-start gap-2 border-b border-sky-500/30 bg-sky-500/10 px-4 py-2 text-xs text-sky-200">
+      <Eye className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+      <span>
+        <strong>Vitrine en lecture seule.</strong> Résultats calculés par le moteur Python
+        {m.data ? ` v${m.data.software_version} le ${new Date(m.data.generated_at).toLocaleDateString("fr-FR")}` : ""}, puis figés :
+        une démo synthétique, et l'analyse d'un vrai rapport MT5 (Gold Grid V3.70). Importer ou lancer un calcul est désactivé ;
+        aucune connexion à un courtier, aucun ordre.
+      </span>
+    </div>
+  );
+}
 
 export function StatusChip({ status, className }: { status: ModuleStatus; className?: string }) {
   return (
@@ -158,7 +181,10 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       )}
 
-      <div className="lg:pl-64">{children}</div>
+      <div className="lg:pl-64">
+        <ShowcaseBanner />
+        {children}
+      </div>
     </div>
   );
 }

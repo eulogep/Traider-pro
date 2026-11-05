@@ -49,7 +49,8 @@ navigateur → Express 127.0.0.1:PORT ─ /api/v1/* relayé tel quel (server/qua
                                      ├ /api/* (autres) → routes Express
                                      └ reste → SPA construit
 ```
-Netlify n'est **pas** une cible supportée (pas de moteur Python).
+Netlify ne peut pas faire tourner le moteur Python : il ne sert qu'une **vitrine statique en lecture seule**, faite
+de réponses pré-calculées (`../../docs/project/DEPLOYMENT.md`).
 
 > Plan de migration et diagnostic du workspace : `../../docs/project/CONSOLIDATION_AUDIT.md`.
 

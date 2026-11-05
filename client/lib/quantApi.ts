@@ -57,10 +57,31 @@ export interface ImportDatasetInput {
   notes?: string;
 }
 
-export function createQuantClient(baseUrl = "", fetchImpl: typeof fetch = fetch) {
+/**
+ * Showcase (static, read-only) build: `VITE_SHOWCASE=1`. The API responses were PRE-COMPUTED by the Python engine
+ * (`quant/scripts/export_showcase.py`) and are served as static files under `/showcase/` — no server, no
+ * computation, no mutation, no order. The mapping below MUST stay identical to `showcase_file()` in that script.
+ */
+export const SHOWCASE_MODE = import.meta.env.VITE_SHOWCASE === "1";
+export const SHOWCASE_READ_ONLY =
+  "Vitrine en lecture seule : importer, lancer ou recalculer est désactivé ici. Installez la plateforme pour l'utiliser.";
+const SHOWCASE_CHARS: Record<string, string> = { "/": "__", "?": "--", "&": "_", "=": "-" };
+export function showcaseFile(path: string): string {
+  return `/showcase/${path.replace(/^\//, "").replace(/[/?&=]/g, (c) => SHOWCASE_CHARS[c])}.json`;
+}
+
+export function createQuantClient(baseUrl = "", fetchImpl: typeof fetch = fetch, showcase = SHOWCASE_MODE) {
   const root = `${baseUrl}/api/v1`;
 
   async function request<T>(path: string, init?: RequestInit): Promise<T> {
+    if (showcase) {
+      if (init?.method && init.method.toUpperCase() !== "GET") throw new QuantApiError(403, SHOWCASE_READ_ONLY);
+      const res = await fetchImpl(`${baseUrl}${showcaseFile(path)}`);
+      if (!res.ok) {
+        throw new QuantApiError(res.status, "Cette donnée n'a pas été pré-calculée pour la vitrine (valeurs par défaut uniquement).");
+      }
+      return (await res.json()) as T;
+    }
     let res: Response;
     try {
       res = await fetchImpl(`${root}${path}`, init);
@@ -174,7 +195,9 @@ export function createQuantClient(baseUrl = "", fetchImpl: typeof fetch = fetch)
     listEdgeStudies: () => request<EdgeStudySummary[]>("/research/edge-studies"),
     getEdgeStudy: (id: string) => request<EdgeStudy>(`/research/edge-studies/${encodeURIComponent(id)}`),
     exportUrl: (runId: string, name: ExportName) =>
-      `${root}/backtests/${encodeURIComponent(runId)}/export/${name}`,
+      showcase
+        ? `${baseUrl}/showcase/exports/${encodeURIComponent(runId)}/${name}`
+        : `${root}/backtests/${encodeURIComponent(runId)}/export/${name}`,
   };
 }
 
