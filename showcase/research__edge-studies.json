@@ -1,0 +1,1 @@
+[{"study_id":"5901daa43465d27f","created_at":"2026-11-05T16:31:08+00:00","dataset_id":"4307314ffbf4f33b","dataset_name":"DÉMO — prix synthétiques (fausses cotations) · seed 42 · 60 j","data_kind":"synthetic","strategy_key":"baseline.ema_trend_3bars@1.0.0","verdict":"NO_EDGE","n_oos":769,"integrity":"vérifiée"}]
