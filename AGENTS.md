@@ -63,6 +63,7 @@ quant/                  moteur Python 3.12 (paquet ai_trader_optimizer) — voir
 docs/                   audits indépendants, passations Codex, base de connaissances, plan de projet
 e2e/                    parcours navigateur réels (Chrome headless + vraie API)
 archive/                code conservé pour mémoire, jamais importé (exclu du typage et du build)
+showcase/data/          réponses de l'API pré-calculées pour la vitrine statique Netlify (générées, à commiter)
 ```
 
 ## 3. Commandes
@@ -77,6 +78,7 @@ pnpm quant:test           # pytest (doit rester 100 % vert)
 pnpm test && pnpm typecheck && pnpm build
 node e2e/pages-tour.mjs && node e2e/backtest-flow.mjs && node e2e/backtest-flow.mjs --api-down
 pnpm build && node e2e/production-smoke.mjs
+pnpm showcase:data && pnpm build:showcase && node e2e/showcase-smoke.mjs   # vitrine statique (docs/project/DEPLOYMENT.md)
 ```
 
 ## 4. Ajouter quelque chose

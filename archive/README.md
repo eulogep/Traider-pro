@@ -17,4 +17,8 @@ Code conservé pour mémoire, **jamais importé** par le produit.
   Chemins d'origine conservés sous ce dossier. Le dossier est hors du typage et du build : ces fichiers ne sont pas
   maintenus.
 
+- `legacy-netlify-functions/` : adaptateur `serverless-http` qui exposait l'Express de démonstration sur Netlify.
+  Il était en panne en production (« Cannot find module 'express' ») et a été retiré du déploiement le 2026-11-05.
+  Netlify ne sert plus que la vitrine statique (`../docs/project/DEPLOYMENT.md`).
+
 Le moteur quantitatif actuel est dans `../quant/` ; l'interface actuelle dans `../client/`.

@@ -15,6 +15,7 @@
 | [`../quant/docs/ROADMAP.md`](../quant/docs/ROADMAP.md) | versions livrées et prochaines étapes |
 | [`../quant/docs/CHANGELOG.md`](../quant/docs/CHANGELOG.md) | changements par version |
 | [`project/CONSOLIDATION_AUDIT.md`](project/CONSOLIDATION_AUDIT.md) | diagnostic initial du dépôt et plan de consolidation (2026-11-03) |
+| [`project/DEPLOYMENT.md`](project/DEPLOYMENT.md) | plateforme locale et vitrine statique en ligne : mise à jour et mise en ligne |
 
 ## Technique
 | Document | Contenu |

@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-11-05T16:31:12+00:00",
+ "software_version": "0.5.0",
+ "engine_version": "backtest-engine/0.3.1",
+ "code_hash": "15d5c3361e66fbd3",
+ "execution_mode": "simulation",
+ "content": {
+  "synthetic_dataset": "4307314ffbf4f33b",
+  "backtest": "010f866522a4cdf7",
+  "edge_study": "5901daa43465d27f",
+  "external_simulations": [
+   "a45999a0c4a1b14f",
+   "75283b4d13478873"
+  ]
+ },
+ "mt5_reference_sha256": {
+  "Gold_Grid_V370_MT5_Baseline_2026.html": "9048261e1d5016ddbe5702e30531490e8dee9d755300b73beb3dac4c4f9309b6",
+  "Gold_Grid_V370_MT5_Baseline_2026.xlsx": "8a75440e24c7219a65c65ab5002fe3574102711f998d9afe6d84e06b2efd9d6e"
+ },
+ "files_sha256": {
+  "health.json": "344ef203bc35e2bf2c5813cd43312ddbcffb606177c6f02888557a98289d2b62",
+  "datasets.json": "4487ac763ea300539333e04e14328ea6f4ace5709e2cec9391ba8576713d80bd",
+  "datasets__4307314ffbf4f33b.json": "681a159f4a25425dd1d19123ced7cd09c1f79a05e9ba0f18d8c47e697864aa00",
+  "strategies.json": "0ddb90a3728b0b4a02a2228b1d59a9d97fe6abe290e39d4a8c23ada148ebae92",
+  "settings__defaults.json": "6aa3df863e50312ce934b51ed29f0e47d6c79a65e380d72151a8e091cc8accb0",
+  "settings__risk-policy.json": "6393a18b600dbc3ae94c2d550639be173696fa67282d73bb48ae0b4026b82342",
+  "reference__rejection-reasons.json": "e765fc1fcc700e9aac6f5eb6cd6066e53e013ee7b9a9d88616302dec1bff3638",
+  "backtests.json": "5a68a132b37ce4275b4e4cf184d7b42ad4caa281248c92ec02f8bbdf6608b09d",
+  "backtests__010f866522a4cdf7.json": "f2b930a6ec6fc81193145fe34c5e7d47ff27f2afc2da40ca6902b8a1853c64d5",
+  "backtests__010f866522a4cdf7__trades.json": "3cada88efcd9254703b1dcdd08c0e909ea52f20b0453a467c4ee5fa457e22014",
+  "backtests__010f866522a4cdf7__equity--max_points-1500.json": "f7e5981ac267653749e661924f8fd584ae7424fe1b22242bc3297113174e853f",
+  "backtests__010f866522a4cdf7__equity--max_points-400.json": "1509db5159dabebcbf431a294d719e43ee9c04e78754e3e97d32dd8a007bf600",
+  "backtests__010f866522a4cdf7__robustness.json": "20509a22cf5ef5654390efdc38be4c14c3126d9ec27c325da216d499ce263f8e",
+  "research__edge-studies.json": "42487bf6c5c7455182accbd0a12935fd9b0908263d696289460eb8db55c2e0d3",
+  "research__edge-studies__5901daa43465d27f.json": "555bb78b29a1544043cc30937061de986efe16c9ff133938d839652a5cf2098c",
+  "mt5__local-files.json": "b4d4af14064db30e6a596177c825e7ebb7c69fa1ee941a6df61c80edaa48a43e",
+  "external-sims.json": "977d52e264cb65494ca9656246a948ba1af7177c2b5e6a475dc4b1a0f93e2f0a",
+  "external-sims__what-if-rules.json": "8eb4b7380d15964d8608f33c2ad91195fc1571acfc5fd1f0a35a3f4466137830",
+  "external-sims__a45999a0c4a1b14f.json": "d529e8860384562f37f3ea2e18ce7fd5b1374e7726dd552b8c8665ba63bf5376",
+  "external-sims__75283b4d13478873.json": "fdacd15473602905abee822eca4f7324bd92c2e0f96b6ff2bb00b7a41f58b516",
+  "external-sims__a45999a0c4a1b14f__what-if--rule-stop_after_realised_dd.json": "27d62d3c956e129a8ebd61c8a649ac2acc826f59b3ae577f4c9364043233e8d2",
+  "external-sims__a45999a0c4a1b14f__what-if--rule-equity_dd_block.json": "be2cf0e5effea9d66fabd2d14a91567d662280d0ac19d5f18cc08eb82342b86b",
+  "external-sims__a45999a0c4a1b14f__what-if--rule-max_positions.json": "91d1800b8ccdc1491743b8d01bc9753ae668f9d18c64e42d4634e57f8cb5306c",
+  "external-sims__a45999a0c4a1b14f__what-if--rule-exposure_cap.json": "0e39748eeee1aa8b422a127fce67ac77a2e34433d7fb77212bb919773829b966",
+  "external-sims__a45999a0c4a1b14f__what-if--rule-lot_scale.json": "88ba40b5c79ed91729dd856c8fdbea00d2b3db6d34da1fcfc4abce89a3c61ac9",
+  "external-sims__a45999a0c4a1b14f__what-if--rule-daily_loss_stop.json": "fed6681b95d4242de383f2501fa2b133cf50a73c05a6ea486c78a90148e09dfd",
+  "external-sims__a45999a0c4a1b14f__what-if--rule-volatility_reduction.json": "7e98943495ab69e9f5958f5d3c7d25fd9e977f57e389c8e056c3f53eabaa7938",
+  "external-sims__75283b4d13478873__what-if--rule-stop_after_realised_dd.json": "27d62d3c956e129a8ebd61c8a649ac2acc826f59b3ae577f4c9364043233e8d2",
+  "external-sims__75283b4d13478873__what-if--rule-equity_dd_block.json": "be2cf0e5effea9d66fabd2d14a91567d662280d0ac19d5f18cc08eb82342b86b",
+  "external-sims__75283b4d13478873__what-if--rule-max_positions.json": "91d1800b8ccdc1491743b8d01bc9753ae668f9d18c64e42d4634e57f8cb5306c",
+  "external-sims__75283b4d13478873__what-if--rule-exposure_cap.json": "0e39748eeee1aa8b422a127fce67ac77a2e34433d7fb77212bb919773829b966",
+  "external-sims__75283b4d13478873__what-if--rule-lot_scale.json": "88ba40b5c79ed91729dd856c8fdbea00d2b3db6d34da1fcfc4abce89a3c61ac9",
+  "external-sims__75283b4d13478873__what-if--rule-daily_loss_stop.json": "fed6681b95d4242de383f2501fa2b133cf50a73c05a6ea486c78a90148e09dfd",
+  "external-sims__75283b4d13478873__what-if--rule-volatility_reduction.json": "7e98943495ab69e9f5958f5d3c7d25fd9e977f57e389c8e056c3f53eabaa7938"
+ },
+ "note": "Réponses de l'API pré-calculées par le moteur Python ; vitrine en lecture seule, aucun ordre."
+}

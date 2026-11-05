@@ -1,15 +1,23 @@
+# Netlify: STATIC, READ-ONLY SHOWCASE of the platform (no server function, no Python, no order).
+# The API responses are pre-computed by the real Python engine and committed in showcase/data/
+# (regenerate with `pnpm showcase:data`). The full platform runs locally — see README.md.
+
 [build]
-  command = "npm run build:client"
-  functions = "netlify/functions"
+  command = "pnpm run build:showcase"
   publish = "dist/spa"
 
+[build.environment]
+  NODE_VERSION = "22"
 
-[functions]
-  external_node_modules = ["express"]
-  node_bundler = "esbuild"
-  
+# Single-page app: every route (/bot-analysis, /research, …) is served by index.html
 [[redirects]]
-  force = true
-  from = "/api/*"
+  from = "/*"
+  to = "/index.html"
   status = 200
-  to = "/.netlify/functions/api/:splat"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"

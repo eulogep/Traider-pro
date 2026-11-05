@@ -80,7 +80,8 @@
 - **Seule la page « Backtests » est alimentée par le moteur.** Aperçu, Tableau de bord, Trading MT5, Optimiseur IA,
   Automatisation et Paramètres affichent encore des chiffres de démonstration (bannière sur chacune).
 - Profil de risque et contrat **lisibles** depuis React mais **modifiables seulement** dans la console Streamlit.
-- Production locale supportée : `pnpm build && pnpm quant:api && pnpm start` (relais `/api/v1`). Netlify non supporté.
+- Production locale supportée : `pnpm build && pnpm quant:api && pnpm start` (relais `/api/v1`). Netlify ne sert
+  qu'une vitrine statique en lecture seule, pré-calculée (`../../docs/project/DEPLOYMENT.md`) : rien n'y est calculé.
 - Backtest **synchrone** (~4 s pour un an de M1) ; pas de file d'attente ni d'annulation ; au-delà de
   `ATO_MAX_CONCURRENT_JOBS` traitements simultanés, réponse 429.
 - API sans authentification : outil local mono-utilisateur, écoute 127.0.0.1 uniquement.
