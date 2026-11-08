@@ -85,6 +85,24 @@ La méthode reste **expérimentale** (`VALIDATION_V041.md`) : son défaut connu 
 d'avantage », pas d'en manquer. Il ne remet donc pas en cause ce verdict négatif, mais un seul test sur dix mois ne
 démontre pas non plus qu'aucune variante ne pourrait fonctionner.
 
+## 4 bis. Confirmation sur 2025 (stratégie et réglages inchangés)
+Année entière, 350 442 bougies, période non utilisée jusque-là. Backtests seulement : aucune étude n'a été ajoutée au
+registre, donc le niveau exigé pour les études futures ne change pas.
+
+| | MT5, OHLC M1 | MT5, ticks réels | Python, spread de l'OHLC (0,148 $) | Python, coûts prudents |
+|---|---:|---:|---:|---:|
+| **Résultat net** | **−894,56 $** | **−897,91 $** | −958,69 $ | −999,16 $ |
+| Trades | 400 | 272 | 400 | 121 |
+| Trades gagnants | 36,25 % | 34,93 % | 36,00 % | 28,10 % |
+| Profit factor | 0,85 | 0,79 | 0,84 | 0,50 |
+
+- **Accord entre moteurs (OHLC)** : 37 086 signaux sur 37 086 identiques ; 399 trades communs sur 400, dont 398 de même
+  issue.
+- **Tous ces tests s'arrêtent sur la limite de drawdown** (environ 10 %) : le nombre de trades dépend donc du moment où
+  elle est atteinte, et la perte est plafonnée par le garde-fou.
+- **Le résultat se répète sur deux périodes distinctes**, alors que l'or a beaucoup évolué entre elles. Cela renforce le
+  constat pour cette stratégie, sans rien dire d'une autre.
+
 ## 5. Données
 - **Bougies, décisions, rapports** : régénérables dans `mt5/results/` (hors Git, 25 Mo environ).
 - **Catalogue local de l'application** : jeu de données « XAUUSD M1 réel — MetaQuotes-Demo », backtest `5b57d856963dabc6`,
