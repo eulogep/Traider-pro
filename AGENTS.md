@@ -13,15 +13,21 @@ trading sur l'or (XAUUSD) et le Forex.
 moteur sont dans `quant/AGENTS.md` ; elles s'appliquent en plus de celles-ci.
 
 ## 1. Règles non négociables
-1. **Aucun ordre, réel ou démo.**
+1. **Aucun ordre sur un compte, réel ou démo.** Seuls les ordres simulés par le Strategy Tester sont permis (règle 2).
    - Ne jamais ajouter de route d'ordre, d'appel à un courtier, d'`order_send` ni d'`import MetaTrader5`.
    - Ne jamais activer `LIVE_TRADING_ENABLED` / `DEMO_TRADING_ENABLED` (`quant/src/ai_trader_optimizer/safety.py`).
    - Les listes blanches de routes doivent rester vertes : `quant/tests/test_api.py` et
      `client/lib/quantApi.integration.spec.ts`.
-2. **MT5 en lecture seule seulement.** Le propriétaire a autorisé, le 2026-11-05, un pont **local** qui lit les
-   rapports du terminal installé (`quant/src/ai_trader_optimizer/ea_audit/mt5_local.py`).
-   - Ne jamais lire `config/` ni `*.dat`.
-   - Ne jamais exécuter un `.ex5`.
+2. **MT5 : lecture locale et Strategy Tester seulement.** Autorisations du propriétaire :
+   - 2026-11-05 : un pont **local** qui lit les rapports du terminal installé
+     (`quant/src/ai_trader_optimizer/ea_audit/mt5_local.py`) ;
+   - 2026-11-08 : lancer le **Strategy Tester** sur **nos** robots (`mt5/`, voir `mt5/README.md`), qui refusent de
+     démarrer hors du testeur (`quant/tests/test_mt5_experts.py`).
+
+   Interdits maintenus :
+   - ne jamais lire `config/` ni `*.dat`, ni lire, passer ou stocker un identifiant ;
+   - ne jamais attacher un robot à un graphique ni autoriser le trading en direct ;
+   - ne jamais exécuter un `.ex5` de tiers, ni dans le backend ni dans le testeur, sans accord explicite pour ce robot.
    - Le mot « mt5 » n'est permis que sur les routes en lecture seule listées dans ces tests. On étend la liste
      explicitement ; on ne renomme jamais une route pour la contourner.
 3. **Aucun secret** dans le code, les tests, les logs ou les commits. `.env` ne contient que des placeholders ; le
@@ -62,6 +68,7 @@ quant/                  moteur Python 3.12 (paquet ai_trader_optimizer) — voir
   docs/                 documentation technique et rapports de version
 docs/                   audits indépendants, passations Codex, base de connaissances, plan de projet
 e2e/                    parcours navigateur réels (Chrome headless + vraie API)
+mt5/                    robots MQL5 (testeur uniquement), pilotage du Strategy Tester, comparaison avec le moteur
 archive/                code conservé pour mémoire, jamais importé (exclu du typage et du build)
 showcase/data/          réponses de l'API pré-calculées pour la vitrine statique Netlify (générées, à commiter)
 ```
