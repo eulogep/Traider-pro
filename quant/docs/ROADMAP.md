@@ -32,6 +32,7 @@ External Bot Analysis & Optimization Lab : import vérifié des rapports MT5, ca
 hypothèses qualifiées, pont MT5 local en lecture seule, page « Bot Analysis ». Cas de référence : `REFERENCE_V370.md`.
 
 ## v0.5.x — suite du laboratoire
+0. **Fait** : Strategy Tester piloté en ligne de commande et contrôle croisé avec le moteur (`MT5_TEST_BASELINE_2026.md`).
 1. Importer les rapports des deux autres EAs (« Gold Grid Strategy X V4.1 », « Gold EA ») et d'autres périodes de V3.70.
 2. Comparaison de configurations : tableau de plusieurs simulations d'un même robot.
 3. Si l'EA a un réglage équivalent, le rejouer dans le Strategy Tester et comparer, au lieu d'approximer.

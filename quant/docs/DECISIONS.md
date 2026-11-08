@@ -120,4 +120,9 @@ convention TP conservatrice existante) ; SL franchi à l'ouverture exécuté à 
 **D-34 · (0.3.1) Provenance : première déclaration immuable**, déclarations de même nature ajoutées à l'historique,
 déclaration contradictoire refusée. Le nom du fichier n'est qu'un garde-fou de saisie, pas une vérification.
 
+**D-35 · (0.5) Le Strategy Tester de MT5 comme second moteur indépendant**, sur demande du propriétaire (2026-11-08) :
+nos robots (`mt5/`) refusent de démarrer hors du testeur, aucun ordre n'atteint un compte, aucun identifiant n'est
+manipulé. Le package `MetaTrader5` reste exclu (Windows uniquement, et il permettrait d'envoyer des ordres). Les `.ex5`
+de tiers ne sont pas lancés : leur analyse continue de passer par leurs rapports.
+
 **D-15 · Python 3.12 pour l'environnement local** : Python 3.15 (défaut Homebrew) n'a pas de roues pandas.

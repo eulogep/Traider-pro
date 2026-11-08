@@ -29,7 +29,7 @@
 ## Validation et preuves (par version)
 | Version | Document |
 |---|---|
-| v0.5.0 | [`../quant/docs/VALIDATION_V05.md`](../quant/docs/VALIDATION_V05.md), cas de référence [`../quant/docs/REFERENCE_V370.md`](../quant/docs/REFERENCE_V370.md) |
+| v0.5.0 | [`../quant/docs/VALIDATION_V05.md`](../quant/docs/VALIDATION_V05.md), cas de référence [`../quant/docs/REFERENCE_V370.md`](../quant/docs/REFERENCE_V370.md), test dans MT5 [`../quant/docs/MT5_TEST_BASELINE_2026.md`](../quant/docs/MT5_TEST_BASELINE_2026.md) |
 | v0.4.1 | [`../quant/docs/VALIDATION_V041.md`](../quant/docs/VALIDATION_V041.md), campagne [`../quant/research_campaign/PROTOCOL.md`](../quant/research_campaign/PROTOCOL.md) (résultats bruts dans `../quant/research_campaign/results/`) |
 | v0.4.0 | [`../quant/docs/REPRODUCTION_V04.md`](../quant/docs/REPRODUCTION_V04.md) (reconstitution des chiffres annoncés) |
 | v0.3.1 | [`../quant/docs/TEST_REPORT.md`](../quant/docs/TEST_REPORT.md) (historique) |

@@ -1,7 +1,7 @@
 # AGENTS.md — conventions pour tout agent (Claude, Codex…) travaillant sur AI Trader Optimizer
 
 ## Exigences permanentes de sécurité (non négociables)
-- **Aucun ordre réel ou démo** : ne jamais ajouter `order_send`, `import MetaTrader5`, appel réseau vers un courtier,
+- **Aucun ordre sur un compte, réel ou démo** (seul le Strategy Tester, via `../mt5/`, simule des ordres) : ne jamais ajouter `order_send`, `import MetaTrader5`, appel réseau vers un courtier,
   ni modifier `LIVE_TRADING_ENABLED` / `DEMO_TRADING_ENABLED` dans `src/ai_trader_optimizer/safety.py`.
   `tests/test_metrics_storage_safety.py::test_no_broker_order_path_in_sources` doit rester vert.
 - **Aucun secret ni identifiant** dans le code, les YAML, les tests ou les logs. Pas de formulaire de mot de passe.

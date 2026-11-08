@@ -7,7 +7,7 @@ Il simule, vérifie et explique. Il ne promet pas de gains.
 
 ![version](https://img.shields.io/badge/version-0.5.0-2ea44f)
 ![mode](https://img.shields.io/badge/mode-simulation%20uniquement-blue)
-![tests Python](https://img.shields.io/badge/tests%20Python-318%20r%C3%A9ussis-brightgreen)
+![tests Python](https://img.shields.io/badge/tests%20Python-322%20r%C3%A9ussis-brightgreen)
 ![tests TypeScript](https://img.shields.io/badge/tests%20TypeScript-51%20r%C3%A9ussis-brightgreen)
 ![parcours navigateur](https://img.shields.io/badge/parcours%20navigateur-52%2F52-brightgreen)
 ![licence](https://img.shields.io/badge/licence-tous%20droits%20r%C3%A9serv%C3%A9s-lightgrey)
@@ -18,6 +18,7 @@ Il simule, vérifie et explique. Il ne promet pas de gains.
 - [Pourquoi ce projet](#pourquoi-ce-projet)
 - [Ce que fait la plateforme](#ce-que-fait-la-plateforme)
 - [Cas réel : un robot qui gagne 82,8 % du temps… puis perd tout](#cas-réel--un-robot-qui-gagne-828--du-temps-puis-perd-tout)
+- [Contrôlé par MetaTrader 5](#contrôlé-par-metatrader-5)
 - [Comment ça marche](#comment-ça-marche)
 - [Principes de conception](#principes-de-conception)
 - [Démarrer](#démarrer)
@@ -84,6 +85,18 @@ La page sépare toujours **ce que contient le rapport** (constats) de **ce qu'on
 d'un `.ex5` est fermé : on ne le lit pas, on ne l'exécute jamais. Rapport complet :
 [`quant/docs/REFERENCE_V370.md`](quant/docs/REFERENCE_V370.md).
 
+## Contrôlé par MetaTrader 5
+
+La stratégie de référence a été rejouée dans le **Strategy Tester de MT5** sur 286 442 bougies réelles XAUUSD M1, avec
+des robots qui refusent de démarrer hors du testeur :
+
+- **Le moteur est confirmé par MT5** : 30 110 signaux sur 30 110 identiques, et −731,54 $ contre −737,77 $ de résultat.
+- **La stratégie, elle, perd de l'argent** : environ 36 % de trades gagnants pour un seuil de 40 %, et un verdict
+  « aucun avantage démontré » hors échantillon. Elle est illustrative, et ce résultat honnête est tout l'intérêt du
+  laboratoire.
+
+Rapport : [`quant/docs/MT5_TEST_BASELINE_2026.md`](quant/docs/MT5_TEST_BASELINE_2026.md). Outils : [`mt5/`](mt5/README.md).
+
 ## Comment ça marche
 
 ```mermaid
@@ -130,7 +143,7 @@ pnpm dev         # interface sur http://localhost:8080
 Vérifier :
 
 ```bash
-pnpm quant:test                  # 318 tests Python
+pnpm quant:test                  # 322 tests Python
 pnpm test && pnpm typecheck      # 51 tests TypeScript + typage strict
 node e2e/pages-tour.mjs          # parcours navigateur réel, 52 vérifications
 ```
