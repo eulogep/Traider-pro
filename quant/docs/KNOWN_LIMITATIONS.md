@@ -1,5 +1,14 @@
 # Limites connues — v0.5.0
 
+## Test dans MetaTrader 5
+- **Serveur MetaQuotes-Demo** : ce n'est pas le courtier du trader. Spread, contrat et historique peuvent différer, et il
+  n'y a ni commission ni glissement ; le résultat est donc plutôt favorable.
+- **Spread constant dans le moteur Python** : il a fallu fixer une moyenne par scénario pour comparer. En ticks réels,
+  le spread payé à l'entrée est 2,5 fois celui enregistré dans les bougies M1.
+- **Écarts de trades entre moteurs non analysés un par un.** Les 29 signaux propres à MT5 en ticks réels sont expliqués :
+  l'historique M1 du serveur a un trou de 5 h 30 les 26–27/02/2026, couvert par les ticks.
+- **Dix mois, une seule stratégie, un seul serveur** : cela ne vaut pas pour d'autres périodes.
+
 ## Laboratoire de robots externes (v0.5)
 - **Pas d'identifiant de position** dans les rapports du testeur. L'appariement ouverture ↔ clôture est reconstruit et
   vérifié par le profit MT5. Deux positions de même volume et même prix restent indiscernables (sans effet sur le

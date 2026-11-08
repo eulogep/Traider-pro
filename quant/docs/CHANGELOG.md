@@ -1,5 +1,16 @@
 # Changelog
 
+## Non publié — Test dans MetaTrader 5 (2026-11-08)
+
+Moteur et code de recherche inchangés. Détail : `MT5_TEST_BASELINE_2026.md`.
+- **`mt5/`** : robots MQL5 réservés au testeur (`ATO_ExportBars`, `ATO_Baseline`), pilotage du Strategy Tester en ligne
+  de commande (`run_tester.py`), comparaison avec le moteur Python (`compare_engines.py`).
+- **Premier contrôle indépendant du moteur sur données réelles** (XAUUSD M1, 286 442 bougies) : 30 110 signaux sur
+  30 110 identiques en OHLC ; −731,54 $ pour Python contre −737,77 $ pour MT5.
+- **Résultat de la stratégie de référence : perdante** (−737,77 $ en OHLC, −728,70 $ en ticks réels, environ 36 % de
+  gagnants pour un seuil de 40 %). Validation hors échantillon : `NO_EDGE`.
+- **Tests** : `test_mt5_experts.py` (4) verrouille les garde-fous.
+
 ## 0.5.0 — 2026-11-05 (External Bot Analysis & Optimization Lab)
 
 Moteur inchangé ; `research_code_hash` inchangé (`5e6a8f926021b343`). Détail : `EXTERNAL_LAB.md`, `REFERENCE_V370.md`,
